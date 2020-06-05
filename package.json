@@ -1,0 +1,36 @@
+{
+  "name": "saints-service-sdk-nodejs",
+  "version": "1.0.0",
+  "description": "saints platform service sdk",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d dist",
+    "test": "babel-node ./test/es6Test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mylady/saints-service-sdk-nodejs.git"
+  },
+  "keywords": [
+    "saints",
+    "nodejs",
+    "sdk"
+  ],
+  "author": "mylady",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mylady/saints-service-sdk-nodejs/issues"
+  },
+  "homepage": "https://github.com/mylady/saints-service-sdk-nodejs#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.10.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2"
+  }
+}
