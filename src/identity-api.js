@@ -3,7 +3,7 @@
 const rp = require('request-promise');
 
 export default class IdentityAPI {
-    constructor(){
+    constructor() {
         this.accessToken = '';
     }
 
@@ -12,9 +12,9 @@ export default class IdentityAPI {
             throw new Error('invalid url');
         }
 
-        if(url.lastIndexOf('/') === url.length -1){
-            IdentityAPI.url = url.substring(0,url.lastIndexOf('/'));
-        }else{
+        if (url.lastIndexOf('/') === url.length - 1) {
+            IdentityAPI.url = url.substring(0, url.lastIndexOf('/'));
+        } else {
             IdentityAPI.url = url;
         }
     }
@@ -36,6 +36,19 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
+            json: true
+        });
+    }
+
+    async getUserWithIds(idArray) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'POST',
+            uri: IdentityAPI.url + '/view/user',
+            qs: {
+                access_token: this.accessToken
+            },
+            body: idArray,
             json: true
         });
     }
