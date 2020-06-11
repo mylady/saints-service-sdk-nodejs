@@ -65,7 +65,36 @@ export default class IdentityAPI {
         });
     }
 
-    async login(auth) {
+    async createUser(user) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'POST',
+            uri: IdentityAPI.url + `/service/user`,
+            qs: {
+                access_token: this.accessToken
+            },
+            body: user,
+            json: true
+        })
+    }
+
+    async passwordReset(uid, pwd) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'POST',
+            uri: IdentityAPI.url + `/service/user/password`,
+            qs: {
+                access_token: this.accessToken
+            },
+            body: {
+                id: uid,
+                pwd: pwd
+            },
+            json: true
+        })
+    }
+
+    async login(uname, pwd) {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
@@ -73,7 +102,10 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
-            body: auth,
+            body: {
+                user_name: uname,
+                user_pwd: pwd
+            },
             json: true
         });
     }
@@ -108,7 +140,7 @@ export default class IdentityAPI {
         });
     }
 
-    async updateSelf(token, body) {
+    async updateSelf(token, self) {
         await this.getAccessToken();
         return await rp({
             method: 'PUT',
@@ -119,13 +151,13 @@ export default class IdentityAPI {
             auth: {
                 bearer: token
             },
-            body: body,
+            body: self,
             json: true
         });
     }
 
 
-    async password(token, pwd) {
+    async passwordSelf(token, pwd) {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
