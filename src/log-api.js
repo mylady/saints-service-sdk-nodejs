@@ -3,8 +3,9 @@
 const rp = require('request-promise');
 
 export default class LogAPI {
-    constructor() {
+    constructor(debug = false) {
         this.accessToken = '';
+        rp.debug = debug;
     }
 
     static async initialize(url) {

@@ -10,8 +10,9 @@ const request = require('request'),
 */
 
 export default class FileHubAPI {
-    constructor() {
+    constructor(debug = false) {
         this.accessToken = '';
+        rp.debug = debug;
     }
 
     static async initialize(url) {
@@ -35,7 +36,7 @@ export default class FileHubAPI {
         this.accessToken = res.data;
     }
 
-    async uploadDocProxy(req,res) {
+    async uploadDocProxy(req, res) {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',
@@ -106,7 +107,7 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadImageProxy(req,res) {
+    async uploadImageProxy(req, res) {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',
@@ -164,7 +165,7 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadAttachProxy(req,res) {
+    async uploadAttachProxy(req, res) {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',

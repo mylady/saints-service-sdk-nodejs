@@ -19,8 +19,10 @@ var rp = require('request-promise');
 
 var IdentityAPI = /*#__PURE__*/function () {
   function IdentityAPI() {
+    var debug = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
     (0, _classCallCheck2["default"])(this, IdentityAPI);
     this.accessToken = '';
+    rp.debug = debug;
   }
 
   (0, _createClass2["default"])(IdentityAPI, [{
