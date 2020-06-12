@@ -3,9 +3,8 @@
 const rp = require('request-promise');
 
 export default class IdentityAPI {
-    constructor(debug = false) {
+    constructor() {
         this.accessToken = '';
-        rp.debug = debug;
     }
 
     static async initialize(url) {

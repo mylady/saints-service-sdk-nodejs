@@ -10,9 +10,8 @@ const request = require('request'),
 */
 
 export default class FileHubAPI {
-    constructor(debug = false) {
+    constructor() {
         this.accessToken = '';
-        rp.debug = debug;
     }
 
     static async initialize(url) {

@@ -26,10 +26,8 @@ var request = require('request'),
 
 var FileHubAPI = /*#__PURE__*/function () {
   function FileHubAPI() {
-    var debug = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
     (0, _classCallCheck2["default"])(this, FileHubAPI);
     this.accessToken = '';
-    rp.debug = debug;
   }
 
   (0, _createClass2["default"])(FileHubAPI, [{
