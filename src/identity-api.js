@@ -157,7 +157,7 @@ export default class IdentityAPI {
     }
 
 
-    async passwordSelf(token, pwd) {
+    async passwordSelf(token, oldPwd, newPwd) {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
@@ -168,7 +168,10 @@ export default class IdentityAPI {
             auth: {
                 bearer: token
             },
-            body: pwd,
+            body: {
+                old_pwd: oldPwd,
+                new_pwd: newPwd
+            },
             json: true
         });
     }

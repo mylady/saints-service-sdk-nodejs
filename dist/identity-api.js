@@ -431,7 +431,7 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "passwordSelf",
     value: function () {
-      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(token, pwd) {
+      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(token, oldPwd, newPwd) {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
@@ -450,7 +450,10 @@ var IdentityAPI = /*#__PURE__*/function () {
                   auth: {
                     bearer: token
                   },
-                  body: pwd,
+                  body: {
+                    old_pwd: oldPwd,
+                    new_pwd: newPwd
+                  },
                   json: true
                 });
 
@@ -465,7 +468,7 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function passwordSelf(_x12, _x13) {
+      function passwordSelf(_x12, _x13, _x14) {
         return _passwordSelf.apply(this, arguments);
       }
 
@@ -501,7 +504,7 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee12);
       }));
 
-      function initialize(_x14) {
+      function initialize(_x15) {
         return _initialize.apply(this, arguments);
       }
 
