@@ -32,7 +32,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: IdentityAPI.url + '/view/user',
+            uri: IdentityAPI.url + '/service/user',
             qs: {
                 access_token: this.accessToken
             },
@@ -44,23 +44,11 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/view/user',
+            uri: IdentityAPI.url + '/service/user/ids',
             qs: {
                 access_token: this.accessToken
             },
             body: idArray,
-            json: true
-        });
-    }
-
-    async getUser(uid) {
-        await this.getAccessToken();
-        return await rp({
-            method: 'GET',
-            uri: IdentityAPI.url + `/view/user/${uid}`,
-            qs: {
-                access_token: this.accessToken
-            },
             json: true
         });
     }
