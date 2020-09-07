@@ -115,6 +115,7 @@ var LogAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: LogAPI.url + '/oplog',
                   qs: query,
+                  json: true,
                   gzip: true
                 });
 
@@ -193,6 +194,7 @@ var LogAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: LogAPI.url + '/accesslog',
                   qs: query,
+                  json: true,
                   gzip: true
                 });
 

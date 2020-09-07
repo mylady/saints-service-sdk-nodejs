@@ -48,7 +48,8 @@ export default class LogAPI {
             method: 'GET',
             uri: LogAPI.url + '/oplog',
             qs: query,
-            gzip: true
+            json: true,
+            gzip: true,
         });
     }
 
@@ -72,6 +73,7 @@ export default class LogAPI {
             method: 'GET',
             uri: LogAPI.url + '/accesslog',
             qs: query,
+            json: true,
             gzip: true
         });
     }
