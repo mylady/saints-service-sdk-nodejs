@@ -42,7 +42,7 @@ export default class FileHubAPI {
             uri: FileHubAPI.url + '/upload/doc',
             qs: {
                 access_token: this.accessToken
-            }
+            },
         })).pipe(res);
     }
 
@@ -66,7 +66,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             body: search,
-            json: true
+            json: true,
+            gzip: true,
         });
     }
 
@@ -78,7 +79,7 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
-            json: true
+            gzip: true,
         });
     }
 
@@ -91,7 +92,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             body: ids,
-            json: true
+            json: true,
+            gzip: true,
         });
     }
 
@@ -102,7 +104,7 @@ export default class FileHubAPI {
             method: 'GET',
             uri: FileHubAPI.url + '/doc',
             qs: query,
-            json: true
+            gzip: true,
         });
     }
 
@@ -136,7 +138,7 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
-            json: true
+            gzip: true,
         });
     }
 
@@ -149,7 +151,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             body: ids,
-            json: true
+            json: true,
+            gzip: true
         });
     }
 
@@ -160,7 +163,7 @@ export default class FileHubAPI {
             method: 'GET',
             uri: FileHubAPI.url + '/image',
             qs: query,
-            json: true
+            gzip: true
         });
     }
 
@@ -194,7 +197,7 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
-            json: true
+            gzip: true
         });
     }
 
@@ -207,7 +210,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             body: ids,
-            json: true
+            json: true,
+            gzip: true
         });
     }
 
@@ -218,7 +222,7 @@ export default class FileHubAPI {
             method: 'GET',
             uri: FileHubAPI.url + '/attach',
             qs: query,
-            json: true
+            gzip: true
         });
     }
 }

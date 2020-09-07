@@ -36,7 +36,7 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
-            json: true
+            gzip: true
         });
     }
 
@@ -49,7 +49,8 @@ export default class IdentityAPI {
                 access_token: this.accessToken
             },
             body: idArray,
-            json: true
+            json: true,
+            gzip: true
         });
     }
 
@@ -123,8 +124,7 @@ export default class IdentityAPI {
             },
             auth: {
                 bearer: token
-            },
-            json: true
+            }
         });
     }
 
