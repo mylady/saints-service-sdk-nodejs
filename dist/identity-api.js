@@ -76,7 +76,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
-                  json: true
+                  gzip: true
                 });
 
               case 4:
@@ -116,7 +116,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   body: idArray,
-                  json: true
+                  json: true,
+                  gzip: true
                 });
 
               case 4:
@@ -325,8 +326,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   auth: {
                     bearer: token
-                  },
-                  json: true
+                  }
                 });
 
               case 4:

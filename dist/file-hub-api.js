@@ -152,7 +152,8 @@ var FileHubAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   body: search,
-                  json: true
+                  json: true,
+                  gzip: true
                 });
 
               case 4:
@@ -191,7 +192,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
-                  json: true
+                  gzip: true
                 });
 
               case 4:
@@ -231,7 +232,8 @@ var FileHubAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   body: ids,
-                  json: true
+                  json: true,
+                  gzip: true
                 });
 
               case 4:
@@ -269,7 +271,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: FileHubAPI.url + '/doc',
                   qs: query,
-                  json: true
+                  gzip: true
                 });
 
               case 5:
@@ -376,7 +378,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
-                  json: true
+                  gzip: true
                 });
 
               case 4:
@@ -416,7 +418,8 @@ var FileHubAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   body: ids,
-                  json: true
+                  json: true,
+                  gzip: true
                 });
 
               case 4:
@@ -454,7 +457,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: FileHubAPI.url + '/image',
                   qs: query,
-                  json: true
+                  gzip: true
                 });
 
               case 5:
@@ -561,7 +564,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
-                  json: true
+                  gzip: true
                 });
 
               case 4:
@@ -601,7 +604,8 @@ var FileHubAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   body: ids,
-                  json: true
+                  json: true,
+                  gzip: true
                 });
 
               case 4:
@@ -639,7 +643,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: FileHubAPI.url + '/attach',
                   qs: query,
-                  json: true
+                  gzip: true
                 });
 
               case 5:
