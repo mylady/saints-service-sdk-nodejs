@@ -13,9 +13,10 @@ var _identityApi = _interopRequireDefault(require("./identity-api"));
 
 var _logApi = _interopRequireDefault(require("./log-api"));
 
-var _default = {
+var sdk = {
   FileHubAPI: _fileHubApi["default"],
   IdentityAPI: _identityApi["default"],
   LogAPI: _logApi["default"]
 };
+var _default = sdk;
 exports["default"] = _default;
