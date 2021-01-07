@@ -20,3 +20,5 @@ var sdk = {
 };
 var _default = sdk;
 exports["default"] = _default;
+module.exports = sdk;
+module.exports["default"] = sdk;

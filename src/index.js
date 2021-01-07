@@ -10,3 +10,5 @@ const sdk = {
 };
 
 export default sdk;
+module.exports = sdk;
+module.exports.default = sdk;
