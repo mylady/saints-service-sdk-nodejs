@@ -439,40 +439,17 @@ var IdentityAPI = /*#__PURE__*/function () {
     }()
   }], [{
     key: "initialize",
-    value: function () {
-      var _initialize = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(url) {
-        return _regenerator["default"].wrap(function _callee11$(_context11) {
-          while (1) {
-            switch (_context11.prev = _context11.next) {
-              case 0:
-                if (!(typeof url !== 'string')) {
-                  _context11.next = 2;
-                  break;
-                }
-
-                throw new Error('invalid url');
-
-              case 2:
-                if (url.lastIndexOf('/') === url.length - 1) {
-                  IdentityAPI.url = url.substring(0, url.lastIndexOf('/'));
-                } else {
-                  IdentityAPI.url = url;
-                }
-
-              case 3:
-              case "end":
-                return _context11.stop();
-            }
-          }
-        }, _callee11);
-      }));
-
-      function initialize(_x14) {
-        return _initialize.apply(this, arguments);
+    value: function initialize(url) {
+      if (typeof url !== 'string') {
+        throw new Error('invalid url');
       }
 
-      return initialize;
-    }()
+      if (url.lastIndexOf('/') === url.length - 1) {
+        IdentityAPI.url = url.substring(0, url.lastIndexOf('/'));
+      } else {
+        IdentityAPI.url = url;
+      }
+    }
   }]);
   return IdentityAPI;
 }();

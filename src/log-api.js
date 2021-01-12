@@ -7,7 +7,7 @@ export default class LogAPI {
         this.accessToken = '';
     }
 
-    static async initialize(url) {
+    static initialize(url) {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }

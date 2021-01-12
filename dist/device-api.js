@@ -35,7 +35,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 _context.next = 2;
                 return rp({
                   method: 'POST',
-                  uri: LogAPI.url + '/accesstoken',
+                  uri: DeviceAPI.url + '/accesstoken',
                   json: true
                 });
 
@@ -60,7 +60,7 @@ var DeviceAPI = /*#__PURE__*/function () {
   }, {
     key: "getCommonDevice",
     value: function () {
-      var _getCommonDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(log) {
+      var _getCommonDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(query) {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -69,21 +69,20 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context2.next = 4;
+                query['access_token'] = this.accessToken;
+                _context2.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/commondevice',
-                  qs: {
-                    access_token: this.accessToken
-                  },
-                  body: log,
-                  json: true
+                  uri: DeviceAPI.url + '/commondevice',
+                  qs: query,
+                  json: true,
+                  gzip: true
                 });
 
-              case 4:
+              case 5:
                 return _context2.abrupt("return", _context2.sent);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -113,7 +112,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 _context3.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/commonvideodevice',
+                  uri: DeviceAPI.url + '/commonvideodevice',
                   qs: query,
                   json: true,
                   gzip: true
@@ -152,7 +151,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 _context4.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/' + typeName,
+                  uri: DeviceAPI.url + '/' + typeName,
                   qs: query,
                   json: true,
                   gzip: true
@@ -191,7 +190,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 _context5.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/devicemodel',
+                  uri: DeviceAPI.url + '/devicemodel',
                   qs: query,
                   json: true,
                   gzip: true
@@ -230,7 +229,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 _context6.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/devicetag',
+                  uri: DeviceAPI.url + '/devicetag',
                   qs: query,
                   json: true,
                   gzip: true
@@ -255,40 +254,17 @@ var DeviceAPI = /*#__PURE__*/function () {
     }()
   }], [{
     key: "initialize",
-    value: function () {
-      var _initialize = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(url) {
-        return _regenerator["default"].wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                if (!(typeof url !== 'string')) {
-                  _context7.next = 2;
-                  break;
-                }
-
-                throw new Error('invalid url');
-
-              case 2:
-                if (url.lastIndexOf('/') === url.length - 1) {
-                  LogAPI.url = url.substring(0, url.lastIndexOf('/'));
-                } else {
-                  LogAPI.url = url;
-                }
-
-              case 3:
-              case "end":
-                return _context7.stop();
-            }
-          }
-        }, _callee7);
-      }));
-
-      function initialize(_x7) {
-        return _initialize.apply(this, arguments);
+    value: function initialize(url) {
+      if (typeof url !== 'string') {
+        throw new Error('invalid url');
       }
 
-      return initialize;
-    }()
+      if (url.lastIndexOf('/') === url.length - 1) {
+        DeviceAPI.url = url.substring(0, url.lastIndexOf('/'));
+      } else {
+        DeviceAPI.url = url;
+      }
+    }
   }]);
   return DeviceAPI;
 }();

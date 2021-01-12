@@ -665,40 +665,17 @@ var FileHubAPI = /*#__PURE__*/function () {
     }()
   }], [{
     key: "initialize",
-    value: function () {
-      var _initialize = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(url) {
-        return _regenerator["default"].wrap(function _callee18$(_context18) {
-          while (1) {
-            switch (_context18.prev = _context18.next) {
-              case 0:
-                if (!(typeof url !== 'string')) {
-                  _context18.next = 2;
-                  break;
-                }
-
-                throw new Error('invalid url');
-
-              case 2:
-                if (url.lastIndexOf('/') === url.length - 1) {
-                  FileHubAPI.url = url.substring(0, url.lastIndexOf('/'));
-                } else {
-                  FileHubAPI.url = url;
-                }
-
-              case 3:
-              case "end":
-                return _context18.stop();
-            }
-          }
-        }, _callee18);
-      }));
-
-      function initialize(_x23) {
-        return _initialize.apply(this, arguments);
+    value: function initialize(url) {
+      if (typeof url !== 'string') {
+        throw new Error('invalid url');
       }
 
-      return initialize;
-    }()
+      if (url.lastIndexOf('/') === url.length - 1) {
+        FileHubAPI.url = url.substring(0, url.lastIndexOf('/'));
+      } else {
+        FileHubAPI.url = url;
+      }
+    }
   }]);
   return FileHubAPI;
 }();

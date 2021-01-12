@@ -7,37 +7,36 @@ export default class DeviceAPI {
         this.accessToken = '';
     }
 
-    static async initialize(url) {
+    static initialize(url) {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
 
         if (url.lastIndexOf('/') === url.length - 1) {
-            LogAPI.url = url.substring(0, url.lastIndexOf('/'));
+            DeviceAPI.url = url.substring(0, url.lastIndexOf('/'));
         } else {
-            LogAPI.url = url;
+            DeviceAPI.url = url;
         }
     }
 
     async getAccessToken() {
         let res = await rp({
             method: 'POST',
-            uri: LogAPI.url + '/accesstoken',
+            uri: DeviceAPI.url + '/accesstoken',
             json: true
         });
         this.accessToken = res.data;
     }
 
-    async getCommonDevice(log) {
+    async getCommonDevice(query) {
         await this.getAccessToken();
+        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/commondevice',
-            qs: {
-                access_token: this.accessToken
-            },
-            body: log,
-            json: true
+            uri: DeviceAPI.url + '/commondevice',
+            qs: query,
+            json: true,
+            gzip: true
         });
     }
 
@@ -46,7 +45,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/commonvideodevice',
+            uri: DeviceAPI.url + '/commonvideodevice',
             qs: query,
             json: true,
             gzip: true,
@@ -58,7 +57,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/' + typeName,
+            uri: DeviceAPI.url + '/' + typeName,
             qs: query,
             json: true,
             gzip: true,
@@ -70,7 +69,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/devicemodel',
+            uri: DeviceAPI.url + '/devicemodel',
             qs: query,
             json: true,
             gzip: true,
@@ -82,7 +81,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/devicetag',
+            uri: DeviceAPI.url + '/devicetag',
             qs: query,
             json: true,
             gzip: true,

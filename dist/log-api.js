@@ -217,40 +217,17 @@ var LogAPI = /*#__PURE__*/function () {
     }()
   }], [{
     key: "initialize",
-    value: function () {
-      var _initialize = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(url) {
-        return _regenerator["default"].wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                if (!(typeof url !== 'string')) {
-                  _context6.next = 2;
-                  break;
-                }
-
-                throw new Error('invalid url');
-
-              case 2:
-                if (url.lastIndexOf('/') === url.length - 1) {
-                  LogAPI.url = url.substring(0, url.lastIndexOf('/'));
-                } else {
-                  LogAPI.url = url;
-                }
-
-              case 3:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
-      }));
-
-      function initialize(_x5) {
-        return _initialize.apply(this, arguments);
+    value: function initialize(url) {
+      if (typeof url !== 'string') {
+        throw new Error('invalid url');
       }
 
-      return initialize;
-    }()
+      if (url.lastIndexOf('/') === url.length - 1) {
+        LogAPI.url = url.substring(0, url.lastIndexOf('/'));
+      } else {
+        LogAPI.url = url;
+      }
+    }
   }]);
   return LogAPI;
 }();
