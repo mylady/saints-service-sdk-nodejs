@@ -22,7 +22,7 @@ export default class IdentityAPI {
     async getAccessToken() {
         let res = await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/accesstoken',
+            uri: `${IdentityAPI.url}/accesstoken`,
             json: true
         });
         this.accessToken = res.data;
@@ -32,7 +32,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: IdentityAPI.url + '/service/user',
+            uri: `${IdentityAPI.url}/service/user`,
             qs: {
                 access_token: this.accessToken
             },
@@ -45,7 +45,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/service/user/ids',
+            uri: `${IdentityAPI.url}/service/user/ids`,
             qs: {
                 access_token: this.accessToken
             },
@@ -59,7 +59,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + `/service/user`,
+            uri: `${IdentityAPI.url}/service/user`,
             qs: {
                 access_token: this.accessToken
             },
@@ -72,7 +72,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + `/service/user/password`,
+            uri: `${IdentityAPI.url}/service/user/password`,
             qs: {
                 access_token: this.accessToken
             },
@@ -88,7 +88,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/auth/login',
+            uri: `${IdentityAPI.url}/auth/login`,
             qs: {
                 access_token: this.accessToken
             },
@@ -104,7 +104,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/auth/logout',
+            uri: `${IdentityAPI.url}/auth/logout`,
             qs: {
                 access_token: this.accessToken
             },
@@ -119,7 +119,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: IdentityAPI.url + '/self',
+            uri: `${IdentityAPI.url}/self`,
             qs: {
                 access_token: this.accessToken
             },
@@ -134,7 +134,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'PUT',
-            uri: IdentityAPI.url + '/self',
+            uri: `${IdentityAPI.url}/self`,
             qs: {
                 access_token: this.accessToken
             },
@@ -151,7 +151,7 @@ export default class IdentityAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: IdentityAPI.url + '/self/password',
+            uri: `${IdentityAPI.url}/self/password`,
             qs: {
                 access_token: this.accessToken
             },

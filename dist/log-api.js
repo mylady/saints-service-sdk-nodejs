@@ -35,7 +35,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context.next = 2;
                 return rp({
                   method: 'POST',
-                  uri: LogAPI.url + '/accesstoken',
+                  uri: "".concat(LogAPI.url, "/accesstoken"),
                   json: true
                 });
 
@@ -72,7 +72,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context2.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: LogAPI.url + '/oplog',
+                  uri: "".concat(LogAPI.url, "/oplog"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -113,7 +113,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context3.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/oplog',
+                  uri: "".concat(LogAPI.url, "/oplog"),
                   qs: query,
                   json: true,
                   gzip: true
@@ -151,7 +151,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context4.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: LogAPI.url + '/accesslog',
+                  uri: "".concat(LogAPI.url, "/accesslog"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -192,7 +192,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context5.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: LogAPI.url + '/accesslog',
+                  uri: "".concat(LogAPI.url, "/accesslog"),
                   qs: query,
                   json: true,
                   gzip: true

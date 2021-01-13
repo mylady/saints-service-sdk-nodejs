@@ -42,7 +42,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context.next = 2;
                 return rp({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/accesstoken',
+                  uri: "".concat(FileHubAPI.url, "/accesstoken"),
                   json: true
                 });
 
@@ -78,7 +78,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 req.pipe(request({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/upload/doc',
+                  uri: "".concat(FileHubAPI.url, "/upload/doc"),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -112,7 +112,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 request({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/download/doc/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/download/doc/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -147,7 +147,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context4.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/search/doc',
+                  uri: "".concat(FileHubAPI.url, "/search/doc"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -188,7 +188,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context5.next = 4;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/detail/doc/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/detail/doc/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -227,7 +227,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context6.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/query/doc',
+                  uri: "".concat(FileHubAPI.url, "/query/doc"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -269,7 +269,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context7.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + '/doc',
+                  uri: "".concat(FileHubAPI.url, "/doc"),
                   qs: query,
                   gzip: true
                 });
@@ -305,7 +305,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 req.pipe(request({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/upload/image',
+                  uri: "".concat(FileHubAPI.url, "/upload/image"),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -339,7 +339,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 request({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/download/image/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/download/image/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -374,7 +374,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context10.next = 4;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/detail/image/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/detail/image/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -413,7 +413,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context11.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/query/image',
+                  uri: "".concat(FileHubAPI.url, "/query/image"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -455,7 +455,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context12.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + '/image',
+                  uri: "".concat(FileHubAPI.url, "/image"),
                   qs: query,
                   gzip: true
                 });
@@ -491,7 +491,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 req.pipe(request({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/upload/attach',
+                  uri: "".concat(FileHubAPI.url, "/upload/attach"),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -525,7 +525,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 request({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/download/attach/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/download/attach/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   }
@@ -560,7 +560,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context15.next = 4;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + "/detail/attach/".concat(id),
+                  uri: "".concat(FileHubAPI.url, "/detail/attach/").concat(id),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -599,7 +599,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context16.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: FileHubAPI.url + '/query/attach',
+                  uri: "".concat(FileHubAPI.url, "/query/attach"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -641,7 +641,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 _context17.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: FileHubAPI.url + '/attach',
+                  uri: "".concat(FileHubAPI.url, "/attach"),
                   qs: query,
                   gzip: true
                 });

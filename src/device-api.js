@@ -22,7 +22,7 @@ export default class DeviceAPI {
     async getAccessToken() {
         let res = await rp({
             method: 'POST',
-            uri: DeviceAPI.url + '/accesstoken',
+            uri: `${DeviceAPI.url}/accesstoken`,
             json: true
         });
         this.accessToken = res.data;
@@ -33,7 +33,19 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: DeviceAPI.url + '/commondevice',
+            uri: `${DeviceAPI.url}/commondevice`,
+            qs: query,
+            json: true,
+            gzip: true
+        });
+    }
+
+    async getCommonDeviceById(id) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/commondevice/${id}`,
             qs: query,
             json: true,
             gzip: true
@@ -45,7 +57,19 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: DeviceAPI.url + '/commonvideodevice',
+            uri: `${DeviceAPI.url}/commonvideodevice`,
+            qs: query,
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async getCommonVideoDeviceById(id) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/commonvideodevice/${id}`,
             qs: query,
             json: true,
             gzip: true,
@@ -57,7 +81,19 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: DeviceAPI.url + '/' + typeName,
+            uri: `${DeviceAPI.url}/${typeName}`,
+            qs: query,
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async getTypeDeviceById(typeName, id) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/${typeName}/${id}`,
             qs: query,
             json: true,
             gzip: true,
@@ -69,7 +105,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: DeviceAPI.url + '/devicemodel',
+            uri: `${DeviceAPI.url}/devicemodel`,
             qs: query,
             json: true,
             gzip: true,
@@ -81,7 +117,7 @@ export default class DeviceAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: DeviceAPI.url + '/devicetag',
+            uri: `${DeviceAPI.url}/devicetag`,
             qs: query,
             json: true,
             gzip: true,

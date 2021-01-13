@@ -22,7 +22,7 @@ export default class LogAPI {
     async getAccessToken() {
         let res = await rp({
             method: 'POST',
-            uri: LogAPI.url + '/accesstoken',
+            uri: `${LogAPI.url}/accesstoken`,
             json: true
         });
         this.accessToken = res.data;
@@ -32,7 +32,7 @@ export default class LogAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: LogAPI.url + '/oplog',
+            uri: `${LogAPI.url}/oplog`,
             qs: {
                 access_token: this.accessToken
             },
@@ -46,7 +46,7 @@ export default class LogAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/oplog',
+            uri: `${LogAPI.url}/oplog`,
             qs: query,
             json: true,
             gzip: true,
@@ -57,7 +57,7 @@ export default class LogAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: LogAPI.url + '/accesslog',
+            uri: `${LogAPI.url}/accesslog`,
             qs: {
                 access_token: this.accessToken
             },
@@ -71,7 +71,7 @@ export default class LogAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: LogAPI.url + '/accesslog',
+            uri: `${LogAPI.url}/accesslog`,
             qs: query,
             json: true,
             gzip: true

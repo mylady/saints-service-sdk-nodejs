@@ -29,7 +29,7 @@ export default class FileHubAPI {
     async getAccessToken() {
         let res = await rp({
             method: 'POST',
-            uri: FileHubAPI.url + '/accesstoken',
+            uri: `${FileHubAPI.url}/accesstoken`,
             json: true
         });
         this.accessToken = res.data;
@@ -39,7 +39,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',
-            uri: FileHubAPI.url + '/upload/doc',
+            uri: `${FileHubAPI.url}/upload/doc`,
             qs: {
                 access_token: this.accessToken
             },
@@ -50,7 +50,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         request({
             method: 'GET',
-            uri: FileHubAPI.url + `/download/doc/${id}`,
+            uri: `${FileHubAPI.url}/download/doc/${id}`,
             qs: {
                 access_token: this.accessToken
             }
@@ -61,7 +61,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: FileHubAPI.url + '/search/doc',
+            uri: `${FileHubAPI.url}/search/doc`,
             qs: {
                 access_token: this.accessToken
             },
@@ -75,7 +75,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + `/detail/doc/${id}`,
+            uri: `${FileHubAPI.url}/detail/doc/${id}`,
             qs: {
                 access_token: this.accessToken
             },
@@ -87,7 +87,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: FileHubAPI.url + '/query/doc',
+            uri: `${FileHubAPI.url}/query/doc`,
             qs: {
                 access_token: this.accessToken
             },
@@ -102,7 +102,7 @@ export default class FileHubAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + '/doc',
+            uri: `${FileHubAPI.url}/doc`,
             qs: query,
             gzip: true,
         });
@@ -112,7 +112,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',
-            uri: FileHubAPI.url + '/upload/image',
+            uri: `${FileHubAPI.url}/upload/image`,
             qs: {
                 access_token: this.accessToken
             }
@@ -123,7 +123,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         request({
             method: 'GET',
-            uri: FileHubAPI.url + `/download/image/${id}`,
+            uri: `${FileHubAPI.url}/download/image/${id}`,
             qs: {
                 access_token: this.accessToken
             }
@@ -134,7 +134,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + `/detail/image/${id}`,
+            uri: `${FileHubAPI.url}/detail/image/${id}`,
             qs: {
                 access_token: this.accessToken
             },
@@ -146,7 +146,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: FileHubAPI.url + '/query/image',
+            uri: `${FileHubAPI.url}/query/image`,
             qs: {
                 access_token: this.accessToken
             },
@@ -161,7 +161,7 @@ export default class FileHubAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + '/image',
+            uri: `${FileHubAPI.url}/image`,
             qs: query,
             gzip: true
         });
@@ -171,7 +171,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         req.pipe(request({
             method: 'POST',
-            uri: FileHubAPI.url + '/upload/attach',
+            uri: `${FileHubAPI.url}/upload/attach`,
             qs: {
                 access_token: this.accessToken
             }
@@ -182,7 +182,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         request({
             method: 'GET',
-            uri: FileHubAPI.url + `/download/attach/${id}`,
+            uri: `${FileHubAPI.url}/download/attach/${id}`,
             qs: {
                 access_token: this.accessToken
             }
@@ -193,7 +193,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + `/detail/attach/${id}`,
+            uri: `${FileHubAPI.url}/detail/attach/${id}`,
             qs: {
                 access_token: this.accessToken
             },
@@ -205,7 +205,7 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return await rp({
             method: 'POST',
-            uri: FileHubAPI.url + '/query/attach',
+            uri: `${FileHubAPI.url}/query/attach`,
             qs: {
                 access_token: this.accessToken
             },
@@ -220,7 +220,7 @@ export default class FileHubAPI {
         query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
-            uri: FileHubAPI.url + '/attach',
+            uri: `${FileHubAPI.url}/attach`,
             qs: query,
             gzip: true
         });

@@ -35,7 +35,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context.next = 2;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + '/accesstoken',
+                  uri: "".concat(IdentityAPI.url, "/accesstoken"),
                   json: true
                 });
 
@@ -72,7 +72,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context2.next = 4;
                 return rp({
                   method: 'GET',
-                  uri: IdentityAPI.url + '/service/user',
+                  uri: "".concat(IdentityAPI.url, "/service/user"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -112,7 +112,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context3.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + '/service/user/ids',
+                  uri: "".concat(IdentityAPI.url, "/service/user/ids"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -153,7 +153,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context4.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + "/service/user",
+                  uri: "".concat(IdentityAPI.url, "/service/user"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -193,7 +193,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context5.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + "/service/user/password",
+                  uri: "".concat(IdentityAPI.url, "/service/user/password"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -236,7 +236,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context6.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + '/auth/login',
+                  uri: "".concat(IdentityAPI.url, "/auth/login"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -279,7 +279,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context7.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + '/auth/logout',
+                  uri: "".concat(IdentityAPI.url, "/auth/logout"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -321,7 +321,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context8.next = 4;
                 return rp({
                   method: 'GET',
-                  uri: IdentityAPI.url + '/self',
+                  uri: "".concat(IdentityAPI.url, "/self"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -363,7 +363,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context9.next = 4;
                 return rp({
                   method: 'PUT',
-                  uri: IdentityAPI.url + '/self',
+                  uri: "".concat(IdentityAPI.url, "/self"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -406,7 +406,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                 _context10.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: IdentityAPI.url + '/self/password',
+                  uri: "".concat(IdentityAPI.url, "/self/password"),
                   qs: {
                     access_token: this.accessToken
                   },
