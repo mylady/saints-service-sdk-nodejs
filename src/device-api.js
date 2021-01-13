@@ -52,6 +52,19 @@ export default class DeviceAPI {
         });
     }
 
+    async updateCommonDevice(id, value) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+
+        return await rp({
+            method: 'PUT',
+            uri: `${DeviceAPI.url}/commondevice/${id}`,
+            body: value,
+            json: true,
+            gzip: true
+        });
+    }
+
     async getCommonVideoDevice(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
