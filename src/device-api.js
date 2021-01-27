@@ -42,11 +42,12 @@ export default class DeviceAPI {
 
     async getCommonDeviceById(id) {
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/commondevice/${id}`,
-            qs: query,
+            qs: {
+                access_token: this.accessToken
+            },
             json: true,
             gzip: true
         });
@@ -54,12 +55,13 @@ export default class DeviceAPI {
 
     async updateCommonDevice(id, value) {
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
-
         return await rp({
             method: 'PUT',
             uri: `${DeviceAPI.url}/commondevice/${id}`,
             body: value,
+            qs: {
+                access_token: this.accessToken
+            },
             json: true,
             gzip: true
         });
@@ -79,11 +81,12 @@ export default class DeviceAPI {
 
     async getCommonVideoDeviceById(id) {
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/commonvideodevice/${id}`,
-            qs: query,
+            qs: {
+                access_token: this.accessToken
+            },
             json: true,
             gzip: true,
         });
@@ -103,11 +106,12 @@ export default class DeviceAPI {
 
     async getTypeDeviceById(typeName, id) {
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/${typeName}/${id}`,
-            qs: query,
+            qs: {
+                access_token: this.accessToken
+            },
             json: true,
             gzip: true,
         });

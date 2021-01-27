@@ -108,20 +108,21 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context3.next = 5;
+                _context3.next = 4;
                 return rp({
                   method: 'GET',
                   uri: "".concat(DeviceAPI.url, "/commondevice/").concat(id),
-                  qs: query,
+                  qs: {
+                    access_token: this.accessToken
+                  },
                   json: true,
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context3.abrupt("return", _context3.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context3.stop();
             }
@@ -147,20 +148,22 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context4.next = 5;
+                _context4.next = 4;
                 return rp({
                   method: 'PUT',
                   uri: "".concat(DeviceAPI.url, "/commondevice/").concat(id),
                   body: value,
+                  qs: {
+                    access_token: this.accessToken
+                  },
                   json: true,
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context4.abrupt("return", _context4.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -225,20 +228,21 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context6.next = 5;
+                _context6.next = 4;
                 return rp({
                   method: 'GET',
                   uri: "".concat(DeviceAPI.url, "/commonvideodevice/").concat(id),
-                  qs: query,
+                  qs: {
+                    access_token: this.accessToken
+                  },
                   json: true,
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context6.abrupt("return", _context6.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context6.stop();
             }
@@ -303,20 +307,21 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context8.next = 5;
+                _context8.next = 4;
                 return rp({
                   method: 'GET',
                   uri: "".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id),
-                  qs: query,
+                  qs: {
+                    access_token: this.accessToken
+                  },
                   json: true,
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context8.abrupt("return", _context8.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context8.stop();
             }
