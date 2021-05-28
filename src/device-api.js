@@ -7,7 +7,7 @@ export default class DeviceAPI {
         this.accessToken = '';
     }
 
-    static initialize(url) {
+    static initialize(url, token = '') {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
@@ -17,15 +17,21 @@ export default class DeviceAPI {
         } else {
             DeviceAPI.url = url;
         }
+
+        DeviceAPI.headerToken = token;
     }
 
     async getAccessToken() {
-        let res = await rp({
-            method: 'POST',
-            uri: `${DeviceAPI.url}/accesstoken`,
-            json: true
-        });
-        this.accessToken = res.data;
+        if (DeviceAPI.headerToken) {
+            return DeviceAPI.headerToken;
+        } else {
+            let res = await rp({
+                method: 'POST',
+                uri: `${DeviceAPI.url}/accesstoken`,
+                json: true
+            });
+            this.accessToken = res.data;
+        }
     }
 
     async getCommonDevice(query) {
@@ -34,6 +40,9 @@ export default class DeviceAPI {
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/commondevice`,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             qs: query,
             json: true,
             gzip: true
@@ -47,6 +56,9 @@ export default class DeviceAPI {
             uri: `${DeviceAPI.url}/commondevice/${id}`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: DeviceAPI.headerToken
             },
             json: true,
             gzip: true
@@ -62,6 +74,9 @@ export default class DeviceAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true
         });
@@ -74,6 +89,9 @@ export default class DeviceAPI {
             method: 'GET',
             uri: `${DeviceAPI.url}/commonvideodevice`,
             qs: query,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -87,6 +105,9 @@ export default class DeviceAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -99,6 +120,9 @@ export default class DeviceAPI {
             method: 'GET',
             uri: `${DeviceAPI.url}/${typeName}`,
             qs: query,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -112,6 +136,9 @@ export default class DeviceAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -124,6 +151,9 @@ export default class DeviceAPI {
             method: 'GET',
             uri: `${DeviceAPI.url}/devicemodel`,
             qs: query,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -136,6 +166,9 @@ export default class DeviceAPI {
             method: 'GET',
             uri: `${DeviceAPI.url}/devicetag`,
             qs: query,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
             json: true,
             gzip: true,
         });

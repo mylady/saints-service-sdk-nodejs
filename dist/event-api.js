@@ -32,18 +32,26 @@ var EventAPI = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (!EventAPI.headerToken) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt("return", EventAPI.headerToken);
+
+              case 4:
+                _context.next = 6;
                 return rp({
                   method: 'POST',
                   uri: "".concat(EventAPI.url, "/accesstoken"),
                   json: true
                 });
 
-              case 2:
+              case 6:
                 res = _context.sent;
                 this.accessToken = res.data;
 
-              case 4:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -75,6 +83,9 @@ var EventAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(EventAPI.url, "/device/normal"),
                   qs: query,
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -114,6 +125,9 @@ var EventAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(EventAPI.url, "/device/alarm"),
                   qs: query,
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -153,6 +167,9 @@ var EventAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(EventAPI.url, "/device/status"),
                   qs: query,
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -192,6 +209,9 @@ var EventAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(EventAPI.url, "/device/fault"),
                   qs: query,
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -216,6 +236,8 @@ var EventAPI = /*#__PURE__*/function () {
   }], [{
     key: "initialize",
     value: function initialize(url) {
+      var token = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
       if (typeof url !== 'string') {
         throw new Error('invalid url');
       }
@@ -225,6 +247,8 @@ var EventAPI = /*#__PURE__*/function () {
       } else {
         EventAPI.url = url;
       }
+
+      EventAPI.headerToken = token;
     }
   }]);
   return EventAPI;

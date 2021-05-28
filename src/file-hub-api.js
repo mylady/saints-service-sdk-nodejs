@@ -14,7 +14,7 @@ export default class FileHubAPI {
         this.accessToken = '';
     }
 
-    static initialize(url) {
+    static initialize(url, token = '') {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
@@ -24,15 +24,21 @@ export default class FileHubAPI {
         } else {
             FileHubAPI.url = url;
         }
+
+        FileHubAPI.headerToken = token;
     }
 
     async getAccessToken() {
-        let res = await rp({
-            method: 'POST',
-            uri: `${FileHubAPI.url}/accesstoken`,
-            json: true
-        });
-        this.accessToken = res.data;
+        if (FileHubAPI.headerToken) {
+            return FileHubAPI.headerToken;
+        } else {
+            let res = await rp({
+                method: 'POST',
+                uri: `${FileHubAPI.url}/accesstoken`,
+                json: true
+            });
+            this.accessToken = res.data;
+        }
     }
 
     async uploadDocProxy(req, res) {
@@ -43,6 +49,9 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            }
         })).pipe(res);
     }
 
@@ -53,6 +62,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/download/doc/${id}`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             }
         }).pipe(res);
     }
@@ -64,6 +76,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/search/doc`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
             body: search,
             json: true,
@@ -79,6 +94,9 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
             gzip: true,
         });
     }
@@ -90,6 +108,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/query/doc`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
             body: ids,
             json: true,
@@ -104,6 +125,9 @@ export default class FileHubAPI {
             method: 'GET',
             uri: `${FileHubAPI.url}/doc`,
             qs: query,
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
             gzip: true,
         });
     }
@@ -115,6 +139,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/upload/image`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             }
         })).pipe(res);
     }
@@ -126,6 +153,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/download/image/${id}`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             }
         }).pipe(res);
     }
@@ -138,6 +168,9 @@ export default class FileHubAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
             gzip: true,
         });
     }
@@ -149,6 +182,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/query/image`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
             body: ids,
             json: true,
@@ -163,6 +199,9 @@ export default class FileHubAPI {
             method: 'GET',
             uri: `${FileHubAPI.url}/image`,
             qs: query,
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
             gzip: true
         });
     }
@@ -174,7 +213,10 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/upload/attach`,
             qs: {
                 access_token: this.accessToken
-            }
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
         })).pipe(res);
     }
 
@@ -185,7 +227,10 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/download/attach/${id}`,
             qs: {
                 access_token: this.accessToken
-            }
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
         }).pipe(res);
     }
 
@@ -196,6 +241,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/detail/attach/${id}`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
             gzip: true
         });
@@ -208,6 +256,9 @@ export default class FileHubAPI {
             uri: `${FileHubAPI.url}/query/attach`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
             body: ids,
             json: true,
@@ -222,6 +273,9 @@ export default class FileHubAPI {
             method: 'GET',
             uri: `${FileHubAPI.url}/attach`,
             qs: query,
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
             gzip: true
         });
     }

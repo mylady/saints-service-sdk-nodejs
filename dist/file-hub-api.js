@@ -39,18 +39,26 @@ var FileHubAPI = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (!FileHubAPI.headerToken) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt("return", FileHubAPI.headerToken);
+
+              case 4:
+                _context.next = 6;
                 return rp({
                   method: 'POST',
                   uri: "".concat(FileHubAPI.url, "/accesstoken"),
                   json: true
                 });
 
-              case 2:
+              case 6:
                 res = _context.sent;
                 this.accessToken = res.data;
 
-              case 4:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -81,6 +89,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/upload/doc"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 })).pipe(res);
 
@@ -115,6 +126,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/download/doc/").concat(id),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 }).pipe(res);
 
@@ -150,6 +164,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/search/doc"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   body: search,
                   json: true,
@@ -192,6 +209,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
                   gzip: true
                 });
 
@@ -230,6 +250,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/query/doc"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   body: ids,
                   json: true,
@@ -271,6 +294,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(FileHubAPI.url, "/doc"),
                   qs: query,
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
                   gzip: true
                 });
 
@@ -308,6 +334,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/upload/image"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 })).pipe(res);
 
@@ -342,6 +371,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/download/image/").concat(id),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 }).pipe(res);
 
@@ -377,6 +409,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/detail/image/").concat(id),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   gzip: true
                 });
@@ -416,6 +451,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/query/image"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   body: ids,
                   json: true,
@@ -457,6 +495,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(FileHubAPI.url, "/image"),
                   qs: query,
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
                   gzip: true
                 });
 
@@ -494,6 +535,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/upload/attach"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 })).pipe(res);
 
@@ -528,6 +572,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/download/attach/").concat(id),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   }
                 }).pipe(res);
 
@@ -563,6 +610,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/detail/attach/").concat(id),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   gzip: true
                 });
@@ -602,6 +652,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   uri: "".concat(FileHubAPI.url, "/query/attach"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
                   },
                   body: ids,
                   json: true,
@@ -643,6 +696,9 @@ var FileHubAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(FileHubAPI.url, "/attach"),
                   qs: query,
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
                   gzip: true
                 });
 
@@ -666,6 +722,8 @@ var FileHubAPI = /*#__PURE__*/function () {
   }], [{
     key: "initialize",
     value: function initialize(url) {
+      var token = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
       if (typeof url !== 'string') {
         throw new Error('invalid url');
       }
@@ -675,6 +733,8 @@ var FileHubAPI = /*#__PURE__*/function () {
       } else {
         FileHubAPI.url = url;
       }
+
+      FileHubAPI.headerToken = token;
     }
   }]);
   return FileHubAPI;

@@ -32,18 +32,26 @@ var LogAPI = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (!LogAPI.headerToken) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt("return", LogAPI.headerToken);
+
+              case 4:
+                _context.next = 6;
                 return rp({
                   method: 'POST',
                   uri: "".concat(LogAPI.url, "/accesstoken"),
                   json: true
                 });
 
-              case 2:
+              case 6:
                 res = _context.sent;
                 this.accessToken = res.data;
 
-              case 4:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -75,6 +83,9 @@ var LogAPI = /*#__PURE__*/function () {
                   uri: "".concat(LogAPI.url, "/oplog"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: LogAPI.headerToken
                   },
                   body: log,
                   json: true
@@ -115,6 +126,9 @@ var LogAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(LogAPI.url, "/oplog"),
                   qs: query,
+                  headers: {
+                    fix_token: LogAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -155,6 +169,9 @@ var LogAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: LogAPI.headerToken
+                  },
                   body: log,
                   json: true
                 });
@@ -194,6 +211,9 @@ var LogAPI = /*#__PURE__*/function () {
                   method: 'GET',
                   uri: "".concat(LogAPI.url, "/accesslog"),
                   qs: query,
+                  headers: {
+                    fix_token: LogAPI.headerToken
+                  },
                   json: true,
                   gzip: true
                 });
@@ -218,6 +238,8 @@ var LogAPI = /*#__PURE__*/function () {
   }], [{
     key: "initialize",
     value: function initialize(url) {
+      var token = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
       if (typeof url !== 'string') {
         throw new Error('invalid url');
       }
@@ -227,6 +249,8 @@ var LogAPI = /*#__PURE__*/function () {
       } else {
         LogAPI.url = url;
       }
+
+      LogAPI.headerToken = token;
     }
   }]);
   return LogAPI;

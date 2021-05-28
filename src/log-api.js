@@ -7,7 +7,7 @@ export default class LogAPI {
         this.accessToken = '';
     }
 
-    static initialize(url) {
+    static initialize(url, token = '') {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
@@ -17,15 +17,21 @@ export default class LogAPI {
         } else {
             LogAPI.url = url;
         }
+
+        LogAPI.headerToken = token;
     }
 
     async getAccessToken() {
-        let res = await rp({
-            method: 'POST',
-            uri: `${LogAPI.url}/accesstoken`,
-            json: true
-        });
-        this.accessToken = res.data;
+        if (LogAPI.headerToken) {
+            return LogAPI.headerToken;
+        } else {
+            let res = await rp({
+                method: 'POST',
+                uri: `${LogAPI.url}/accesstoken`,
+                json: true
+            });
+            this.accessToken = res.data;
+        }
     }
 
     async addOpLog(log) {
@@ -35,6 +41,9 @@ export default class LogAPI {
             uri: `${LogAPI.url}/oplog`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: LogAPI.headerToken
             },
             body: log,
             json: true
@@ -48,6 +57,9 @@ export default class LogAPI {
             method: 'GET',
             uri: `${LogAPI.url}/oplog`,
             qs: query,
+            headers: {
+                fix_token: LogAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -61,6 +73,9 @@ export default class LogAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: LogAPI.headerToken
+            },
             body: log,
             json: true
         });
@@ -73,6 +88,9 @@ export default class LogAPI {
             method: 'GET',
             uri: `${LogAPI.url}/accesslog`,
             qs: query,
+            headers: {
+                fix_token: LogAPI.headerToken
+            },
             json: true,
             gzip: true
         });

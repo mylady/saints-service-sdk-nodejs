@@ -7,7 +7,7 @@ export default class EventAPI {
         this.accessToken = '';
     }
 
-    static initialize(url) {
+    static initialize(url, token = '') {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
@@ -17,15 +17,21 @@ export default class EventAPI {
         } else {
             EventAPI.url = url;
         }
+
+        EventAPI.headerToken = token;
     }
 
     async getAccessToken() {
-        let res = await rp({
-            method: 'POST',
-            uri: `${EventAPI.url}/accesstoken`,
-            json: true
-        });
-        this.accessToken = res.data;
+        if (EventAPI.headerToken) {
+            return EventAPI.headerToken;
+        } else {
+            let res = await rp({
+                method: 'POST',
+                uri: `${EventAPI.url}/accesstoken`,
+                json: true
+            });
+            this.accessToken = res.data;
+        }
     }
 
     async getNormalEvent(query) {
@@ -35,6 +41,9 @@ export default class EventAPI {
             method: 'GET',
             uri: `${EventAPI.url}/device/normal`,
             qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
             json: true,
             gzip: true,
         });
@@ -47,6 +56,9 @@ export default class EventAPI {
             method: 'GET',
             uri: `${EventAPI.url}/device/alarm`,
             qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
             json: true,
             gzip: true
         });
@@ -59,6 +71,9 @@ export default class EventAPI {
             method: 'GET',
             uri: `${EventAPI.url}/device/status`,
             qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
             json: true,
             gzip: true
         });
@@ -71,6 +86,9 @@ export default class EventAPI {
             method: 'GET',
             uri: `${EventAPI.url}/device/fault`,
             qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
             json: true,
             gzip: true
         });

@@ -7,7 +7,7 @@ export default class IdentityAPI {
         this.accessToken = '';
     }
 
-    static initialize(url) {
+    static initialize(url, token) {
         if (typeof (url) !== 'string') {
             throw new Error('invalid url');
         }
@@ -17,15 +17,21 @@ export default class IdentityAPI {
         } else {
             IdentityAPI.url = url;
         }
+
+        IdentityAPI.headerToken = token;
     }
 
     async getAccessToken() {
-        let res = await rp({
-            method: 'POST',
-            uri: `${IdentityAPI.url}/accesstoken`,
-            json: true
-        });
-        this.accessToken = res.data;
+        if (IdentityAPI.headerToken) {
+            return IdentityAPI.headerToken;
+        } else {
+            let res = await rp({
+                method: 'POST',
+                uri: `${IdentityAPI.url}/accesstoken`,
+                json: true
+            });
+            this.accessToken = res.data;
+        }
     }
 
     async getUserList() {
@@ -35,6 +41,9 @@ export default class IdentityAPI {
             uri: `${IdentityAPI.url}/service/user`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: IdentityAPI.headerToken
             },
             json: true,
             gzip: true
@@ -48,6 +57,9 @@ export default class IdentityAPI {
             uri: `${IdentityAPI.url}/service/user/ids`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: IdentityAPI.headerToken
             },
             body: idArray,
             json: true,
@@ -63,6 +75,9 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
             body: user,
             json: true
         })
@@ -75,6 +90,9 @@ export default class IdentityAPI {
             uri: `${IdentityAPI.url}/service/user/password`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: IdentityAPI.headerToken
             },
             body: {
                 id: uid,
@@ -92,6 +110,9 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
             body: {
                 user_name: uname,
                 user_pwd: pwd
@@ -108,6 +129,9 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
             body: {
                 token: token
             },
@@ -123,6 +147,9 @@ export default class IdentityAPI {
             qs: {
                 access_token: this.accessToken
             },
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
             auth: {
                 bearer: token
             },
@@ -137,6 +164,9 @@ export default class IdentityAPI {
             uri: `${IdentityAPI.url}/self`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: IdentityAPI.headerToken
             },
             auth: {
                 bearer: token
@@ -154,6 +184,9 @@ export default class IdentityAPI {
             uri: `${IdentityAPI.url}/self/password`,
             qs: {
                 access_token: this.accessToken
+            },
+            headers: {
+                fix_token: IdentityAPI.headerToken
             },
             auth: {
                 bearer: token

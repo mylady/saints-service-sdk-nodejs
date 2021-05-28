@@ -32,18 +32,26 @@ var IdentityAPI = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                if (!IdentityAPI.headerToken) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt("return", IdentityAPI.headerToken);
+
+              case 4:
+                _context.next = 6;
                 return rp({
                   method: 'POST',
                   uri: "".concat(IdentityAPI.url, "/accesstoken"),
                   json: true
                 });
 
-              case 2:
+              case 6:
                 res = _context.sent;
                 this.accessToken = res.data;
 
-              case 4:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -75,6 +83,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   uri: "".concat(IdentityAPI.url, "/service/user"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
                   },
                   json: true,
                   gzip: true
@@ -115,6 +126,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   uri: "".concat(IdentityAPI.url, "/service/user/ids"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
                   },
                   body: idArray,
                   json: true,
@@ -157,6 +171,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
                   body: user,
                   json: true
                 });
@@ -196,6 +213,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   uri: "".concat(IdentityAPI.url, "/service/user/password"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
                   },
                   body: {
                     id: uid,
@@ -240,6 +260,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
                   body: {
                     user_name: uname,
                     user_pwd: pwd
@@ -283,6 +306,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
                   body: {
                     token: token
                   },
@@ -325,6 +351,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
                   auth: {
                     bearer: token
                   },
@@ -366,6 +395,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   uri: "".concat(IdentityAPI.url, "/self"),
                   qs: {
                     access_token: this.accessToken
+                  },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
                   },
                   auth: {
                     bearer: token
@@ -410,6 +442,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   qs: {
                     access_token: this.accessToken
                   },
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
                   auth: {
                     bearer: token
                   },
@@ -439,7 +474,7 @@ var IdentityAPI = /*#__PURE__*/function () {
     }()
   }], [{
     key: "initialize",
-    value: function initialize(url) {
+    value: function initialize(url, token) {
       if (typeof url !== 'string') {
         throw new Error('invalid url');
       }
@@ -449,6 +484,8 @@ var IdentityAPI = /*#__PURE__*/function () {
       } else {
         IdentityAPI.url = url;
       }
+
+      IdentityAPI.headerToken = token;
     }
   }]);
   return IdentityAPI;
