@@ -212,6 +212,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
+                  json: true,
                   gzip: true
                 });
 
@@ -413,6 +414,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
+                  json: true,
                   gzip: true
                 });
 
@@ -498,6 +500,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
+                  json: true,
                   gzip: true
                 });
 
@@ -614,6 +617,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
+                  json: true,
                   gzip: true
                 });
 
@@ -699,6 +703,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
+                  json: true,
                   gzip: true
                 });
 

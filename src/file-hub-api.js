@@ -97,6 +97,7 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
+            json: true,
             gzip: true,
         });
     }
@@ -171,6 +172,7 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
+            json: true,
             gzip: true,
         });
     }
@@ -202,7 +204,8 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            gzip: true
+            json: true,
+            gzip: true,
         });
     }
 
@@ -245,7 +248,8 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            gzip: true
+            json: true,
+            gzip: true,
         });
     }
 
@@ -276,7 +280,8 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            gzip: true
+            json: true,
+            gzip: true,
         });
     }
 }
