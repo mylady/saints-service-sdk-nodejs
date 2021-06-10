@@ -133,6 +133,39 @@ export default class FileHubAPI {
         });
     }
 
+    async deleteDoc(id) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/detail/doc/${id}`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async deleteDocs(ids) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/batch/doc`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            body: ids,
+            json: true,
+            gzip: true,
+        });
+    }
+
     async uploadImageProxy(req, res) {
         await this.getAccessToken();
         req.pipe(request({
@@ -209,6 +242,39 @@ export default class FileHubAPI {
         });
     }
 
+    async deleteImage(id) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/detail/image/${id}`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async deleteImages(ids) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/batch/image`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            body: ids,
+            json: true,
+            gzip: true,
+        });
+    }
+
     async uploadAttachProxy(req, res) {
         await this.getAccessToken();
         req.pipe(request({
@@ -280,6 +346,39 @@ export default class FileHubAPI {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async deleteAttach(id) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/detail/attach/${id}`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async deleteAttaches(ids) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'DELETE',
+            uri: `${FileHubAPI.url}/batch/attach`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            body: ids,
             json: true,
             gzip: true,
         });
