@@ -23,7 +23,7 @@ export default class LogAPI {
 
     async getAccessToken() {
         if (LogAPI.headerToken) {
-            return LogAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

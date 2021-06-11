@@ -23,7 +23,7 @@ export default class MessageHubAPI {
 
     async getAccessToken() {
         if (MessageHubAPI.headerToken) {
-            return MessageHubAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

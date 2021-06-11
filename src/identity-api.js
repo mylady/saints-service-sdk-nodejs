@@ -23,7 +23,7 @@ export default class IdentityAPI {
 
     async getAccessToken() {
         if (IdentityAPI.headerToken) {
-            return IdentityAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

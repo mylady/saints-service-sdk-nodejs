@@ -23,7 +23,7 @@ export default class EventAPI {
 
     async getAccessToken() {
         if (EventAPI.headerToken) {
-            return EventAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

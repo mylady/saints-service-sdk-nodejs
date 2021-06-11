@@ -23,7 +23,7 @@ export default class DeviceAPI {
 
     async getAccessToken() {
         if (DeviceAPI.headerToken) {
-            return DeviceAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

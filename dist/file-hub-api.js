@@ -44,7 +44,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                   break;
                 }
 
-                return _context.abrupt("return", FileHubAPI.headerToken);
+                return _context.abrupt("return");
 
               case 4:
                 _context.next = 6;

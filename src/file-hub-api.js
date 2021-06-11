@@ -30,7 +30,7 @@ export default class FileHubAPI {
 
     async getAccessToken() {
         if (FileHubAPI.headerToken) {
-            return FileHubAPI.headerToken;
+            return;
         } else {
             let res = await rp({
                 method: 'POST',

@@ -37,7 +37,7 @@ var MessageHubAPI = /*#__PURE__*/function () {
                   break;
                 }
 
-                return _context.abrupt("return", MessageHubAPI.headerToken);
+                return _context.abrupt("return");
 
               case 4:
                 _context.next = 6;
