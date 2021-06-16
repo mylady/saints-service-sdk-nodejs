@@ -49,21 +49,6 @@ export default class EventAPI {
         });
     }
 
-    async getAlarmEvent(query) {
-        await this.getAccessToken();
-        query['access_token'] = this.accessToken;
-        return await rp({
-            method: 'GET',
-            uri: `${EventAPI.url}/device/alarm`,
-            qs: query,
-            headers: {
-                fix_token: EventAPI.headerToken
-            },
-            json: true,
-            gzip: true
-        });
-    }
-
     async getStatusEvent(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
@@ -85,6 +70,83 @@ export default class EventAPI {
         return await rp({
             method: 'GET',
             uri: `${EventAPI.url}/device/fault`,
+            qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+
+    async getAlarmEvent(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${EventAPI.url}/device/alarm`,
+            qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+
+    async processAlarm(serial, data) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'GET',
+            uri: `${EventAPI.url}/device/alarm/${serial}`,
+            qs: {
+                access_token: this.accessToken
+            },
+            body: data,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+''
+    async statsAlarmCode(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${EventAPI.url}/stats/alarm/alarmcode`,
+            qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+
+    async statsAlarmProcessStatus(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${EventAPI.url}/stats/alarm/processstatus`,
+            qs: query,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+
+    async statsAlarmTrend(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${EventAPI.url}/stats/alarm/trend`,
             qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
