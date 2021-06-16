@@ -110,7 +110,7 @@ export default class EventAPI {
             gzip: true
         });
     }
-''
+
     async statsAlarmCode(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
