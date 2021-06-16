@@ -173,4 +173,85 @@ export default class DeviceAPI {
             gzip: true,
         });
     }
+
+    async statsDeviceStatus(){
+        await this.getAccessToken();
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/stats/device/status`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async statsDeviceFault(){
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/stats/device/fault`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async statsDeviceCategory(){
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/stats/device/category`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async statsDeviceTag(query){
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/stats/device/status`,
+            qs: query,
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
+
+    async statsTagUsed(){
+        await this.getAccessToken();
+        return await rp({
+            method: 'GET',
+            uri: `${DeviceAPI.url}/stats/tag/used`,
+            qs: {
+                access_token: this.accessToken
+            },
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: true,
+            gzip: true,
+        });
+    }
 }
