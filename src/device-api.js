@@ -192,7 +192,6 @@ export default class DeviceAPI {
 
     async statsDeviceFault(){
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/stats/device/fault`,
@@ -209,7 +208,6 @@ export default class DeviceAPI {
 
     async statsDeviceCategory(){
         await this.getAccessToken();
-        query['access_token'] = this.accessToken;
         return await rp({
             method: 'GET',
             uri: `${DeviceAPI.url}/stats/device/category`,

@@ -15,14 +15,11 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var rp = require('request-promise');
 
 var EventAPI = /*#__PURE__*/function () {
   function EventAPI() {
     (0, _classCallCheck2["default"])(this, EventAPI);
-    (0, _defineProperty2["default"])(this, '', void 0);
     this.accessToken = '';
   }
 

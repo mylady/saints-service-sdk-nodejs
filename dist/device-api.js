@@ -503,8 +503,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context12.next = 5;
+                _context12.next = 4;
                 return rp({
                   method: 'GET',
                   uri: "".concat(DeviceAPI.url, "/stats/device/fault"),
@@ -518,10 +517,10 @@ var DeviceAPI = /*#__PURE__*/function () {
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context12.abrupt("return", _context12.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context12.stop();
             }
@@ -547,8 +546,7 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context13.next = 5;
+                _context13.next = 4;
                 return rp({
                   method: 'GET',
                   uri: "".concat(DeviceAPI.url, "/stats/device/category"),
@@ -562,10 +560,10 @@ var DeviceAPI = /*#__PURE__*/function () {
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context13.abrupt("return", _context13.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context13.stop();
             }
