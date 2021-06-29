@@ -34,37 +34,6 @@ export default class LogAPI {
         }
     }
 
-    async addOpLog(log) {
-        await this.getAccessToken();
-        return await rp({
-            method: 'POST',
-            uri: `${LogAPI.url}/oplog`,
-            qs: {
-                access_token: this.accessToken
-            },
-            headers: {
-                fix_token: LogAPI.headerToken
-            },
-            body: log,
-            json: true
-        });
-    }
-
-    async getOpLog(query) {
-        await this.getAccessToken();
-        query['access_token'] = this.accessToken;
-        return await rp({
-            method: 'GET',
-            uri: `${LogAPI.url}/oplog`,
-            qs: query,
-            headers: {
-                fix_token: LogAPI.headerToken
-            },
-            json: true,
-            gzip: true,
-        });
-    }
-
     async addAccessLog(log) {
         await this.getAccessToken();
         return await rp({

@@ -66,9 +66,9 @@ var LogAPI = /*#__PURE__*/function () {
       return getAccessToken;
     }()
   }, {
-    key: "addOpLog",
+    key: "addAccessLog",
     value: function () {
-      var _addOpLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(log) {
+      var _addAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(log) {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -80,7 +80,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context2.next = 4;
                 return rp({
                   method: 'POST',
-                  uri: "".concat(LogAPI.url, "/oplog"),
+                  uri: "".concat(LogAPI.url, "/accesslog"),
                   qs: {
                     access_token: this.accessToken
                   },
@@ -102,16 +102,16 @@ var LogAPI = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function addOpLog(_x) {
-        return _addOpLog.apply(this, arguments);
+      function addAccessLog(_x) {
+        return _addAccessLog.apply(this, arguments);
       }
 
-      return addOpLog;
+      return addAccessLog;
     }()
   }, {
-    key: "getOpLog",
+    key: "getAccessLog",
     value: function () {
-      var _getOpLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(query) {
+      var _getAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(query) {
         return _regenerator["default"].wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -124,7 +124,7 @@ var LogAPI = /*#__PURE__*/function () {
                 _context3.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: "".concat(LogAPI.url, "/oplog"),
+                  uri: "".concat(LogAPI.url, "/accesslog"),
                   qs: query,
                   headers: {
                     fix_token: LogAPI.headerToken
@@ -144,92 +144,7 @@ var LogAPI = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function getOpLog(_x2) {
-        return _getOpLog.apply(this, arguments);
-      }
-
-      return getOpLog;
-    }()
-  }, {
-    key: "addAccessLog",
-    value: function () {
-      var _addAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(log) {
-        return _regenerator["default"].wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context4.next = 4;
-                return rp({
-                  method: 'POST',
-                  uri: "".concat(LogAPI.url, "/accesslog"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
-                  headers: {
-                    fix_token: LogAPI.headerToken
-                  },
-                  body: log,
-                  json: true
-                });
-
-              case 4:
-                return _context4.abrupt("return", _context4.sent);
-
-              case 5:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, this);
-      }));
-
-      function addAccessLog(_x3) {
-        return _addAccessLog.apply(this, arguments);
-      }
-
-      return addAccessLog;
-    }()
-  }, {
-    key: "getAccessLog",
-    value: function () {
-      var _getAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(query) {
-        return _regenerator["default"].wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                query['access_token'] = this.accessToken;
-                _context5.next = 5;
-                return rp({
-                  method: 'GET',
-                  uri: "".concat(LogAPI.url, "/accesslog"),
-                  qs: query,
-                  headers: {
-                    fix_token: LogAPI.headerToken
-                  },
-                  json: true,
-                  gzip: true
-                });
-
-              case 5:
-                return _context5.abrupt("return", _context5.sent);
-
-              case 6:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5, this);
-      }));
-
-      function getAccessLog(_x4) {
+      function getAccessLog(_x2) {
         return _getAccessLog.apply(this, arguments);
       }
 
