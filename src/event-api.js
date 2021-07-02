@@ -97,8 +97,25 @@ export default class EventAPI {
     async processAlarm(serial, data) {
         await this.getAccessToken();
         return await rp({
-            method: 'GET',
+            method: 'PUT',
             uri: `${EventAPI.url}/device/alarm/${serial}`,
+            qs: {
+                access_token: this.accessToken
+            },
+            body: data,
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            json: true,
+            gzip: true
+        });
+    }
+
+    async checkAlarmDistrict(data) {
+        await this.getAccessToken();
+        return await rp({
+            method: 'POST',
+            uri: `${EventAPI.url}/device/alarm/check/district`,
             qs: {
                 access_token: this.accessToken
             },

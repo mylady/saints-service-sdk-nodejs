@@ -247,7 +247,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 _context6.next = 4;
                 return rp({
-                  method: 'GET',
+                  method: 'PUT',
                   uri: "".concat(EventAPI.url, "/device/alarm/").concat(serial),
                   qs: {
                     access_token: this.accessToken
@@ -278,9 +278,9 @@ var EventAPI = /*#__PURE__*/function () {
       return processAlarm;
     }()
   }, {
-    key: "statsAlarmCode",
+    key: "checkAlarmDistrict",
     value: function () {
-      var _statsAlarmCode = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(query) {
+      var _checkAlarmDistrict = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(data) {
         return _regenerator["default"].wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
@@ -289,12 +289,14 @@ var EventAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context7.next = 5;
+                _context7.next = 4;
                 return rp({
-                  method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/alarmcode"),
-                  qs: query,
+                  method: 'POST',
+                  uri: "".concat(EventAPI.url, "/device/alarm/check/district"),
+                  qs: {
+                    access_token: this.accessToken
+                  },
+                  body: data,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
@@ -302,10 +304,10 @@ var EventAPI = /*#__PURE__*/function () {
                   gzip: true
                 });
 
-              case 5:
+              case 4:
                 return _context7.abrupt("return", _context7.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context7.stop();
             }
@@ -313,16 +315,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee7, this);
       }));
 
-      function statsAlarmCode(_x7) {
-        return _statsAlarmCode.apply(this, arguments);
+      function checkAlarmDistrict(_x7) {
+        return _checkAlarmDistrict.apply(this, arguments);
       }
 
-      return statsAlarmCode;
+      return checkAlarmDistrict;
     }()
   }, {
-    key: "statsAlarmProcessStatus",
+    key: "statsAlarmCode",
     value: function () {
-      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(query) {
+      var _statsAlarmCode = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(query) {
         return _regenerator["default"].wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
@@ -335,7 +337,7 @@ var EventAPI = /*#__PURE__*/function () {
                 _context8.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/processstatus"),
+                  uri: "".concat(EventAPI.url, "/stats/alarm/alarmcode"),
                   qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -355,16 +357,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee8, this);
       }));
 
-      function statsAlarmProcessStatus(_x8) {
-        return _statsAlarmProcessStatus.apply(this, arguments);
+      function statsAlarmCode(_x8) {
+        return _statsAlarmCode.apply(this, arguments);
       }
 
-      return statsAlarmProcessStatus;
+      return statsAlarmCode;
     }()
   }, {
-    key: "statsAlarmTrend",
+    key: "statsAlarmProcessStatus",
     value: function () {
-      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(query) {
+      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(query) {
         return _regenerator["default"].wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
@@ -377,7 +379,7 @@ var EventAPI = /*#__PURE__*/function () {
                 _context9.next = 5;
                 return rp({
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/trend"),
+                  uri: "".concat(EventAPI.url, "/stats/alarm/processstatus"),
                   qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -397,7 +399,49 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee9, this);
       }));
 
-      function statsAlarmTrend(_x9) {
+      function statsAlarmProcessStatus(_x9) {
+        return _statsAlarmProcessStatus.apply(this, arguments);
+      }
+
+      return statsAlarmProcessStatus;
+    }()
+  }, {
+    key: "statsAlarmTrend",
+    value: function () {
+      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(query) {
+        return _regenerator["default"].wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context10.next = 5;
+                return rp({
+                  method: 'GET',
+                  uri: "".concat(EventAPI.url, "/stats/alarm/trend"),
+                  qs: query,
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
+                  json: true,
+                  gzip: true
+                });
+
+              case 5:
+                return _context10.abrupt("return", _context10.sent);
+
+              case 6:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function statsAlarmTrend(_x10) {
         return _statsAlarmTrend.apply(this, arguments);
       }
 
