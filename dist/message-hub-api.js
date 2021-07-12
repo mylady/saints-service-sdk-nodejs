@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var rp = require('request-promise');
+var got = require('got')["default"];
 
 var MessageHubAPI = /*#__PURE__*/function () {
   function MessageHubAPI() {
@@ -41,10 +41,10 @@ var MessageHubAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(MessageHubAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(MessageHubAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -79,15 +79,14 @@ var MessageHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return rp({
+                return got("".concat(MessageHubAPI.url, "/message"), {
                   method: 'GET',
-                  uri: "".concat(MessageHubAPI.url, "/message"),
-                  qs: query,
                   headers: {
                     fix_token: MessageHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:

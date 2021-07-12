@@ -1,6 +1,6 @@
 'use strict';
 
-const rp = require('request-promise');
+const got = require('got').default;
 
 export default class LogAPI {
     constructor() {
@@ -25,10 +25,10 @@ export default class LogAPI {
         if (LogAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${LogAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${LogAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -36,32 +36,31 @@ export default class LogAPI {
 
     async addAccessLog(log) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${LogAPI.url}/accesslog`, {
             method: 'POST',
-            uri: `${LogAPI.url}/accesslog`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: LogAPI.headerToken
             },
-            body: log,
-            json: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: log,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getAccessLog(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${LogAPI.url}/accesslog`, {
             method: 'GET',
-            uri: `${LogAPI.url}/accesslog`,
-            qs: query,
             headers: {
                 fix_token: LogAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }

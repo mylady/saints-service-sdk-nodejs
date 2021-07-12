@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var rp = require('request-promise');
+var got = require('got')["default"];
 
 var IdentityAPI = /*#__PURE__*/function () {
   function IdentityAPI() {
@@ -41,10 +41,10 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -78,17 +78,16 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context2.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/service/user"), {
                   method: 'GET',
-                  uri: "".concat(IdentityAPI.url, "/service/user"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -121,18 +120,17 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context3.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/service/user/ids"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/service/user/ids"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  body: idArray,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: idArray,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -165,17 +163,17 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/service/user"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/service/user"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  body: user,
-                  json: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: user,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -208,20 +206,20 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context5.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/service/user/password"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/service/user/password"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  body: {
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
                     id: uid,
                     pwd: pwd
                   },
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -254,20 +252,20 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/auth/login"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/auth/login"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  body: {
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
                     user_name: uname,
                     user_pwd: pwd
                   },
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -300,19 +298,19 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/auth/logout"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/auth/logout"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  body: {
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
                     token: token
                   },
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -345,19 +343,17 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/self"), {
                   method: 'GET',
-                  uri: "".concat(IdentityAPI.url, "/self"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
+                    Authorization: "Bearer ".concat(token),
                     fix_token: IdentityAPI.headerToken
                   },
-                  auth: {
-                    bearer: token
+                  searchParams: {
+                    access_token: this.accessToken
                   },
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -390,20 +386,18 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context9.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/self"), {
                   method: 'PUT',
-                  uri: "".concat(IdentityAPI.url, "/self"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
+                    Authorization: "Bearer ".concat(token),
                     fix_token: IdentityAPI.headerToken
                   },
-                  auth: {
-                    bearer: token
+                  searchParams: {
+                    access_token: this.accessToken
                   },
-                  body: self,
-                  json: true
+                  json: self,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -436,23 +430,21 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return rp({
+                return got("".concat(IdentityAPI.url, "/self/password"), {
                   method: 'POST',
-                  uri: "".concat(IdentityAPI.url, "/self/password"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
+                    Authorization: "Bearer ".concat(token),
                     fix_token: IdentityAPI.headerToken
                   },
-                  auth: {
-                    bearer: token
+                  searchParams: {
+                    access_token: this.accessToken
                   },
-                  body: {
+                  json: {
                     old_pwd: oldPwd,
                     new_pwd: newPwd
                   },
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:

@@ -1,7 +1,6 @@
 'use strict';
 
-const request = require('request'),
-    rp = require('request-promise');
+const got = require('got').default;
 
 /*
     for upload file proxy,it uses nodejs default req&res object.
@@ -32,10 +31,10 @@ export default class FileHubAPI {
         if (FileHubAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${FileHubAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${FileHubAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -43,344 +42,329 @@ export default class FileHubAPI {
 
     async uploadDocProxy(req, res) {
         await this.getAccessToken();
-        req.pipe(request({
+        req.pipe(got(`${FileHubAPI.url}/upload/doc`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/upload/doc`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
             }
         })).pipe(res);
     }
 
     async downloadDocProxy(id, res) {
         await this.getAccessToken();
-        request({
+        got(`${FileHubAPI.url}/download/doc/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/download/doc/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
             }
         }).pipe(res);
     }
 
     async searchDoc(search) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/search/doc`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/search/doc`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: search,
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: search,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getDocDetail(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/doc/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/detail/doc/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async queryDocs(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/query/doc`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/query/doc`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getDocs(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${FileHubAPI.url}/doc`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/doc`,
-            qs: query,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteDoc(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/doc/${id}`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/detail/doc/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteDocs(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/batch/doc`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/batch/doc`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async uploadImageProxy(req, res) {
         await this.getAccessToken();
-        req.pipe(request({
+        req.pipe(got(`${FileHubAPI.url}/upload/image`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/upload/image`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
             }
         })).pipe(res);
     }
 
     async downloadImageProxy(id, res) {
         await this.getAccessToken();
-        request({
+        got(`${FileHubAPI.url}/download/image/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/download/image/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
             }
         }).pipe(res);
     }
 
     async getImageDetail(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/image/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/detail/image/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async queryImages(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/query/image`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/query/image`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getImages(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${FileHubAPI.url}/image`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/image`,
-            qs: query,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteImage(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/image/${id}`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/detail/image/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteImages(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/batch/image`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/batch/image`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async uploadAttachProxy(req, res) {
         await this.getAccessToken();
-        req.pipe(request({
+        req.pipe(got(`${FileHubAPI.url}/upload/attach`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/upload/attach`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
+            searchParams: {
+                access_token: this.accessToken
+            }
         })).pipe(res);
     }
 
     async downloadAttachProxy(id, res) {
         await this.getAccessToken();
-        request({
+        got(`${FileHubAPI.url}/download/attach/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/download/attach/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
+            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
+            searchParams: {
+                access_token: this.accessToken
+            }
         }).pipe(res);
     }
 
     async getAttachDetail(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/attach/${id}`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/detail/attach/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async queryAttaches(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/query/attach`, {
             method: 'POST',
-            uri: `${FileHubAPI.url}/query/attach`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getAttaches(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${FileHubAPI.url}/attach`, {
             method: 'GET',
-            uri: `${FileHubAPI.url}/attach`,
-            qs: query,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteAttach(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/detail/attach/${id}`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/detail/attach/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async deleteAttaches(ids) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${FileHubAPI.url}/batch/attach`, {
             method: 'DELETE',
-            uri: `${FileHubAPI.url}/batch/attach`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            body: ids,
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }

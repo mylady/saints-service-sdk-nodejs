@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var rp = require('request-promise');
+var got = require('got')["default"];
 
 var EventAPI = /*#__PURE__*/function () {
   function EventAPI() {
@@ -41,10 +41,10 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(EventAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(EventAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -79,15 +79,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/normal"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/device/normal"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -121,15 +120,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context3.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/status"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/device/status"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -163,15 +161,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context4.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/fault"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/device/fault"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -205,15 +202,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/alarm"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/device/alarm"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -246,18 +242,17 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/alarm/").concat(serial), {
                   method: 'PUT',
-                  uri: "".concat(EventAPI.url, "/device/alarm/").concat(serial),
-                  qs: {
-                    access_token: this.accessToken
-                  },
-                  body: data,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: data,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -290,18 +285,17 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return rp({
+                return got("".concat(EventAPI.url, "/device/alarm/check/district"), {
                   method: 'POST',
-                  uri: "".concat(EventAPI.url, "/device/alarm/check/district"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
-                  body: data,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: data,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -335,15 +329,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context8.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/stats/alarm/alarmcode"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/alarmcode"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -377,15 +370,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context9.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/processstatus"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -419,15 +411,14 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context10.next = 5;
-                return rp({
+                return got("".concat(EventAPI.url, "/stats/alarm/trend"), {
                   method: 'GET',
-                  uri: "".concat(EventAPI.url, "/stats/alarm/trend"),
-                  qs: query,
                   headers: {
                     fix_token: EventAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:

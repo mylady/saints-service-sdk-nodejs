@@ -15,8 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var request = require('request'),
-    rp = require('request-promise');
+var got = require('got')["default"];
 /*
     for upload file proxy,it uses nodejs default req&res object.
     if you use koa like framework,which wrapper req and res in context object
@@ -48,10 +47,10 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -84,14 +83,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.pipe(request({
+                req.pipe(got("".concat(FileHubAPI.url, "/upload/doc"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/upload/doc"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 })).pipe(res);
 
@@ -121,14 +120,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                request({
+                got("".concat(FileHubAPI.url, "/download/doc/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/download/doc/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 }).pipe(res);
 
@@ -159,18 +158,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/search/doc"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/search/doc"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: search,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: search,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -203,17 +201,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context5.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/detail/doc/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -246,18 +243,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/query/doc"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/query/doc"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -291,14 +287,14 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context7.next = 5;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/doc"), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/doc"),
-                  qs: query,
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -331,17 +327,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/detail/doc/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -374,18 +369,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context9.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/batch/doc"), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/batch/doc"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -417,14 +411,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.pipe(request({
+                req.pipe(got("".concat(FileHubAPI.url, "/upload/image"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/upload/image"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 })).pipe(res);
 
@@ -454,14 +448,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                request({
+                got("".concat(FileHubAPI.url, "/download/image/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/download/image/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 }).pipe(res);
 
@@ -492,17 +486,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context12.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/detail/image/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -535,18 +528,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/query/image"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/query/image"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -580,15 +572,14 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context14.next = 5;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/image"), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/image"),
-                  qs: query,
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -621,17 +612,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/detail/image/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -664,18 +654,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context16.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/batch/image"), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/batch/image"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -707,14 +696,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.pipe(request({
+                req.pipe(got("".concat(FileHubAPI.url, "/upload/attach"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/upload/attach"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 })).pipe(res);
 
@@ -744,14 +733,14 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                request({
+                got("".concat(FileHubAPI.url, "/download/attach/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/download/attach/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  isStream: true,
                   headers: {
                     fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
                   }
                 }).pipe(res);
 
@@ -782,17 +771,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context19.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/detail/attach/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -825,18 +813,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context20.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/query/attach"), {
                   method: 'POST',
-                  uri: "".concat(FileHubAPI.url, "/query/attach"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -870,15 +857,14 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context21.next = 5;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/attach"), {
                   method: 'GET',
-                  uri: "".concat(FileHubAPI.url, "/attach"),
-                  qs: query,
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -911,17 +897,16 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context22.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/detail/attach/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -954,18 +939,17 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context23.next = 4;
-                return rp({
+                return got("".concat(FileHubAPI.url, "/batch/attach"), {
                   method: 'DELETE',
-                  uri: "".concat(FileHubAPI.url, "/batch/attach"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  body: ids,
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:

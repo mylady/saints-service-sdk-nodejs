@@ -1,6 +1,6 @@
 'use strict';
 
-const rp = require('request-promise');
+const got = require('got').default;
 
 export default class EventAPI {
     constructor() {
@@ -25,10 +25,10 @@ export default class EventAPI {
         if (EventAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${EventAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${EventAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -37,139 +37,130 @@ export default class EventAPI {
     async getNormalEvent(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/device/normal`, {
             method: 'GET',
-            uri: `${EventAPI.url}/device/normal`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getStatusEvent(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/device/status`, {
             method: 'GET',
-            uri: `${EventAPI.url}/device/status`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getFaultEvent(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/device/fault`, {
             method: 'GET',
-            uri: `${EventAPI.url}/device/fault`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getAlarmEvent(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/device/alarm`, {
             method: 'GET',
-            uri: `${EventAPI.url}/device/alarm`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async processAlarm(serial, data) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${EventAPI.url}/device/alarm/${serial}`, {
             method: 'PUT',
-            uri: `${EventAPI.url}/device/alarm/${serial}`,
-            qs: {
-                access_token: this.accessToken
-            },
-            body: data,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: data,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async checkAlarmDistrict(data) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${EventAPI.url}/device/alarm/check/district`, {
             method: 'POST',
-            uri: `${EventAPI.url}/device/alarm/check/district`,
-            qs: {
-                access_token: this.accessToken
-            },
-            body: data,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: data,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async statsAlarmCode(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/stats/alarm/alarmcode`, {
             method: 'GET',
-            uri: `${EventAPI.url}/stats/alarm/alarmcode`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async statsAlarmProcessStatus(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/stats/alarm/processstatus`, {
             method: 'GET',
-            uri: `${EventAPI.url}/stats/alarm/processstatus`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async statsAlarmTrend(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${EventAPI.url}/stats/alarm/trend`, {
             method: 'GET',
-            uri: `${EventAPI.url}/stats/alarm/trend`,
-            qs: query,
             headers: {
                 fix_token: EventAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const rp = require('request-promise');
+const got = require('got').default;
 
 export default class DeviceAPI {
     constructor() {
@@ -25,10 +25,10 @@ export default class DeviceAPI {
         if (DeviceAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${DeviceAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${DeviceAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -37,219 +37,205 @@ export default class DeviceAPI {
     async getCommonDevice(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/commondevice`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/commondevice`,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            qs: query,
-            json: true,
-            gzip: true
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getCommonDeviceById(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/commondevice/${id}`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/commondevice/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async updateCommonDevice(id, value) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/commondevice/${id}`, {
             method: 'PUT',
-            uri: `${DeviceAPI.url}/commondevice/${id}`,
-            body: value,
-            qs: {
-                access_token: this.accessToken
-            },
+            json: value,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getCommonVideoDevice(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/commonvideodevice`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/commonvideodevice`,
-            qs: query,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getCommonVideoDeviceById(id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/commonvideodevice/${id}`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/commonvideodevice/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getTypeDevice(typeName, query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/${typeName}`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/${typeName}`,
-            qs: query,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getTypeDeviceById(typeName, id) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/${typeName}/${id}`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/${typeName}/${id}`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getDeviceModel(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/devicemodel`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/devicemodel`,
-            qs: query,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getDeviceTag(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/devicetag`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/devicetag`,
-            qs: query,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
-    async statsDeviceStatus(){
+    async statsDeviceStatus() {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/stats/device/status`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/stats/device/status`,
-            qs: {
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: {
                 access_token: this.accessToken
             },
-            headers: {
-                fix_token: DeviceAPI.headerToken
-            },
-            json: true,
-            gzip: true,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
-    async statsDeviceFault(){
+    async statsDeviceFault() {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/stats/device/fault`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/stats/device/fault`,
-            qs: {
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: {
                 access_token: this.accessToken
             },
-            headers: {
-                fix_token: DeviceAPI.headerToken
-            },
-            json: true,
-            gzip: true,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
-    async statsDeviceCategory(){
+    async statsDeviceCategory() {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/stats/device/category`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/stats/device/category`,
-            qs: {
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: {
                 access_token: this.accessToken
             },
-            headers: {
-                fix_token: DeviceAPI.headerToken
-            },
-            json: true,
-            gzip: true,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
-    async statsDeviceTag(query){
+    async statsDeviceTag(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${DeviceAPI.url}/stats/device/status`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/stats/device/status`,
-            qs: query,
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
-    async statsTagUsed(){
+    async statsTagUsed() {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${DeviceAPI.url}/stats/tag/used`, {
             method: 'GET',
-            uri: `${DeviceAPI.url}/stats/tag/used`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-const rp = require('request-promise');
+const got = require('got').default;
 
 export default class IdentityAPI {
     constructor() {
@@ -25,10 +25,10 @@ export default class IdentityAPI {
         if (IdentityAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${IdentityAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${IdentityAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -36,166 +36,158 @@ export default class IdentityAPI {
 
     async getUserList() {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/service/user`, {
             method: 'GET',
-            uri: `${IdentityAPI.url}/service/user`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async getUserWithIds(idArray) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/service/user/ids`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/service/user/ids`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            body: idArray,
-            json: true,
-            gzip: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: idArray,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async createUser(user) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/service/user`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/service/user`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            body: user,
-            json: true
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: user,
+            resolveBodyOnly: true,
+            responseType: 'json'
         })
     }
 
     async passwordReset(uid, pwd) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/service/user/password`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/service/user/password`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            body: {
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
                 id: uid,
                 pwd: pwd
             },
-            json: true
+            resolveBodyOnly: true,
+            responseType: 'json'
         })
     }
 
     async login(uname, pwd) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/auth/login`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/auth/login`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            body: {
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
                 user_name: uname,
                 user_pwd: pwd
             },
-            json: true
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async logout(token) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/auth/logout`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/auth/logout`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
                 fix_token: IdentityAPI.headerToken
             },
-            body: {
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
                 token: token
             },
-            json: true
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async self(token) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/self`, {
             method: 'GET',
-            uri: `${IdentityAPI.url}/self`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
+                Authorization: `Bearer ${token}`,
                 fix_token: IdentityAPI.headerToken
             },
-            auth: {
-                bearer: token
+            searchParams: {
+                access_token: this.accessToken
             },
-            json: true,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
     async updateSelf(token, self) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/self`, {
             method: 'PUT',
-            uri: `${IdentityAPI.url}/self`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
+                Authorization: `Bearer ${token}`,
                 fix_token: IdentityAPI.headerToken
             },
-            auth: {
-                bearer: token
+            searchParams: {
+                access_token: this.accessToken
             },
-            body: self,
-            json: true
+            json: self,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 
 
     async passwordSelf(token, oldPwd, newPwd) {
         await this.getAccessToken();
-        return await rp({
+        return await got(`${IdentityAPI.url}/self/password`, {
             method: 'POST',
-            uri: `${IdentityAPI.url}/self/password`,
-            qs: {
-                access_token: this.accessToken
-            },
             headers: {
+                Authorization: `Bearer ${token}`,
                 fix_token: IdentityAPI.headerToken
             },
-            auth: {
-                bearer: token
+            searchParams: {
+                access_token: this.accessToken
             },
-            body: {
+            json: {
                 old_pwd: oldPwd,
                 new_pwd: newPwd
             },
-            json: true
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }

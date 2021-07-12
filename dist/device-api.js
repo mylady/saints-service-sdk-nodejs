@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var rp = require('request-promise');
+var got = require('got')["default"];
 
 var DeviceAPI = /*#__PURE__*/function () {
   function DeviceAPI() {
@@ -41,10 +41,10 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(DeviceAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -79,15 +79,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/commondevice"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/commondevice"),
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  qs: query,
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -120,17 +119,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context3.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/commondevice/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -163,18 +161,17 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
                   method: 'PUT',
-                  uri: "".concat(DeviceAPI.url, "/commondevice/").concat(id),
-                  body: value,
-                  qs: {
-                    access_token: this.accessToken
-                  },
+                  json: value,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -208,15 +205,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/commonvideodevice"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/commonvideodevice"),
-                  qs: query,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -249,17 +245,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/commonvideodevice/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/commonvideodevice/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -293,15 +288,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context7.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/").concat(typeName), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/").concat(typeName),
-                  qs: query,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -334,17 +328,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -378,15 +371,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context9.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/devicemodel"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/devicemodel"),
-                  qs: query,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -420,15 +412,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context10.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/devicetag"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/devicetag"),
-                  qs: query,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -461,17 +452,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context11.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/stats/device/status"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -504,17 +494,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context12.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/stats/device/fault"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/stats/device/fault"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -547,17 +536,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/stats/device/category"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/stats/device/category"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -591,15 +579,14 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context14.next = 5;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/stats/device/status"),
-                  qs: query,
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:
@@ -632,17 +619,16 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return rp({
+                return got("".concat(DeviceAPI.url, "/stats/tag/used"), {
                   method: 'GET',
-                  uri: "".concat(DeviceAPI.url, "/stats/tag/used"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:

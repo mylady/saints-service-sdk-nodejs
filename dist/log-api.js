@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var rp = require('request-promise');
+var got = require('got')["default"];
 
 var LogAPI = /*#__PURE__*/function () {
   function LogAPI() {
@@ -41,10 +41,10 @@ var LogAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return rp({
+                return got("".concat(LogAPI.url, "/accesstoken"), {
                   method: 'POST',
-                  uri: "".concat(LogAPI.url, "/accesstoken"),
-                  json: true
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 6:
@@ -78,17 +78,17 @@ var LogAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context2.next = 4;
-                return rp({
+                return got("".concat(LogAPI.url, "/accesslog"), {
                   method: 'POST',
-                  uri: "".concat(LogAPI.url, "/accesslog"),
-                  qs: {
-                    access_token: this.accessToken
-                  },
                   headers: {
                     fix_token: LogAPI.headerToken
                   },
-                  body: log,
-                  json: true
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: log,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
@@ -122,15 +122,14 @@ var LogAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context3.next = 5;
-                return rp({
+                return got("".concat(LogAPI.url, "/accesslog"), {
                   method: 'GET',
-                  uri: "".concat(LogAPI.url, "/accesslog"),
-                  qs: query,
                   headers: {
                     fix_token: LogAPI.headerToken
                   },
-                  json: true,
-                  gzip: true
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 5:

@@ -1,6 +1,6 @@
 'use strict';
 
-const rp = require('request-promise');
+const got = require('got').default;
 
 export default class MessageHubAPI {
     constructor() {
@@ -25,10 +25,10 @@ export default class MessageHubAPI {
         if (MessageHubAPI.headerToken) {
             return;
         } else {
-            let res = await rp({
+            let res = await got(`${MessageHubAPI.url}/accesstoken`, {
                 method: 'POST',
-                uri: `${MessageHubAPI.url}/accesstoken`,
-                json: true
+                resolveBodyOnly: true,
+                responseType: 'json'
             });
             this.accessToken = res.data;
         }
@@ -37,15 +37,14 @@ export default class MessageHubAPI {
     async getMessage(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await rp({
+        return await got(`${MessageHubAPI.url}/message`, {
             method: 'GET',
-            uri: `${MessageHubAPI.url}/message`,
-            qs: query,
             headers: {
                 fix_token: MessageHubAPI.headerToken
             },
-            json: true,
-            gzip: true,
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
         });
     }
 }
