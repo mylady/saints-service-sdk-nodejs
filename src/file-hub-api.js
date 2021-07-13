@@ -40,9 +40,9 @@ export default class FileHubAPI {
         }
     }
 
-    async uploadDocProxy(req, res) {
+    async uploadDocProxy(req) {
         await this.getAccessToken();
-        req.pipe(got(`${FileHubAPI.url}/upload/doc`, {
+        return req.pipe(got(`${FileHubAPI.url}/upload/doc`, {
             method: 'POST',
             isStream: true,
             headers: {
@@ -50,13 +50,14 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        })).pipe(res);
+            },
+            throwHttpErrors: false
+        }));
     }
 
-    async downloadDocProxy(id, res) {
+    async downloadDocProxy(id) {
         await this.getAccessToken();
-        got(`${FileHubAPI.url}/download/doc/${id}`, {
+        return got(`${FileHubAPI.url}/download/doc/${id}`, {
             method: 'GET',
             isStream: true,
             headers: {
@@ -64,8 +65,9 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        }).pipe(res);
+            },
+            throwHttpErrors: false
+        });
     }
 
     async searchDoc(search) {
@@ -160,9 +162,9 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadImageProxy(req, res) {
+    async uploadImageProxy(req) {
         await this.getAccessToken();
-        req.pipe(got(`${FileHubAPI.url}/upload/image`, {
+        return req.pipe(got(`${FileHubAPI.url}/upload/image`, {
             method: 'POST',
             isStream: true,
             headers: {
@@ -170,13 +172,14 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        })).pipe(res);
+            },
+            throwHttpErrors: false
+        }));
     }
 
-    async downloadImageProxy(id, res) {
+    async downloadImageProxy(id) {
         await this.getAccessToken();
-        got(`${FileHubAPI.url}/download/image/${id}`, {
+        return got(`${FileHubAPI.url}/download/image/${id}`, {
             method: 'GET',
             isStream: true,
             headers: {
@@ -184,8 +187,9 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        }).pipe(res);
+            },
+            throwHttpErrors: false
+        });
     }
 
     async getImageDetail(id) {
@@ -264,9 +268,9 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadAttachProxy(req, res) {
+    async uploadAttachProxy(req) {
         await this.getAccessToken();
-        req.pipe(got(`${FileHubAPI.url}/upload/attach`, {
+        return req.pipe(got(`${FileHubAPI.url}/upload/attach`, {
             method: 'POST',
             isStream: true,
             headers: {
@@ -274,13 +278,14 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        })).pipe(res);
+            },
+            throwHttpErrors: false
+        }));
     }
 
-    async downloadAttachProxy(id, res) {
+    async downloadAttachProxy(id) {
         await this.getAccessToken();
-        got(`${FileHubAPI.url}/download/attach/${id}`, {
+        return got(`${FileHubAPI.url}/download/attach/${id}`, {
             method: 'GET',
             isStream: true,
             headers: {
@@ -288,8 +293,9 @@ export default class FileHubAPI {
             },
             searchParams: {
                 access_token: this.accessToken
-            }
-        }).pipe(res);
+            },
+            throwHttpErrors: false
+        });
     }
 
     async getAttachDetail(id) {
