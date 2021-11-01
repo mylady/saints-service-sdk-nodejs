@@ -190,4 +190,36 @@ export default class IdentityAPI {
             responseType: 'json'
         });
     }
+
+    async checkByMobile(id) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/checkid`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: id,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async checkByMobile(mobile) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/checkmobile`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: mobile,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
 }

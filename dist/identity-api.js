@@ -464,6 +464,49 @@ var IdentityAPI = /*#__PURE__*/function () {
 
       return passwordSelf;
     }()
+  }, {
+    key: "checkByMobile",
+    value: function () {
+      var _checkByMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(mobile) {
+        return _regenerator["default"].wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context11.next = 4;
+                return got("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: mobile,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context11.abrupt("return", _context11.sent);
+
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, this);
+      }));
+
+      function checkByMobile(_x14) {
+        return _checkByMobile.apply(this, arguments);
+      }
+
+      return checkByMobile;
+    }()
   }], [{
     key: "initialize",
     value: function initialize(url, token) {
