@@ -65,6 +65,38 @@ export default class IdentityAPI {
         });
     }
 
+    async getUserWithId(id) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/id`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: id,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async getUserWithMobile(mobile) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/mobile`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: mobile,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async createUser(user) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/service/user`, {
