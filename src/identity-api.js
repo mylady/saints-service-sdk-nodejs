@@ -75,7 +75,9 @@ export default class IdentityAPI {
             searchParams: {
                 access_token: this.accessToken
             },
-            json: id,
+            json: {
+                id: id
+            },
             resolveBodyOnly: true,
             responseType: 'json'
         });
@@ -91,7 +93,9 @@ export default class IdentityAPI {
             searchParams: {
                 access_token: this.accessToken
             },
-            json: mobile,
+            json: {
+                mobile: mobile
+            },
             resolveBodyOnly: true,
             responseType: 'json'
         });
@@ -233,7 +237,9 @@ export default class IdentityAPI {
             searchParams: {
                 access_token: this.accessToken
             },
-            json: id,
+            json: {
+                id: id
+            },
             resolveBodyOnly: true,
             responseType: 'json'
         });
@@ -249,7 +255,9 @@ export default class IdentityAPI {
             searchParams: {
                 access_token: this.accessToken
             },
-            json: mobile,
+            json: {
+                mobile: mobile
+            },
             resolveBodyOnly: true,
             responseType: 'json'
         });

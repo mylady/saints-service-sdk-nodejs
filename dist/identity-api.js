@@ -171,7 +171,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: id,
+                  json: {
+                    id: id
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -214,7 +216,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: mobile,
+                  json: {
+                    mobile: mobile
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -571,7 +575,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: mobile,
+                  json: {
+                    mobile: mobile
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
