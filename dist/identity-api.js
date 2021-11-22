@@ -330,9 +330,9 @@ var IdentityAPI = /*#__PURE__*/function () {
       return passwordReset;
     }()
   }, {
-    key: "login",
+    key: "encrypt",
     value: function () {
-      var _login = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(uname, pwd) {
+      var _encrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(txt) {
         return _regenerator["default"].wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
@@ -342,6 +342,187 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
+                return got("".concat(IdentityAPI.url, "/security/encrypt"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    content: txt
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context8.abrupt("return", _context8.sent);
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function encrypt(_x7) {
+        return _encrypt.apply(this, arguments);
+      }
+
+      return encrypt;
+    }()
+  }, {
+    key: "descrypt",
+    value: function () {
+      var _descrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(txt) {
+        return _regenerator["default"].wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context9.next = 4;
+                return got("".concat(IdentityAPI.url, "/security/decrypt"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    content: txt
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context9.abrupt("return", _context9.sent);
+
+              case 5:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      function descrypt(_x8) {
+        return _descrypt.apply(this, arguments);
+      }
+
+      return descrypt;
+    }()
+  }, {
+    key: "signTxt",
+    value: function () {
+      var _signTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(txt) {
+        return _regenerator["default"].wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context10.next = 4;
+                return got("".concat(IdentityAPI.url, "/security/sign/txt"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    content: txt
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context10.abrupt("return", _context10.sent);
+
+              case 5:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function signTxt(_x9) {
+        return _signTxt.apply(this, arguments);
+      }
+
+      return signTxt;
+    }()
+  }, {
+    key: "verifyTxt",
+    value: function () {
+      var _verifyTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(sign, txt) {
+        return _regenerator["default"].wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context11.next = 4;
+                return got("".concat(IdentityAPI.url, "/security/verify/txt"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    sign: sign,
+                    content: txt
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context11.abrupt("return", _context11.sent);
+
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, this);
+      }));
+
+      function verifyTxt(_x10, _x11) {
+        return _verifyTxt.apply(this, arguments);
+      }
+
+      return verifyTxt;
+    }()
+  }, {
+    key: "login",
+    value: function () {
+      var _login = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(uname, pwd) {
+        return _regenerator["default"].wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context12.next = 4;
                 return got("".concat(IdentityAPI.url, "/auth/login"), {
                   method: 'POST',
                   headers: {
@@ -359,17 +540,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context8.abrupt("return", _context8.sent);
+                return _context12.abrupt("return", _context12.sent);
 
               case 5:
               case "end":
-                return _context8.stop();
+                return _context12.stop();
             }
           }
-        }, _callee8, this);
+        }, _callee12, this);
       }));
 
-      function login(_x7, _x8) {
+      function login(_x12, _x13) {
         return _login.apply(this, arguments);
       }
 
@@ -378,16 +559,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "logout",
     value: function () {
-      var _logout = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(token) {
-        return _regenerator["default"].wrap(function _callee9$(_context9) {
+      var _logout = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(token) {
+        return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context13.prev = _context13.next) {
               case 0:
-                _context9.next = 2;
+                _context13.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context9.next = 4;
+                _context13.next = 4;
                 return got("".concat(IdentityAPI.url, "/auth/logout"), {
                   method: 'POST',
                   headers: {
@@ -404,17 +585,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context9.abrupt("return", _context9.sent);
+                return _context13.abrupt("return", _context13.sent);
 
               case 5:
               case "end":
-                return _context9.stop();
+                return _context13.stop();
             }
           }
-        }, _callee9, this);
+        }, _callee13, this);
       }));
 
-      function logout(_x9) {
+      function logout(_x14) {
         return _logout.apply(this, arguments);
       }
 
@@ -423,16 +604,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "self",
     value: function () {
-      var _self = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(token) {
-        return _regenerator["default"].wrap(function _callee10$(_context10) {
+      var _self = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(token) {
+        return _regenerator["default"].wrap(function _callee14$(_context14) {
           while (1) {
-            switch (_context10.prev = _context10.next) {
+            switch (_context14.prev = _context14.next) {
               case 0:
-                _context10.next = 2;
+                _context14.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context10.next = 4;
+                _context14.next = 4;
                 return got("".concat(IdentityAPI.url, "/self"), {
                   method: 'GET',
                   headers: {
@@ -447,17 +628,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context10.abrupt("return", _context10.sent);
+                return _context14.abrupt("return", _context14.sent);
 
               case 5:
               case "end":
-                return _context10.stop();
+                return _context14.stop();
             }
           }
-        }, _callee10, this);
+        }, _callee14, this);
       }));
 
-      function self(_x10) {
+      function self(_x15) {
         return _self.apply(this, arguments);
       }
 
@@ -466,16 +647,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "updateSelf",
     value: function () {
-      var _updateSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(token, self) {
-        return _regenerator["default"].wrap(function _callee11$(_context11) {
+      var _updateSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(token, self) {
+        return _regenerator["default"].wrap(function _callee15$(_context15) {
           while (1) {
-            switch (_context11.prev = _context11.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                _context11.next = 2;
+                _context15.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context11.next = 4;
+                _context15.next = 4;
                 return got("".concat(IdentityAPI.url, "/self"), {
                   method: 'PUT',
                   headers: {
@@ -491,17 +672,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context11.abrupt("return", _context11.sent);
+                return _context15.abrupt("return", _context15.sent);
 
               case 5:
               case "end":
-                return _context11.stop();
+                return _context15.stop();
             }
           }
-        }, _callee11, this);
+        }, _callee15, this);
       }));
 
-      function updateSelf(_x11, _x12) {
+      function updateSelf(_x16, _x17) {
         return _updateSelf.apply(this, arguments);
       }
 
@@ -510,16 +691,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "passwordSelf",
     value: function () {
-      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(token, oldPwd, newPwd) {
-        return _regenerator["default"].wrap(function _callee12$(_context12) {
+      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(token, oldPwd, newPwd) {
+        return _regenerator["default"].wrap(function _callee16$(_context16) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
-                _context12.next = 2;
+                _context16.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context12.next = 4;
+                _context16.next = 4;
                 return got("".concat(IdentityAPI.url, "/self/password"), {
                   method: 'POST',
                   headers: {
@@ -538,17 +719,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context12.abrupt("return", _context12.sent);
+                return _context16.abrupt("return", _context16.sent);
 
               case 5:
               case "end":
-                return _context12.stop();
+                return _context16.stop();
             }
           }
-        }, _callee12, this);
+        }, _callee16, this);
       }));
 
-      function passwordSelf(_x13, _x14, _x15) {
+      function passwordSelf(_x18, _x19, _x20) {
         return _passwordSelf.apply(this, arguments);
       }
 
@@ -557,16 +738,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "checkByMobile",
     value: function () {
-      var _checkByMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(mobile) {
-        return _regenerator["default"].wrap(function _callee13$(_context13) {
+      var _checkByMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(mobile) {
+        return _regenerator["default"].wrap(function _callee17$(_context17) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context17.prev = _context17.next) {
               case 0:
-                _context13.next = 2;
+                _context17.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context13.next = 4;
+                _context17.next = 4;
                 return got("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
                   method: 'POST',
                   headers: {
@@ -583,17 +764,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context13.abrupt("return", _context13.sent);
+                return _context17.abrupt("return", _context17.sent);
 
               case 5:
               case "end":
-                return _context13.stop();
+                return _context17.stop();
             }
           }
-        }, _callee13, this);
+        }, _callee17, this);
       }));
 
-      function checkByMobile(_x16) {
+      function checkByMobile(_x21) {
         return _checkByMobile.apply(this, arguments);
       }
 

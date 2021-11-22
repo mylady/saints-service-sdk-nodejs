@@ -136,6 +136,79 @@ export default class IdentityAPI {
         })
     }
 
+    async encrypt(txt) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/security/encrypt`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                content: txt,
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
+    async descrypt(txt) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/security/decrypt`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                content: txt
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
+    async signTxt(txt) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/security/sign/txt`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                content: txt
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
+    async verifyTxt(sign, txt) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/security/verify/txt`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                sign: sign,
+                content: txt
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
     async login(uname, pwd) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/auth/login`, {
