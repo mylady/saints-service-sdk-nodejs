@@ -165,6 +165,35 @@ export default class DeviceAPI {
         });
     }
 
+    async getStreamAddress(id) {
+        await this.getAccessToken();
+        return await got(`${DeviceAPI.url}/stream/${id}`, {
+            method: 'GET',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async queryStreamAddress(id, query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/stream/address/${id}`, {
+            method: 'GET',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async statsDeviceStatus() {
         await this.getAccessToken();
         return await got(`${DeviceAPI.url}/stats/device/status`, {
