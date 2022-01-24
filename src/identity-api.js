@@ -300,7 +300,25 @@ export default class IdentityAPI {
         });
     }
 
-    async checkByMobile(id) {
+    async getByIdNumber(idNumber) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/idnumber`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                id_number: idNumber
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async checkByID(id) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/service/user/checkid`, {
             method: 'POST',

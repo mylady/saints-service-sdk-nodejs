@@ -736,9 +736,9 @@ var IdentityAPI = /*#__PURE__*/function () {
       return passwordSelf;
     }()
   }, {
-    key: "checkByMobile",
+    key: "getByIdNumber",
     value: function () {
-      var _checkByMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(mobile) {
+      var _getByIdNumber = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(idNumber) {
         return _regenerator["default"].wrap(function _callee17$(_context17) {
           while (1) {
             switch (_context17.prev = _context17.next) {
@@ -748,7 +748,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context17.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
+                return got("".concat(IdentityAPI.url, "/service/user/idnumber"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -757,7 +757,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: {
-                    mobile: mobile
+                    id_number: idNumber
                   },
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -774,7 +774,97 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee17, this);
       }));
 
-      function checkByMobile(_x21) {
+      function getByIdNumber(_x21) {
+        return _getByIdNumber.apply(this, arguments);
+      }
+
+      return getByIdNumber;
+    }()
+  }, {
+    key: "checkByID",
+    value: function () {
+      var _checkByID = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(id) {
+        return _regenerator["default"].wrap(function _callee18$(_context18) {
+          while (1) {
+            switch (_context18.prev = _context18.next) {
+              case 0:
+                _context18.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context18.next = 4;
+                return got("".concat(IdentityAPI.url, "/service/user/checkid"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    id: id
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context18.abrupt("return", _context18.sent);
+
+              case 5:
+              case "end":
+                return _context18.stop();
+            }
+          }
+        }, _callee18, this);
+      }));
+
+      function checkByID(_x22) {
+        return _checkByID.apply(this, arguments);
+      }
+
+      return checkByID;
+    }()
+  }, {
+    key: "checkByMobile",
+    value: function () {
+      var _checkByMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee19(mobile) {
+        return _regenerator["default"].wrap(function _callee19$(_context19) {
+          while (1) {
+            switch (_context19.prev = _context19.next) {
+              case 0:
+                _context19.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context19.next = 4;
+                return got("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    mobile: mobile
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context19.abrupt("return", _context19.sent);
+
+              case 5:
+              case "end":
+                return _context19.stop();
+            }
+          }
+        }, _callee19, this);
+      }));
+
+      function checkByMobile(_x23) {
         return _checkByMobile.apply(this, arguments);
       }
 
