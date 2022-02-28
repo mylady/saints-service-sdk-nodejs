@@ -93,6 +93,20 @@ export default class DeviceAPI {
         });
     }
 
+    async queryCommonVideoDevice(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/commonvideodevice/query`, {
+            method: 'POST',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async getCommonVideoDeviceById(id) {
         await this.getAccessToken();
         return await got(`${DeviceAPI.url}/commonvideodevice/${id}`, {
@@ -117,6 +131,20 @@ export default class DeviceAPI {
                 fix_token: DeviceAPI.headerToken
             },
             searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async queryTypeDevice(typeName, query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/${typeName}/query`, {
+            method: 'POST',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: query,
             resolveBodyOnly: true,
             responseType: 'json'
         });
