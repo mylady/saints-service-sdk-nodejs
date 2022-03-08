@@ -70,6 +70,24 @@ export default class FileHubAPI {
         });
     }
 
+    async downloadZipDocsProxy(ids) {
+        await this.getAccessToken();
+        return got(`${FileHubAPI.url}/download/doc/zip`, {
+            method: 'POST',
+            isStream: true,
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: ids,
+            responseType: 'buffer',
+            resolveBodyOnly: true,
+            throwHttpErrors: false
+        });
+    }
+
     async searchDoc(search) {
         await this.getAccessToken();
         return await got(`${FileHubAPI.url}/search/doc`, {
