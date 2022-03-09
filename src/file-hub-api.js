@@ -74,7 +74,6 @@ export default class FileHubAPI {
         await this.getAccessToken();
         return got(`${FileHubAPI.url}/download/doc/zip`, {
             method: 'POST',
-            isStream: true,
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
@@ -82,8 +81,7 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             json: ids,
-            responseType: 'buffer',
-            resolveBodyOnly: true,
+            responseType:'buffer',
             throwHttpErrors: false
         });
     }

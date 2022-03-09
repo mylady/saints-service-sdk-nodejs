@@ -169,8 +169,6 @@ var FileHubAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: ids,
-                  responseType: 'buffer',
-                  resolveBodyOnly: true,
                   throwHttpErrors: false
                 }));
 

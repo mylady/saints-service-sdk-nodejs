@@ -7,7 +7,8 @@ FileHubAPI.initialize('http://localhost:8002/rest');
 
 const testDownloadPack = async () => {
     let resp = await api.downloadZipDocsProxy(["e1abdc0a-41e4-4fba-b3f8-e40596fefde6"]);
-    await stream.pipeline(resp,fs.createWriteStream('./tmp.zip'));
+    console.log(resp.headers);
+    //await stream.pipeline(resp,fs.createWriteStream('./tmp.zip'));
 };
 
 try {
