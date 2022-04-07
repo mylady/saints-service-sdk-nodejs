@@ -246,6 +246,24 @@ export default class IdentityAPI {
         });
     }
 
+    async login3(fingerPrint) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/auth/login/fingerprint`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                finger_print: fingerPrint
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async logout(token) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/auth/logout`, {
@@ -372,7 +390,7 @@ export default class IdentityAPI {
         });
     }
 
-    async createFingerPrint(fingerprint) {
+    async createFingerPrint(fingerPrint) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/fingerprint`, {
             method: 'POST',
@@ -382,7 +400,7 @@ export default class IdentityAPI {
             searchParams: {
                 access_token: this.accessToken
             },
-            json: fingerprint,
+            json: fingerPrint,
             resolveBodyOnly: true,
             responseType: 'json'
         })
