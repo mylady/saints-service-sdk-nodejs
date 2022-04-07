@@ -34,7 +34,7 @@ export default class IdentityAPI {
         }
     }
 
-    async getUserList() {
+    async getUsers() {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/service/user`, {
             method: 'GET',
@@ -366,6 +366,38 @@ export default class IdentityAPI {
             },
             json: {
                 mobile: mobile
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async createFingerPrint(fingerprint) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/fingerprint`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: fingerprint,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
+    async getFingerPrints(userId) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/fingerprint`, {
+            method: 'GET',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                user_id: userId
             },
             resolveBodyOnly: true,
             responseType: 'json'

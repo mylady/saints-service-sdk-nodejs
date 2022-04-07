@@ -66,9 +66,9 @@ var IdentityAPI = /*#__PURE__*/function () {
       return getAccessToken;
     }()
   }, {
-    key: "getUserList",
+    key: "getUsers",
     value: function () {
-      var _getUserList = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2() {
+      var _getUsers = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2() {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -101,11 +101,11 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function getUserList() {
-        return _getUserList.apply(this, arguments);
+      function getUsers() {
+        return _getUsers.apply(this, arguments);
       }
 
-      return getUserList;
+      return getUsers;
     }()
   }, {
     key: "getUserWithIds",
@@ -914,6 +914,92 @@ var IdentityAPI = /*#__PURE__*/function () {
       }
 
       return checkByMobile;
+    }()
+  }, {
+    key: "createFingerPrint",
+    value: function () {
+      var _createFingerPrint = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee21(fingerprint) {
+        return _regenerator["default"].wrap(function _callee21$(_context21) {
+          while (1) {
+            switch (_context21.prev = _context21.next) {
+              case 0:
+                _context21.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context21.next = 4;
+                return got("".concat(IdentityAPI.url, "/fingerprint"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: fingerprint,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context21.abrupt("return", _context21.sent);
+
+              case 5:
+              case "end":
+                return _context21.stop();
+            }
+          }
+        }, _callee21, this);
+      }));
+
+      function createFingerPrint(_x25) {
+        return _createFingerPrint.apply(this, arguments);
+      }
+
+      return createFingerPrint;
+    }()
+  }, {
+    key: "getFingerPrints",
+    value: function () {
+      var _getFingerPrints = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee22(userId) {
+        return _regenerator["default"].wrap(function _callee22$(_context22) {
+          while (1) {
+            switch (_context22.prev = _context22.next) {
+              case 0:
+                _context22.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context22.next = 4;
+                return got("".concat(IdentityAPI.url, "/fingerprint"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken,
+                    user_id: userId
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context22.abrupt("return", _context22.sent);
+
+              case 5:
+              case "end":
+                return _context22.stop();
+            }
+          }
+        }, _callee22, this);
+      }));
+
+      function getFingerPrints(_x26) {
+        return _getFingerPrints.apply(this, arguments);
+      }
+
+      return getFingerPrints;
     }()
   }], [{
     key: "initialize",
