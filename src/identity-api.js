@@ -117,6 +117,22 @@ export default class IdentityAPI {
         })
     }
 
+    async updateUser(id, user) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/${id}`, {
+            method: 'PUT',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: user,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
     async passwordReset(uid, pwd) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/service/user/password`, {
