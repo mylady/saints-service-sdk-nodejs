@@ -1,6 +1,8 @@
 'use strict';
 
-const got = require('got').default;
+const got = require('got').default,
+    httpProxy = require('http-proxy'),
+    proxy = httpProxy.createProxy();
 
 /*
     for upload file proxy,it uses nodejs default req&res object.
@@ -24,6 +26,7 @@ export default class FileHubAPI {
             FileHubAPI.url = url;
         }
 
+        FileHubAPI.host = FileHubAPI.url.replace('/rest', '');
         FileHubAPI.headerToken = token;
     }
 
@@ -40,49 +43,36 @@ export default class FileHubAPI {
         }
     }
 
-    async uploadDocProxy(req) {
+    async uploadDocProxy(req, res) {
         await this.getAccessToken();
-        return req.pipe(got(`${FileHubAPI.url}/upload/doc`, {
-            method: 'POST',
-            isStream: true,
+        req.url = `/rest/upload/doc?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
-        }));
-    }
-
-    async downloadDocProxy(id) {
-        await this.getAccessToken();
-        return got(`${FileHubAPI.url}/download/doc/${id}`, {
-            method: 'GET',
-            isStream: true,
-            headers: {
-                fix_token: FileHubAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
+            target: `${FileHubAPI.host}`
         });
     }
 
-    async downloadZipDocsProxy(ids) {
+    async downloadDocProxy(id, req, res) {
         await this.getAccessToken();
-        return got(`${FileHubAPI.url}/download/doc/zip`, {
-            method: 'POST',
-            isStream: true,
+        req.url = `/rest/download/doc/${id}?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
+            target: `${FileHubAPI.host}`
+        });
+    }
+
+    async downloadZipDocsProxy(req, res) {
+        await this.getAccessToken();
+        req.url = `/rest/download/doc/zip?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
+            headers: {
+                fix_token: FileHubAPI.headerToken
             },
-            json: ids,
-            throwHttpErrors: false
+            target: `${FileHubAPI.host}`
         });
     }
 
@@ -178,33 +168,25 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadImageProxy(req) {
+    async uploadImageProxy(req, res) {
         await this.getAccessToken();
-        return req.pipe(got(`${FileHubAPI.url}/upload/image`, {
-            method: 'POST',
-            isStream: true,
+        req.url = `/rest/upload/image?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
-        }));
+            target: `${FileHubAPI.host}`
+        });
     }
 
-    async downloadImageProxy(id) {
+    async downloadImageProxy(id, req, res) {
         await this.getAccessToken();
-        return got(`${FileHubAPI.url}/download/image/${id}`, {
-            method: 'GET',
-            isStream: true,
+        req.url = `/rest/download/image/${id}?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
+            target: `${FileHubAPI.host}`
         });
     }
 
@@ -284,33 +266,25 @@ export default class FileHubAPI {
         });
     }
 
-    async uploadAttachProxy(req) {
+    async uploadAttachProxy(req, res) {
         await this.getAccessToken();
-        return req.pipe(got(`${FileHubAPI.url}/upload/attach`, {
-            method: 'POST',
-            isStream: true,
+        req.url = `/rest/upload/attach?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
-        }));
+            target: `${FileHubAPI.host}`
+        });
     }
 
-    async downloadAttachProxy(id) {
+    async downloadAttachProxy(id, req, res) {
         await this.getAccessToken();
-        return got(`${FileHubAPI.url}/download/attach/${id}`, {
-            method: 'GET',
-            isStream: true,
+        req.url = `/rest/download/attach/${id}?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: FileHubAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            throwHttpErrors: false
+            target: `${FileHubAPI.host}`
         });
     }
 

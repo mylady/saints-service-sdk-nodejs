@@ -1,6 +1,6 @@
 {
   "name": "saints-service-sdk-nodejs",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "saints platform service sdk",
   "main": "./dist/index.js",
   "scripts": {
@@ -24,7 +24,8 @@
   "homepage": "https://github.com/mylady/saints-service-sdk-nodejs#readme",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "got": "^11.8.2"
+    "got": "^11.8.2",
+    "http-proxy": "^1.18.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
