@@ -280,6 +280,24 @@ export default class IdentityAPI {
         });
     }
 
+    async login4(id) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/auth/login/id`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                id: id
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async logout(token) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/auth/logout`, {

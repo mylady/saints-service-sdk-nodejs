@@ -1,6 +1,6 @@
 {
   "name": "saints-service-sdk-nodejs",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "saints platform service sdk",
   "main": "./dist/index.js",
   "scripts": {
