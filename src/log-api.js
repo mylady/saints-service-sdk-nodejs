@@ -63,4 +63,34 @@ export default class LogAPI {
             responseType: 'json'
         });
     }
+
+    async addExtAccessLog(log) {
+        await this.getAccessToken();
+        return await got(`${LogAPI.url}/ext/accesslog`, {
+            method: 'POST',
+            headers: {
+                fix_token: LogAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: log,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async getExtAccessLog(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${LogAPI.url}/ext/accesslog`, {
+            method: 'GET',
+            headers: {
+                fix_token: LogAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
 }

@@ -149,6 +149,90 @@ var LogAPI = /*#__PURE__*/function () {
 
       return getAccessLog;
     }()
+  }, {
+    key: "addExtAccessLog",
+    value: function () {
+      var _addExtAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(log) {
+        return _regenerator["default"].wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context4.next = 4;
+                return got("".concat(LogAPI.url, "/ext/accesslog"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: LogAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: log,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context4.abrupt("return", _context4.sent);
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function addExtAccessLog(_x3) {
+        return _addExtAccessLog.apply(this, arguments);
+      }
+
+      return addExtAccessLog;
+    }()
+  }, {
+    key: "getExtAccessLog",
+    value: function () {
+      var _getExtAccessLog = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(query) {
+        return _regenerator["default"].wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context5.next = 5;
+                return got("".concat(LogAPI.url, "/ext/accesslog"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: LogAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 5:
+                return _context5.abrupt("return", _context5.sent);
+
+              case 6:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function getExtAccessLog(_x4) {
+        return _getExtAccessLog.apply(this, arguments);
+      }
+
+      return getExtAccessLog;
+    }()
   }], [{
     key: "initialize",
     value: function initialize(url) {
