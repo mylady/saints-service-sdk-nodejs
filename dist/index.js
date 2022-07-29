@@ -19,13 +19,16 @@ var _deviceType = _interopRequireDefault(require("./device-type"));
 
 var _eventApi = _interopRequireDefault(require("./event-api"));
 
+var _messageHubApi = _interopRequireDefault(require("./message-hub-api"));
+
 var sdk = {
   FileHubAPI: _fileHubApi["default"],
   IdentityAPI: _identityApi["default"],
   LogAPI: _logApi["default"],
   DeviceAPI: _deviceApi["default"],
   DeviceType: _deviceType["default"],
-  EventAPI: _eventApi["default"]
+  EventAPI: _eventApi["default"],
+  MessageAPI: _messageHubApi["default"]
 };
 var _default = sdk;
 exports["default"] = _default;

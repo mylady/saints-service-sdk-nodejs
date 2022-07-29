@@ -5,6 +5,7 @@ import LogAPI from './log-api';
 import DeviceAPI from './device-api';
 import DeviceType from './device-type';
 import EventAPI from './event-api';
+import MessageAPI from './message-hub-api';
 
 const sdk = {
     FileHubAPI: FileHubAPI,
@@ -13,6 +14,7 @@ const sdk = {
     DeviceAPI: DeviceAPI,
     DeviceType: DeviceType,
     EventAPI: EventAPI,
+    MessageAPI: MessageAPI
 };
 
 export default sdk;
