@@ -36,7 +36,7 @@ var ResourceTypeName = {
 };
 exports.ResourceTypeName = ResourceTypeName;
 
-var getResourceTypeName = function getResourceTypeName() {
+var getResourceTypeName = function getResourceTypeName(code) {
   var n = '';
 
   switch (code) {
