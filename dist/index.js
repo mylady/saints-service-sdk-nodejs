@@ -15,7 +15,7 @@ var _logApi = _interopRequireDefault(require("./log-api"));
 
 var _deviceApi = _interopRequireDefault(require("./device-api"));
 
-var _deviceType = _interopRequireDefault(require("./device-type"));
+var _resourceType = require("./resource-type");
 
 var _eventApi = _interopRequireDefault(require("./event-api"));
 
@@ -26,7 +26,8 @@ var sdk = {
   IdentityAPI: _identityApi["default"],
   LogAPI: _logApi["default"],
   DeviceAPI: _deviceApi["default"],
-  DeviceType: _deviceType["default"],
+  ResourceTypeName: _resourceType.ResourceTypeName,
+  GetResourceTypeName: _resourceType.GetResourceTypeName,
   EventAPI: _eventApi["default"],
   MessageAPI: _messageHubApi["default"]
 };
