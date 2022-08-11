@@ -27,7 +27,7 @@ var sdk = {
   LogAPI: _logApi["default"],
   DeviceAPI: _deviceApi["default"],
   ResourceTypeName: _resourceType.ResourceTypeName,
-  GetResourceTypeName: _resourceType.GetResourceTypeName,
+  getResourceTypeName: _resourceType.getResourceTypeName,
   EventAPI: _eventApi["default"],
   MessageAPI: _messageHubApi["default"]
 };

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetResourceTypeName = exports.ResourceTypeName = void 0;
+exports.getResourceTypeName = exports.ResourceTypeName = void 0;
 var ResourceTypeName = {
   alarm: 'alarm',
   alarmHost: 'alarmhost',
@@ -36,7 +36,7 @@ var ResourceTypeName = {
 };
 exports.ResourceTypeName = ResourceTypeName;
 
-var GetResourceTypeName = function GetResourceTypeName() {
+var getResourceTypeName = function getResourceTypeName() {
   var n = '';
 
   switch (code) {
@@ -151,4 +151,4 @@ var GetResourceTypeName = function GetResourceTypeName() {
   return n;
 };
 
-exports.GetResourceTypeName = GetResourceTypeName;
+exports.getResourceTypeName = getResourceTypeName;

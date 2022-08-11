@@ -29,7 +29,7 @@ export const ResourceTypeName = {
     vmGBServer: 'vmgbserver'
 };
 
-export const GetResourceTypeName = () => {
+export const getResourceTypeName = () => {
     let n = '';
     switch (code) {
         case 0:
