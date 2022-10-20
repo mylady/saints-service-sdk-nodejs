@@ -498,9 +498,9 @@ var FileHubAPI = /*#__PURE__*/function () {
       return downloadImageProxy;
     }()
   }, {
-    key: "getImageDetail",
+    key: "getImageBase64",
     value: function () {
-      var _getImageDetail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(id) {
+      var _getImageBase = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(id) {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -510,7 +510,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
+                return got("".concat(FileHubAPI.url, "/detail/image/base64/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -533,16 +533,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
-      function getImageDetail(_x19) {
-        return _getImageDetail.apply(this, arguments);
+      function getImageBase64(_x19) {
+        return _getImageBase.apply(this, arguments);
       }
 
-      return getImageDetail;
+      return getImageBase64;
     }()
   }, {
-    key: "queryImages",
+    key: "getImageDetail",
     value: function () {
-      var _queryImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(ids) {
+      var _getImageDetail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(id) {
         return _regenerator["default"].wrap(function _callee14$(_context14) {
           while (1) {
             switch (_context14.prev = _context14.next) {
@@ -552,15 +552,14 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context14.next = 4;
-                return got("".concat(FileHubAPI.url, "/query/image"), {
-                  method: 'POST',
+                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
+                  method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: ids,
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -576,16 +575,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee14, this);
       }));
 
-      function queryImages(_x20) {
-        return _queryImages.apply(this, arguments);
+      function getImageDetail(_x20) {
+        return _getImageDetail.apply(this, arguments);
       }
 
-      return queryImages;
+      return getImageDetail;
     }()
   }, {
-    key: "getImages",
+    key: "queryImages",
     value: function () {
-      var _getImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(query) {
+      var _queryImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(ids) {
         return _regenerator["default"].wrap(function _callee15$(_context15) {
           while (1) {
             switch (_context15.prev = _context15.next) {
@@ -594,8 +593,51 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
+                _context15.next = 4;
+                return got("".concat(FileHubAPI.url, "/query/image"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context15.abrupt("return", _context15.sent);
+
+              case 5:
+              case "end":
+                return _context15.stop();
+            }
+          }
+        }, _callee15, this);
+      }));
+
+      function queryImages(_x21) {
+        return _queryImages.apply(this, arguments);
+      }
+
+      return queryImages;
+    }()
+  }, {
+    key: "getImages",
+    value: function () {
+      var _getImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
+        return _regenerator["default"].wrap(function _callee16$(_context16) {
+          while (1) {
+            switch (_context16.prev = _context16.next) {
+              case 0:
+                _context16.next = 2;
+                return this.getAccessToken();
+
+              case 2:
                 query['access_token'] = this.accessToken;
-                _context15.next = 5;
+                _context16.next = 5;
                 return got("".concat(FileHubAPI.url, "/image"), {
                   method: 'GET',
                   headers: {
@@ -607,17 +649,17 @@ var FileHubAPI = /*#__PURE__*/function () {
                 });
 
               case 5:
-                return _context15.abrupt("return", _context15.sent);
+                return _context16.abrupt("return", _context16.sent);
 
               case 6:
               case "end":
-                return _context15.stop();
+                return _context16.stop();
             }
           }
-        }, _callee15, this);
+        }, _callee16, this);
       }));
 
-      function getImages(_x21) {
+      function getImages(_x22) {
         return _getImages.apply(this, arguments);
       }
 
@@ -626,49 +668,7 @@ var FileHubAPI = /*#__PURE__*/function () {
   }, {
     key: "deleteImage",
     value: function () {
-      var _deleteImage = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(id) {
-        return _regenerator["default"].wrap(function _callee16$(_context16) {
-          while (1) {
-            switch (_context16.prev = _context16.next) {
-              case 0:
-                _context16.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context16.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
-                  method: 'DELETE',
-                  headers: {
-                    fix_token: FileHubAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json'
-                });
-
-              case 4:
-                return _context16.abrupt("return", _context16.sent);
-
-              case 5:
-              case "end":
-                return _context16.stop();
-            }
-          }
-        }, _callee16, this);
-      }));
-
-      function deleteImage(_x22) {
-        return _deleteImage.apply(this, arguments);
-      }
-
-      return deleteImage;
-    }()
-  }, {
-    key: "deleteImages",
-    value: function () {
-      var _deleteImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(ids) {
+      var _deleteImage = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(id) {
         return _regenerator["default"].wrap(function _callee17$(_context17) {
           while (1) {
             switch (_context17.prev = _context17.next) {
@@ -678,7 +678,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context17.next = 4;
-                return got("".concat(FileHubAPI.url, "/batch/image"), {
+                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -686,7 +686,6 @@ var FileHubAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: ids,
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -702,16 +701,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee17, this);
       }));
 
-      function deleteImages(_x23) {
-        return _deleteImages.apply(this, arguments);
+      function deleteImage(_x23) {
+        return _deleteImage.apply(this, arguments);
       }
 
-      return deleteImages;
+      return deleteImage;
     }()
   }, {
-    key: "uploadAttachProxy",
+    key: "deleteImages",
     value: function () {
-      var _uploadAttachProxy = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(req, res) {
+      var _deleteImages = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(ids) {
         return _regenerator["default"].wrap(function _callee18$(_context18) {
           while (1) {
             switch (_context18.prev = _context18.next) {
@@ -720,15 +719,24 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.url = "/rest/upload/attach?access_token=".concat(this.accessToken);
-                proxy.web(req, res, {
+                _context18.next = 4;
+                return got("".concat(FileHubAPI.url, "/batch/image"), {
+                  method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  target: "".concat(FileHubAPI.host)
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
                 });
 
               case 4:
+                return _context18.abrupt("return", _context18.sent);
+
+              case 5:
               case "end":
                 return _context18.stop();
             }
@@ -736,16 +744,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee18, this);
       }));
 
-      function uploadAttachProxy(_x24, _x25) {
-        return _uploadAttachProxy.apply(this, arguments);
+      function deleteImages(_x24) {
+        return _deleteImages.apply(this, arguments);
       }
 
-      return uploadAttachProxy;
+      return deleteImages;
     }()
   }, {
-    key: "downloadAttachProxy",
+    key: "uploadAttachProxy",
     value: function () {
-      var _downloadAttachProxy = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee19(id, req, res) {
+      var _uploadAttachProxy = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee19(req, res) {
         return _regenerator["default"].wrap(function _callee19$(_context19) {
           while (1) {
             switch (_context19.prev = _context19.next) {
@@ -754,7 +762,7 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.url = "/rest/download/attach/".concat(id, "?access_token=").concat(this.accessToken);
+                req.url = "/rest/upload/attach?access_token=".concat(this.accessToken);
                 proxy.web(req, res, {
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -770,16 +778,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee19, this);
       }));
 
-      function downloadAttachProxy(_x26, _x27, _x28) {
-        return _downloadAttachProxy.apply(this, arguments);
+      function uploadAttachProxy(_x25, _x26) {
+        return _uploadAttachProxy.apply(this, arguments);
       }
 
-      return downloadAttachProxy;
+      return uploadAttachProxy;
     }()
   }, {
-    key: "getAttachDetail",
+    key: "downloadAttachProxy",
     value: function () {
-      var _getAttachDetail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee20(id) {
+      var _downloadAttachProxy = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee20(id, req, res) {
         return _regenerator["default"].wrap(function _callee20$(_context20) {
           while (1) {
             switch (_context20.prev = _context20.next) {
@@ -788,23 +796,15 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context20.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
-                  method: 'GET',
+                req.url = "/rest/download/attach/".concat(id, "?access_token=").concat(this.accessToken);
+                proxy.web(req, res, {
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json'
+                  target: "".concat(FileHubAPI.host)
                 });
 
               case 4:
-                return _context20.abrupt("return", _context20.sent);
-
-              case 5:
               case "end":
                 return _context20.stop();
             }
@@ -812,16 +812,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee20, this);
       }));
 
-      function getAttachDetail(_x29) {
-        return _getAttachDetail.apply(this, arguments);
+      function downloadAttachProxy(_x27, _x28, _x29) {
+        return _downloadAttachProxy.apply(this, arguments);
       }
 
-      return getAttachDetail;
+      return downloadAttachProxy;
     }()
   }, {
-    key: "queryAttaches",
+    key: "getAttachDetail",
     value: function () {
-      var _queryAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee21(ids) {
+      var _getAttachDetail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee21(id) {
         return _regenerator["default"].wrap(function _callee21$(_context21) {
           while (1) {
             switch (_context21.prev = _context21.next) {
@@ -831,15 +831,14 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context21.next = 4;
-                return got("".concat(FileHubAPI.url, "/query/attach"), {
-                  method: 'POST',
+                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
+                  method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
                   },
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: ids,
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -855,16 +854,16 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee21, this);
       }));
 
-      function queryAttaches(_x30) {
-        return _queryAttaches.apply(this, arguments);
+      function getAttachDetail(_x30) {
+        return _getAttachDetail.apply(this, arguments);
       }
 
-      return queryAttaches;
+      return getAttachDetail;
     }()
   }, {
-    key: "getAttaches",
+    key: "queryAttaches",
     value: function () {
-      var _getAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee22(query) {
+      var _queryAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee22(ids) {
         return _regenerator["default"].wrap(function _callee22$(_context22) {
           while (1) {
             switch (_context22.prev = _context22.next) {
@@ -873,8 +872,51 @@ var FileHubAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
+                _context22.next = 4;
+                return got("".concat(FileHubAPI.url, "/query/attach"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context22.abrupt("return", _context22.sent);
+
+              case 5:
+              case "end":
+                return _context22.stop();
+            }
+          }
+        }, _callee22, this);
+      }));
+
+      function queryAttaches(_x31) {
+        return _queryAttaches.apply(this, arguments);
+      }
+
+      return queryAttaches;
+    }()
+  }, {
+    key: "getAttaches",
+    value: function () {
+      var _getAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee23(query) {
+        return _regenerator["default"].wrap(function _callee23$(_context23) {
+          while (1) {
+            switch (_context23.prev = _context23.next) {
+              case 0:
+                _context23.next = 2;
+                return this.getAccessToken();
+
+              case 2:
                 query['access_token'] = this.accessToken;
-                _context22.next = 5;
+                _context23.next = 5;
                 return got("".concat(FileHubAPI.url, "/attach"), {
                   method: 'GET',
                   headers: {
@@ -886,17 +928,17 @@ var FileHubAPI = /*#__PURE__*/function () {
                 });
 
               case 5:
-                return _context22.abrupt("return", _context22.sent);
+                return _context23.abrupt("return", _context23.sent);
 
               case 6:
               case "end":
-                return _context22.stop();
+                return _context23.stop();
             }
           }
-        }, _callee22, this);
+        }, _callee23, this);
       }));
 
-      function getAttaches(_x31) {
+      function getAttaches(_x32) {
         return _getAttaches.apply(this, arguments);
       }
 
@@ -905,49 +947,7 @@ var FileHubAPI = /*#__PURE__*/function () {
   }, {
     key: "deleteAttach",
     value: function () {
-      var _deleteAttach = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee23(id) {
-        return _regenerator["default"].wrap(function _callee23$(_context23) {
-          while (1) {
-            switch (_context23.prev = _context23.next) {
-              case 0:
-                _context23.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context23.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
-                  method: 'DELETE',
-                  headers: {
-                    fix_token: FileHubAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json'
-                });
-
-              case 4:
-                return _context23.abrupt("return", _context23.sent);
-
-              case 5:
-              case "end":
-                return _context23.stop();
-            }
-          }
-        }, _callee23, this);
-      }));
-
-      function deleteAttach(_x32) {
-        return _deleteAttach.apply(this, arguments);
-      }
-
-      return deleteAttach;
-    }()
-  }, {
-    key: "deleteAttaches",
-    value: function () {
-      var _deleteAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee24(ids) {
+      var _deleteAttach = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee24(id) {
         return _regenerator["default"].wrap(function _callee24$(_context24) {
           while (1) {
             switch (_context24.prev = _context24.next) {
@@ -957,7 +957,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context24.next = 4;
-                return got("".concat(FileHubAPI.url, "/batch/attach"), {
+                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -965,7 +965,6 @@ var FileHubAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: ids,
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -981,7 +980,50 @@ var FileHubAPI = /*#__PURE__*/function () {
         }, _callee24, this);
       }));
 
-      function deleteAttaches(_x33) {
+      function deleteAttach(_x33) {
+        return _deleteAttach.apply(this, arguments);
+      }
+
+      return deleteAttach;
+    }()
+  }, {
+    key: "deleteAttaches",
+    value: function () {
+      var _deleteAttaches = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee25(ids) {
+        return _regenerator["default"].wrap(function _callee25$(_context25) {
+          while (1) {
+            switch (_context25.prev = _context25.next) {
+              case 0:
+                _context25.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context25.next = 4;
+                return got("".concat(FileHubAPI.url, "/batch/attach"), {
+                  method: 'DELETE',
+                  headers: {
+                    fix_token: FileHubAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: ids,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 4:
+                return _context25.abrupt("return", _context25.sent);
+
+              case 5:
+              case "end":
+                return _context25.stop();
+            }
+          }
+        }, _callee25, this);
+      }));
+
+      function deleteAttaches(_x34) {
         return _deleteAttaches.apply(this, arguments);
       }
 

@@ -190,6 +190,21 @@ export default class FileHubAPI {
         });
     }
 
+    async getImageBase64(id) {
+        await this.getAccessToken();
+        return await got(`${FileHubAPI.url}/detail/image/base64/${id}`, {
+            method: 'GET',
+            headers: {
+                fix_token: FileHubAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
     async getImageDetail(id) {
         await this.getAccessToken();
         return await got(`${FileHubAPI.url}/detail/image/${id}`, {
