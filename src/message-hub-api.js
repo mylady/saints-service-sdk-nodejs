@@ -1,6 +1,4 @@
-'use strict';
-
-const got = require('got').default;
+import got from 'got';
 
 export default class MessageHubAPI {
     constructor() {

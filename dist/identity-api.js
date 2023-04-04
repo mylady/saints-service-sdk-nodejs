@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"];
+var _got = _interopRequireDefault(require("got"));
 
 var IdentityAPI = /*#__PURE__*/function () {
   function IdentityAPI() {
@@ -41,7 +41,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(IdentityAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -78,7 +78,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context2.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user"), {
                   method: 'GET',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -120,7 +120,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context3.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/ids"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/ids"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -163,7 +163,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/id"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/id"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -208,7 +208,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context5.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/mobile"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/mobile"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -253,7 +253,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -296,7 +296,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/").concat(id), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/").concat(id), {
                   method: 'PUT',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -339,7 +339,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/password"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/password"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -385,7 +385,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context9.next = 4;
-                return got("".concat(IdentityAPI.url, "/security/encrypt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/encrypt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -430,7 +430,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return got("".concat(IdentityAPI.url, "/security/decrypt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/decrypt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -475,7 +475,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context11.next = 4;
-                return got("".concat(IdentityAPI.url, "/security/sign/txt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/sign/txt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -520,7 +520,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context12.next = 4;
-                return got("".concat(IdentityAPI.url, "/security/verify/txt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/verify/txt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -566,7 +566,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return got("".concat(IdentityAPI.url, "/auth/login"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -612,7 +612,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context14.next = 4;
-                return got("".concat(IdentityAPI.url, "/auth/login/idnumber"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/idnumber"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -657,7 +657,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return got("".concat(IdentityAPI.url, "/auth/login/fingerprint"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/fingerprint"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -702,7 +702,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context16.next = 4;
-                return got("".concat(IdentityAPI.url, "/auth/login/id"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/id"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -747,7 +747,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context17.next = 4;
-                return got("".concat(IdentityAPI.url, "/auth/logout"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/logout"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -792,7 +792,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context18.next = 4;
-                return got("".concat(IdentityAPI.url, "/self"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/self"), {
                   method: 'GET',
                   headers: {
                     Authorization: "Bearer ".concat(token),
@@ -835,7 +835,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context19.next = 4;
-                return got("".concat(IdentityAPI.url, "/self"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/self"), {
                   method: 'PUT',
                   headers: {
                     Authorization: "Bearer ".concat(token),
@@ -879,7 +879,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context20.next = 4;
-                return got("".concat(IdentityAPI.url, "/self/password"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/self/password"), {
                   method: 'POST',
                   headers: {
                     Authorization: "Bearer ".concat(token),
@@ -926,7 +926,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context21.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/idnumber"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/idnumber"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -971,7 +971,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context22.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/checkid"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/checkid"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -1016,7 +1016,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context23.next = 4;
-                return got("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/checkmobile"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -1061,7 +1061,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context24.next = 4;
-                return got("".concat(IdentityAPI.url, "/fingerprint"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/fingerprint"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -1104,7 +1104,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context25.next = 4;
-                return got("".concat(IdentityAPI.url, "/fingerprint"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/fingerprint"), {
                   method: 'GET',
                   headers: {
                     fix_token: IdentityAPI.headerToken

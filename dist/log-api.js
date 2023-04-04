@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"];
+var _got = _interopRequireDefault(require("got"));
 
 var LogAPI = /*#__PURE__*/function () {
   function LogAPI() {
@@ -41,7 +41,7 @@ var LogAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(LogAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(LogAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -78,7 +78,7 @@ var LogAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context2.next = 4;
-                return got("".concat(LogAPI.url, "/accesslog"), {
+                return (0, _got["default"])("".concat(LogAPI.url, "/accesslog"), {
                   method: 'POST',
                   headers: {
                     fix_token: LogAPI.headerToken
@@ -122,7 +122,7 @@ var LogAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context3.next = 5;
-                return got("".concat(LogAPI.url, "/accesslog"), {
+                return (0, _got["default"])("".concat(LogAPI.url, "/accesslog"), {
                   method: 'GET',
                   headers: {
                     fix_token: LogAPI.headerToken
@@ -162,7 +162,7 @@ var LogAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return got("".concat(LogAPI.url, "/ext/accesslog"), {
+                return (0, _got["default"])("".concat(LogAPI.url, "/ext/accesslog"), {
                   method: 'POST',
                   headers: {
                     fix_token: LogAPI.headerToken
@@ -206,7 +206,7 @@ var LogAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return got("".concat(LogAPI.url, "/ext/accesslog"), {
+                return (0, _got["default"])("".concat(LogAPI.url, "/ext/accesslog"), {
                   method: 'GET',
                   headers: {
                     fix_token: LogAPI.headerToken

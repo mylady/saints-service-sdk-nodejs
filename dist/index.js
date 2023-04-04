@@ -21,6 +21,8 @@ var _eventApi = _interopRequireDefault(require("./event-api"));
 
 var _messageHubApi = _interopRequireDefault(require("./message-hub-api"));
 
+var _cloudProxyApi = _interopRequireDefault(require("./cloud-proxy-api"));
+
 var sdk = {
   FileHubAPI: _fileHubApi["default"],
   IdentityAPI: _identityApi["default"],
@@ -29,7 +31,8 @@ var sdk = {
   ResourceTypeName: _resourceType.ResourceTypeName,
   getResourceTypeName: _resourceType.getResourceTypeName,
   EventAPI: _eventApi["default"],
-  MessageAPI: _messageHubApi["default"]
+  MessageAPI: _messageHubApi["default"],
+  CloudProxyAPI: _cloudProxyApi["default"]
 };
 var _default = sdk;
 exports["default"] = _default;

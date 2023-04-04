@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"];
+var _got = _interopRequireDefault(require("got"));
 
 var MessageHubAPI = /*#__PURE__*/function () {
   function MessageHubAPI() {
@@ -41,7 +41,7 @@ var MessageHubAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(MessageHubAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(MessageHubAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -79,7 +79,7 @@ var MessageHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return got("".concat(MessageHubAPI.url, "/message"), {
+                return (0, _got["default"])("".concat(MessageHubAPI.url, "/message"), {
                   method: 'GET',
                   headers: {
                     fix_token: MessageHubAPI.headerToken

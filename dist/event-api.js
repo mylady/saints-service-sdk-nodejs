@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"];
+var _got = _interopRequireDefault(require("got"));
 
 var EventAPI = /*#__PURE__*/function () {
   function EventAPI() {
@@ -41,7 +41,7 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(EventAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -79,7 +79,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return got("".concat(EventAPI.url, "/device/normal"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/normal"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -120,7 +120,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context3.next = 5;
-                return got("".concat(EventAPI.url, "/device/status"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -161,7 +161,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context4.next = 5;
-                return got("".concat(EventAPI.url, "/device/fault"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/fault"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -202,7 +202,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return got("".concat(EventAPI.url, "/device/alarm"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/alarm"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -242,7 +242,7 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return got("".concat(EventAPI.url, "/device/alarm/").concat(serial), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/alarm/").concat(serial), {
                   method: 'PUT',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -285,7 +285,7 @@ var EventAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return got("".concat(EventAPI.url, "/device/alarm/check/district"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/device/alarm/check/district"), {
                   method: 'POST',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -329,7 +329,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context8.next = 5;
-                return got("".concat(EventAPI.url, "/stats/alarm/alarmcode"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/alarmcode"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -370,7 +370,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context9.next = 5;
-                return got("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -411,7 +411,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context10.next = 5;
-                return got("".concat(EventAPI.url, "/stats/alarm/trend"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/trend"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken

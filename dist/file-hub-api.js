@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,9 +15,11 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"],
-    httpProxy = require('http-proxy'),
-    proxy = httpProxy.createProxy();
+var _got = _interopRequireDefault(require("got"));
+
+var _httpProxy = _interopRequireDefault(require("http-proxy"));
+
+var proxy = _httpProxy["default"].createProxy();
 /*
     for upload file proxy,it uses nodejs default req&res object.
     if you use koa like framework,which wrapper req and res in context object
@@ -49,7 +51,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(FileHubAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -188,7 +190,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context5.next = 4;
-                return got("".concat(FileHubAPI.url, "/search/doc"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/search/doc"), {
                   method: 'POST',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -231,7 +233,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -273,7 +275,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return got("".concat(FileHubAPI.url, "/query/doc"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/query/doc"), {
                   method: 'POST',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -317,7 +319,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context8.next = 5;
-                return got("".concat(FileHubAPI.url, "/doc"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/doc"), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -357,7 +359,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context9.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/doc/").concat(id), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -399,7 +401,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return got("".concat(FileHubAPI.url, "/batch/doc"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/batch/doc"), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -510,7 +512,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/image/base64/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/image/base64/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -552,7 +554,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context14.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -594,7 +596,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return got("".concat(FileHubAPI.url, "/query/image"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/query/image"), {
                   method: 'POST',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -638,7 +640,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context16.next = 5;
-                return got("".concat(FileHubAPI.url, "/image"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/image"), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -678,7 +680,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context17.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/image/").concat(id), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -720,7 +722,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context18.next = 4;
-                return got("".concat(FileHubAPI.url, "/batch/image"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/batch/image"), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -831,7 +833,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context21.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -873,7 +875,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context22.next = 4;
-                return got("".concat(FileHubAPI.url, "/query/attach"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/query/attach"), {
                   method: 'POST',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -917,7 +919,7 @@ var FileHubAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context23.next = 5;
-                return got("".concat(FileHubAPI.url, "/attach"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/attach"), {
                   method: 'GET',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -957,7 +959,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context24.next = 4;
-                return got("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/detail/attach/").concat(id), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken
@@ -999,7 +1001,7 @@ var FileHubAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context25.next = 4;
-                return got("".concat(FileHubAPI.url, "/batch/attach"), {
+                return (0, _got["default"])("".concat(FileHubAPI.url, "/batch/attach"), {
                   method: 'DELETE',
                   headers: {
                     fix_token: FileHubAPI.headerToken

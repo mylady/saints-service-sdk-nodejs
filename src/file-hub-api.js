@@ -1,8 +1,6 @@
-'use strict';
-
-const got = require('got').default,
-    httpProxy = require('http-proxy'),
-    proxy = httpProxy.createProxy();
+import got from 'got';
+import httpProxy from 'http-proxy';
+const proxy = httpProxy.createProxy();
 
 /*
     for upload file proxy,it uses nodejs default req&res object.

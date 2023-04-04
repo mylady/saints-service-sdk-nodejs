@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
@@ -15,7 +15,7 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var got = require('got')["default"];
+var _got = _interopRequireDefault(require("got"));
 
 var DeviceAPI = /*#__PURE__*/function () {
   function DeviceAPI() {
@@ -41,7 +41,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 4:
                 _context.next = 6;
-                return got("".concat(DeviceAPI.url, "/accesstoken"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
                   responseType: 'json'
@@ -79,7 +79,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context2.next = 5;
-                return got("".concat(DeviceAPI.url, "/commondevice"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commondevice"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -119,7 +119,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context3.next = 4;
-                return got("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -161,7 +161,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context4.next = 4;
-                return got("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commondevice/").concat(id), {
                   method: 'PUT',
                   json: value,
                   headers: {
@@ -205,7 +205,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return got("".concat(DeviceAPI.url, "/commonvideodevice"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -246,7 +246,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context6.next = 5;
-                return got("".concat(DeviceAPI.url, "/commonvideodevice/query"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice/query"), {
                   method: 'POST',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -286,7 +286,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return got("".concat(DeviceAPI.url, "/commonvideodevice/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -329,7 +329,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context8.next = 5;
-                return got("".concat(DeviceAPI.url, "/").concat(typeName), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -370,7 +370,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context9.next = 5;
-                return got("".concat(DeviceAPI.url, "/").concat(typeName, "/query"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/query"), {
                   method: 'POST',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -410,7 +410,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return got("".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -453,7 +453,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context11.next = 5;
-                return got("".concat(DeviceAPI.url, "/devicemodel"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicemodel"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -494,7 +494,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context12.next = 5;
-                return got("".concat(DeviceAPI.url, "/devicetag"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicetag"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -534,7 +534,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return got("".concat(DeviceAPI.url, "/stream/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stream/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -577,7 +577,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context14.next = 5;
-                return got("".concat(DeviceAPI.url, "/stream/address/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stream/address/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -617,7 +617,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return got("".concat(DeviceAPI.url, "/stats/device/status"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -659,7 +659,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context16.next = 4;
-                return got("".concat(DeviceAPI.url, "/stats/device/fault"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/fault"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -701,7 +701,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context17.next = 4;
-                return got("".concat(DeviceAPI.url, "/stats/device/category"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -744,7 +744,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context18.next = 5;
-                return got("".concat(DeviceAPI.url, "/stats/device/status"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -784,7 +784,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context19.next = 4;
-                return got("".concat(DeviceAPI.url, "/stats/tag/used"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
