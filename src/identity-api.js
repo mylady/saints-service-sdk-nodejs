@@ -314,60 +314,6 @@ export default class IdentityAPI {
         });
     }
 
-    async getByAccount(account) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/acount`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                account: account
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async getByMobile(mobile) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/mobile`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                mobile: mobile
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async getByIdNumber(idNumber) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/idnumber`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                id_number: idNumber
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
     async createFingerPrint(fingerPrint) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/fingerprint`, {
