@@ -314,6 +314,130 @@ export default class IdentityAPI {
         });
     }
 
+    async getByIdNumber(idNumber) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/idnumber`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                id_number: idNumber
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async createFingerPrint(fingerPrint) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/fingerprint`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: fingerPrint,
+            resolveBodyOnly: true,
+            responseType: 'json'
+        })
+    }
+
+    async getFingerPrints(userId) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/fingerprint`, {
+            method: 'GET',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                user_id: userId
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    //check
+    async checkAccount(account) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/check/account`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                account: account
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async checkMobile(mobile) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/check/mobile`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                mobile: mobile
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async checkEmail(email) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/check/email`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                email: email
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    async checkIDNumber(idNumber) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/check/idnumber`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                id_number: idNumber
+            },
+            resolveBodyOnly: true,
+            responseType: 'json'
+        });
+    }
+
+    //self
     async self(token) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/self`, {
@@ -347,7 +471,6 @@ export default class IdentityAPI {
         });
     }
 
-
     async passwordSelf(token, oldPwd, newPwd) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/self/password`, {
@@ -362,92 +485,6 @@ export default class IdentityAPI {
             json: {
                 old_pwd: oldPwd,
                 new_pwd: newPwd
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async getByIdNumber(idNumber) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/idnumber`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                id_number: idNumber
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async checkByID(id) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/checkid`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                id: id
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async checkByMobile(mobile) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/service/user/checkmobile`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: {
-                mobile: mobile
-            },
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    async createFingerPrint(fingerPrint) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/fingerprint`, {
-            method: 'POST',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            json: fingerPrint,
-            resolveBodyOnly: true,
-            responseType: 'json'
-        })
-    }
-
-    async getFingerPrints(userId) {
-        await this.getAccessToken();
-        return await got(`${IdentityAPI.url}/fingerprint`, {
-            method: 'GET',
-            headers: {
-                fix_token: IdentityAPI.headerToken
-            },
-            searchParams: {
-                access_token: this.accessToken,
-                user_id: userId
             },
             resolveBodyOnly: true,
             responseType: 'json'
