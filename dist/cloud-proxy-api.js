@@ -33,8 +33,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
     key: "getAccessToken",
     value: function () {
       var _getAccessToken = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var _res;
-
+        var res;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -55,8 +54,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 });
 
               case 6:
-                _res = _context.sent;
-                this.accessToken = _res.data;
+                res = _context.sent;
+                this.accessToken = res.data;
 
               case 8:
               case "end":
@@ -75,7 +74,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
   }, {
     key: "ocrBizLicense",
     value: function () {
-      var _ocrBizLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(type) {
+      var _ocrBizLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res, type) {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -100,7 +99,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function ocrBizLicense(_x) {
+      function ocrBizLicense(_x, _x2, _x3) {
         return _ocrBizLicense.apply(this, arguments);
       }
 
@@ -109,7 +108,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
   }, {
     key: "orcFoodSellLicense",
     value: function () {
-      var _orcFoodSellLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(type) {
+      var _orcFoodSellLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res, type) {
         return _regenerator["default"].wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -134,7 +133,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function orcFoodSellLicense(_x2) {
+      function orcFoodSellLicense(_x4, _x5, _x6) {
         return _orcFoodSellLicense.apply(this, arguments);
       }
 
@@ -173,7 +172,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function sendSms(_x3, _x4) {
+      function sendSms(_x7, _x8) {
         return _sendSms.apply(this, arguments);
       }
 
@@ -211,7 +210,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee5, this);
       }));
 
-      function mapSuggest(_x5, _x6) {
+      function mapSuggest(_x9, _x10) {
         return _mapSuggest.apply(this, arguments);
       }
 
@@ -249,7 +248,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee6, this);
       }));
 
-      function mapCordConvert(_x7, _x8) {
+      function mapCordConvert(_x11, _x12) {
         return _mapCordConvert.apply(this, arguments);
       }
 
@@ -287,7 +286,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee7, this);
       }));
 
-      function weather(_x9) {
+      function weather(_x13) {
         return _weather.apply(this, arguments);
       }
 
@@ -326,7 +325,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee8, this);
       }));
 
-      function importFace(_x10, _x11) {
+      function importFace(_x14, _x15) {
         return _importFace.apply(this, arguments);
       }
 
@@ -365,7 +364,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee9, this);
       }));
 
-      function searchFace(_x12, _x13) {
+      function searchFace(_x16, _x17) {
         return _searchFace.apply(this, arguments);
       }
 

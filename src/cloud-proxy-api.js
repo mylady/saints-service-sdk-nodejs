@@ -33,7 +33,7 @@ export default class CloudProxyAPI {
         }
     }
 
-    async ocrBizLicense(type) {
+    async ocrBizLicense(req, res, type) {
         await this.getAccessToken();
         req.url = `${CloudProxyAPI.url}/ocr/license/biz?access_token=${this.accessToken}&type_name=${type}`;
         proxy.web(req, res, {
@@ -44,7 +44,7 @@ export default class CloudProxyAPI {
         });
     }
 
-    async orcFoodSellLicense(type) {
+    async orcFoodSellLicense(req, res, type) {
         await this.getAccessToken();
         req.url = `${CloudProxyAPI.url}/ocr/license/foodsell?access_token=${this.accessToken}&type_name=${type}`;
         proxy.web(req, res, {
