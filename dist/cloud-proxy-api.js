@@ -33,7 +33,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
     key: "getAccessToken",
     value: function () {
       var _getAccessToken = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var res;
+        var _res;
+
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -54,8 +55,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 });
 
               case 6:
-                res = _context.sent;
-                this.accessToken = res.data;
+                _res = _context.sent;
+                this.accessToken = _res.data;
 
               case 8:
               case "end":
@@ -72,14 +73,82 @@ var CloudProxyAPI = /*#__PURE__*/function () {
       return getAccessToken;
     }()
   }, {
-    key: "sendSms",
+    key: "ocrBizLicense",
     value: function () {
-      var _sendSms = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(sms, type) {
+      var _ocrBizLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(type) {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                req.url = "".concat(CloudProxyAPI.url, "/ocr/license/biz?access_token=").concat(this.accessToken, "&type_name=").concat(type);
+                proxy.web(req, res, {
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  target: "".concat(CloudProxyAPI.host)
+                });
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function ocrBizLicense(_x) {
+        return _ocrBizLicense.apply(this, arguments);
+      }
+
+      return ocrBizLicense;
+    }()
+  }, {
+    key: "orcFoodSellLicense",
+    value: function () {
+      var _orcFoodSellLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(type) {
+        return _regenerator["default"].wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                req.url = "".concat(CloudProxyAPI.url, "/ocr/license/foodsell?access_token=").concat(this.accessToken, "&type_name=").concat(type);
+                proxy.web(req, res, {
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  target: "".concat(CloudProxyAPI.host)
+                });
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function orcFoodSellLicense(_x2) {
+        return _orcFoodSellLicense.apply(this, arguments);
+      }
+
+      return orcFoodSellLicense;
+    }()
+  }, {
+    key: "sendSms",
+    value: function () {
+      var _sendSms = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(sms, type) {
+        return _regenerator["default"].wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/sms"), {
                   method: 'POST',
                   headers: {
@@ -89,84 +158,6 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                     type_name: type
                   },
                   json: sms,
-                  resolveBodyOnly: true,
-                  responseType: 'json'
-                });
-
-              case 2:
-                return _context2.abrupt("return", _context2.sent);
-
-              case 3:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function sendSms(_x, _x2) {
-        return _sendSms.apply(this, arguments);
-      }
-
-      return sendSms;
-    }() //audio should be Buffer
-
-  }, {
-    key: "voiceCommand",
-    value: function () {
-      var _voiceCommand = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(audio, type) {
-        return _regenerator["default"].wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/voice/command"), {
-                  method: 'POST',
-                  headers: {
-                    fix_token: this.token
-                  },
-                  searchParams: {
-                    type_name: type
-                  },
-                  body: audio,
-                  resolveBodyOnly: true,
-                  responseType: 'json'
-                });
-
-              case 2:
-                return _context3.abrupt("return", _context3.sent);
-
-              case 3:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
-      function voiceCommand(_x3, _x4) {
-        return _voiceCommand.apply(this, arguments);
-      }
-
-      return voiceCommand;
-    }()
-  }, {
-    key: "mapSuggest",
-    value: function () {
-      var _mapSuggest = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(query, type) {
-        return _regenerator["default"].wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/suggest"), {
-                  method: 'GET',
-                  headers: {
-                    fix_token: this.token
-                  },
-                  searchParam: _objectSpread(_objectSpread({}, query), {}, {
-                    type_name: type
-                  }),
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -182,22 +173,22 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function mapSuggest(_x5, _x6) {
-        return _mapSuggest.apply(this, arguments);
+      function sendSms(_x3, _x4) {
+        return _sendSms.apply(this, arguments);
       }
 
-      return mapSuggest;
+      return sendSms;
     }()
   }, {
-    key: "mapCordConvert",
+    key: "mapSuggest",
     value: function () {
-      var _mapCordConvert = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(query, type) {
+      var _mapSuggest = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(query, type) {
         return _regenerator["default"].wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/coordconvert"), {
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/suggest"), {
                   method: 'GET',
                   headers: {
                     fix_token: this.token
@@ -220,29 +211,29 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee5, this);
       }));
 
-      function mapCordConvert(_x7, _x8) {
-        return _mapCordConvert.apply(this, arguments);
+      function mapSuggest(_x5, _x6) {
+        return _mapSuggest.apply(this, arguments);
       }
 
-      return mapCordConvert;
+      return mapSuggest;
     }()
   }, {
-    key: "weather",
+    key: "mapCordConvert",
     value: function () {
-      var _weather = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(type) {
+      var _mapCordConvert = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(query, type) {
         return _regenerator["default"].wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/weather"), {
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/coordconvert"), {
                   method: 'GET',
                   headers: {
                     fix_token: this.token
                   },
-                  searchParams: {
+                  searchParam: _objectSpread(_objectSpread({}, query), {}, {
                     type_name: type
-                  },
+                  }),
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -258,30 +249,29 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee6, this);
       }));
 
-      function weather(_x9) {
-        return _weather.apply(this, arguments);
+      function mapCordConvert(_x7, _x8) {
+        return _mapCordConvert.apply(this, arguments);
       }
 
-      return weather;
+      return mapCordConvert;
     }()
   }, {
-    key: "importFace",
+    key: "weather",
     value: function () {
-      var _importFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(face, type) {
+      var _weather = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(type) {
         return _regenerator["default"].wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
                 _context7.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/import"), {
-                  method: 'POST',
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/weather"), {
+                  method: 'GET',
                   headers: {
                     fix_token: this.token
                   },
                   searchParams: {
                     type_name: type
                   },
-                  json: face,
                   resolveBodyOnly: true,
                   responseType: 'json'
                 });
@@ -297,22 +287,22 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee7, this);
       }));
 
-      function importFace(_x10, _x11) {
-        return _importFace.apply(this, arguments);
+      function weather(_x9) {
+        return _weather.apply(this, arguments);
       }
 
-      return importFace;
+      return weather;
     }()
   }, {
-    key: "searchFace",
+    key: "importFace",
     value: function () {
-      var _searchFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(face, type) {
+      var _importFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(face, type) {
         return _regenerator["default"].wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 _context8.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/search"), {
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/import"), {
                   method: 'POST',
                   headers: {
                     fix_token: this.token
@@ -336,6 +326,45 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee8, this);
       }));
 
+      function importFace(_x10, _x11) {
+        return _importFace.apply(this, arguments);
+      }
+
+      return importFace;
+    }()
+  }, {
+    key: "searchFace",
+    value: function () {
+      var _searchFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(face, type) {
+        return _regenerator["default"].wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/search"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: this.token
+                  },
+                  searchParams: {
+                    type_name: type
+                  },
+                  json: face,
+                  resolveBodyOnly: true,
+                  responseType: 'json'
+                });
+
+              case 2:
+                return _context9.abrupt("return", _context9.sent);
+
+              case 3:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
       function searchFace(_x12, _x13) {
         return _searchFace.apply(this, arguments);
       }
@@ -357,6 +386,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         CloudProxyAPI.url = url;
       }
 
+      CloudProxyAPI.host = CloudProxyAPI.url.replace('/rest', '');
       CloudProxyAPI.headerToken = token;
     }
   }]);

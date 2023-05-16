@@ -16,6 +16,7 @@ export default class CloudProxyAPI {
             CloudProxyAPI.url = url;
         }
 
+        CloudProxyAPI.host = CloudProxyAPI.url.replace('/rest', '');
         CloudProxyAPI.headerToken = token;
     }
 
@@ -32,6 +33,28 @@ export default class CloudProxyAPI {
         }
     }
 
+    async ocrBizLicense(type) {
+        await this.getAccessToken();
+        req.url = `${CloudProxyAPI.url}/ocr/license/biz?access_token=${this.accessToken}&type_name=${type}`;
+        proxy.web(req, res, {
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            target: `${CloudProxyAPI.host}`
+        });
+    }
+
+    async orcFoodSellLicense(type) {
+        await this.getAccessToken();
+        req.url = `${CloudProxyAPI.url}/ocr/license/foodsell?access_token=${this.accessToken}&type_name=${type}`;
+        proxy.web(req, res, {
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            target: `${CloudProxyAPI.host}`
+        });
+    }
+
     async sendSms(sms, type) {
         return await got(`${CloudProxyAPI.url}/sms`, {
             method: 'POST',
@@ -42,22 +65,6 @@ export default class CloudProxyAPI {
                 type_name: type
             },
             json: sms,
-            resolveBodyOnly: true,
-            responseType: 'json'
-        });
-    }
-
-    //audio should be Buffer
-    async voiceCommand(audio, type) {
-        return await got(`${CloudProxyAPI.url}/voice/command`, {
-            method: 'POST',
-            headers: {
-                fix_token: this.token
-            },
-            searchParams: {
-                type_name: type
-            },
-            body: audio,
             resolveBodyOnly: true,
             responseType: 'json'
         });
