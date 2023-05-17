@@ -44,7 +44,7 @@ export default class CloudProxyAPI {
         });
     }
 
-    async orcFoodSellLicense(req, res, type) {
+    async ocrFoodSellLicense(req, res, type) {
         await this.getAccessToken();
         req.url = `${CloudProxyAPI.url}/ocr/license/foodsell?access_token=${this.accessToken}&type_name=${type}`;
         proxy.web(req, res, {

@@ -106,9 +106,9 @@ var CloudProxyAPI = /*#__PURE__*/function () {
       return ocrBizLicense;
     }()
   }, {
-    key: "orcFoodSellLicense",
+    key: "ocrFoodSellLicense",
     value: function () {
-      var _orcFoodSellLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res, type) {
+      var _ocrFoodSellLicense = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res, type) {
         return _regenerator["default"].wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -133,11 +133,11 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function orcFoodSellLicense(_x4, _x5, _x6) {
-        return _orcFoodSellLicense.apply(this, arguments);
+      function ocrFoodSellLicense(_x4, _x5, _x6) {
+        return _ocrFoodSellLicense.apply(this, arguments);
       }
 
-      return orcFoodSellLicense;
+      return ocrFoodSellLicense;
     }()
   }, {
     key: "sendSms",
