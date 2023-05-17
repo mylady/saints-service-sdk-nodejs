@@ -1,4 +1,6 @@
 import got from 'got';
+import httpProxy from 'http-proxy';
+const proxy = httpProxy.createProxy();
 
 export default class CloudProxyAPI {
     constructor() {
