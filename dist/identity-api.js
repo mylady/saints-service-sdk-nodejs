@@ -44,7 +44,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 6:
@@ -87,7 +88,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -130,7 +132,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   json: idArray,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -175,7 +178,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     id: id
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -220,7 +224,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     mobile: mobile
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -263,7 +268,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   json: user,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -306,7 +312,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   json: user,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -352,7 +359,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     pwd: pwd
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -397,7 +405,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     content: txt
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -442,7 +451,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     content: txt
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -487,7 +497,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     content: txt
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -533,7 +544,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     content: txt
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -579,7 +591,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     user_pwd: pwd
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -624,7 +637,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     id_number: idNumber
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -669,7 +683,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     finger_print: fingerPrint
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -714,7 +729,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     id: id
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -759,7 +775,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     token: token
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -802,7 +819,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   json: fingerPrint,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -845,7 +863,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     user_id: userId
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -891,7 +910,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     account: account
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -936,7 +956,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     mobile: mobile
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -981,7 +1002,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     email: email
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -1026,7 +1048,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     id_number: idNumber
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -1070,7 +1093,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -1114,7 +1138,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                   },
                   json: self,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -1161,7 +1186,8 @@ var IdentityAPI = /*#__PURE__*/function () {
                     new_pwd: newPwd
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:

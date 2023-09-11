@@ -44,7 +44,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(DeviceAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 6:
@@ -86,7 +87,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -128,7 +130,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -171,7 +174,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -212,7 +216,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -253,7 +258,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   json: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -295,7 +301,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -336,7 +343,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -377,7 +385,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   json: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -419,7 +428,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -460,7 +470,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -501,7 +512,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -543,7 +555,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -585,7 +598,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -627,7 +641,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -669,7 +684,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -710,7 +726,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -752,7 +769,8 @@ var DeviceAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:

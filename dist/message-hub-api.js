@@ -44,7 +44,8 @@ var MessageHubAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(MessageHubAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 6:
@@ -86,7 +87,8 @@ var MessageHubAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:

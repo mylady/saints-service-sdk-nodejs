@@ -169,7 +169,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                   },
                   json: sms,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:
@@ -209,7 +210,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                     type_name: type
                   }),
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:
@@ -249,7 +251,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                     type_name: type
                   }),
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:
@@ -288,7 +291,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                     type_name: type
                   },
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:
@@ -328,7 +332,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                   },
                   json: face,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:
@@ -368,7 +373,8 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                   },
                   json: face,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 2:

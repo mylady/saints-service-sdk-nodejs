@@ -44,7 +44,8 @@ var LogAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(LogAPI.url, "/accesstoken"), {
                   method: 'POST',
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 6:
@@ -88,7 +89,8 @@ var LogAPI = /*#__PURE__*/function () {
                   },
                   json: log,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -129,7 +131,8 @@ var LogAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:
@@ -172,7 +175,8 @@ var LogAPI = /*#__PURE__*/function () {
                   },
                   json: log,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 4:
@@ -213,7 +217,8 @@ var LogAPI = /*#__PURE__*/function () {
                   },
                   searchParams: query,
                   resolveBodyOnly: true,
-                  responseType: 'json'
+                  responseType: 'json',
+                  throwHttpErrors: false
                 });
 
               case 5:

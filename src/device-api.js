@@ -26,7 +26,8 @@ export default class DeviceAPI {
             let res = await got(`${DeviceAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -42,7 +43,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -57,7 +59,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -73,7 +76,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -87,7 +91,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -101,7 +106,8 @@ export default class DeviceAPI {
             },
             json: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -116,7 +122,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -130,7 +137,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -144,7 +152,8 @@ export default class DeviceAPI {
             },
             json: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -159,7 +168,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -173,7 +183,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -187,7 +198,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -202,7 +214,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -217,7 +230,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -232,7 +246,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -247,7 +262,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -261,7 +277,8 @@ export default class DeviceAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -276,7 +293,8 @@ export default class DeviceAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

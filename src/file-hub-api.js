@@ -35,7 +35,8 @@ export default class FileHubAPI {
             let res = await got(`${FileHubAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -86,7 +87,8 @@ export default class FileHubAPI {
             },
             json: search,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -101,7 +103,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -117,7 +120,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -131,7 +135,8 @@ export default class FileHubAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -146,7 +151,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -162,7 +168,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -199,7 +206,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -214,7 +222,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -230,7 +239,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -244,7 +254,8 @@ export default class FileHubAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -259,7 +270,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -275,7 +287,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -312,7 +325,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -328,7 +342,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -342,7 +357,8 @@ export default class FileHubAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -357,7 +373,8 @@ export default class FileHubAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -373,7 +390,8 @@ export default class FileHubAPI {
             },
             json: ids,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

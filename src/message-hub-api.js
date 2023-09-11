@@ -26,7 +26,8 @@ export default class MessageHubAPI {
             let res = await got(`${MessageHubAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -42,7 +43,8 @@ export default class MessageHubAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

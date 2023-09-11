@@ -26,7 +26,8 @@ export default class EventAPI {
             let res = await got(`${EventAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -42,7 +43,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -56,7 +58,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -70,7 +73,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -84,7 +88,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -100,7 +105,8 @@ export default class EventAPI {
             },
             json: data,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -116,7 +122,8 @@ export default class EventAPI {
             },
             json: data,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -130,7 +137,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -144,7 +152,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -158,7 +167,8 @@ export default class EventAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

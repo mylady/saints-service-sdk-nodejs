@@ -26,7 +26,8 @@ export default class LogAPI {
             let res = await got(`${LogAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -44,7 +45,8 @@ export default class LogAPI {
             },
             json: log,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -58,7 +60,8 @@ export default class LogAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -74,7 +77,8 @@ export default class LogAPI {
             },
             json: log,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -88,7 +92,8 @@ export default class LogAPI {
             },
             searchParams: query,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

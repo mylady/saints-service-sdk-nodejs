@@ -26,7 +26,8 @@ export default class IdentityAPI {
             let res = await got(`${IdentityAPI.url}/accesstoken`, {
                 method: 'POST',
                 resolveBodyOnly: true,
-                responseType: 'json'
+                responseType: 'json',
+                throwHttpErrors: false
             });
             this.accessToken = res.data;
         }
@@ -43,7 +44,8 @@ export default class IdentityAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -59,7 +61,8 @@ export default class IdentityAPI {
             },
             json: idArray,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -77,7 +80,8 @@ export default class IdentityAPI {
                 id: id
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -95,7 +99,8 @@ export default class IdentityAPI {
                 mobile: mobile
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -111,7 +116,8 @@ export default class IdentityAPI {
             },
             json: user,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -127,7 +133,8 @@ export default class IdentityAPI {
             },
             json: user,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -146,7 +153,8 @@ export default class IdentityAPI {
                 pwd: pwd
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -164,7 +172,8 @@ export default class IdentityAPI {
                 content: txt,
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -182,7 +191,8 @@ export default class IdentityAPI {
                 content: txt
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -200,7 +210,8 @@ export default class IdentityAPI {
                 content: txt
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -219,7 +230,8 @@ export default class IdentityAPI {
                 content: txt
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -238,7 +250,8 @@ export default class IdentityAPI {
                 user_pwd: pwd
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -256,7 +269,8 @@ export default class IdentityAPI {
                 id_number: idNumber
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -274,7 +288,8 @@ export default class IdentityAPI {
                 finger_print: fingerPrint
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -292,7 +307,8 @@ export default class IdentityAPI {
                 id: id
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -310,7 +326,8 @@ export default class IdentityAPI {
                 token: token
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -326,7 +343,8 @@ export default class IdentityAPI {
             },
             json: fingerPrint,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         })
     }
 
@@ -342,7 +360,8 @@ export default class IdentityAPI {
                 user_id: userId
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -361,7 +380,8 @@ export default class IdentityAPI {
                 account: account
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -379,7 +399,8 @@ export default class IdentityAPI {
                 mobile: mobile
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -397,7 +418,8 @@ export default class IdentityAPI {
                 email: email
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -415,7 +437,8 @@ export default class IdentityAPI {
                 id_number: idNumber
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -432,7 +455,8 @@ export default class IdentityAPI {
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -449,7 +473,8 @@ export default class IdentityAPI {
             },
             json: self,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -469,7 +494,8 @@ export default class IdentityAPI {
                 new_pwd: newPwd
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }

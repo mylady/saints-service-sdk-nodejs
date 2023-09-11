@@ -75,7 +75,8 @@ export default class CloudProxyAPI {
             },
             json: sms,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -91,7 +92,8 @@ export default class CloudProxyAPI {
                 type_name: type
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -107,7 +109,8 @@ export default class CloudProxyAPI {
                 type_name: type
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -122,7 +125,8 @@ export default class CloudProxyAPI {
                 type_name: type
             },
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -138,7 +142,8 @@ export default class CloudProxyAPI {
             },
             json: face,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 
@@ -152,9 +157,11 @@ export default class CloudProxyAPI {
                 access_token: this.accessToken,
                 type_name: type
             },
+            
             json: face,
             resolveBodyOnly: true,
-            responseType: 'json'
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }
