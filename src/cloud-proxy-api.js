@@ -42,6 +42,9 @@ export default class CloudProxyAPI {
             headers: {
                 fix_token: CloudProxyAPI.headerToken
             },
+            searchParams: {
+                access_token: this.accessToken
+            },
             target: `${CloudProxyAPI.host}`
         });
     }
@@ -53,6 +56,9 @@ export default class CloudProxyAPI {
             headers: {
                 fix_token: CloudProxyAPI.headerToken
             },
+            searchParams: {
+                access_token: this.accessToken
+            },
             target: `${CloudProxyAPI.host}`
         });
     }
@@ -61,9 +67,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/sms`, {
             method: 'POST',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParams: {
+                access_token: this.accessToken,
                 type_name: type
             },
             json: sms,
@@ -76,9 +83,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/map/suggest`, {
             method: 'GET',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParam: {
+                access_token: this.accessToken,
                 ...query,
                 type_name: type
             },
@@ -91,9 +99,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/map/coordconvert`, {
             method: 'GET',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParam: {
+                access_token: this.accessToken,
                 ...query,
                 type_name: type
             },
@@ -106,9 +115,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/weather`, {
             method: 'GET',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParams: {
+                access_token: this.accessToken,
                 type_name: type
             },
             resolveBodyOnly: true,
@@ -120,9 +130,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/face/import`, {
             method: 'POST',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParams: {
+                access_token: this.accessToken,
                 type_name: type
             },
             json: face,
@@ -135,9 +146,10 @@ export default class CloudProxyAPI {
         return await got(`${CloudProxyAPI.url}/face/search`, {
             method: 'POST',
             headers: {
-                fix_token: this.token
+                fix_token: CloudProxyAPI.headerToken
             },
             searchParams: {
+                access_token: this.accessToken,
                 type_name: type
             },
             json: face,

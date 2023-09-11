@@ -92,6 +92,9 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: CloudProxyAPI.headerToken
                   },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
                   target: "".concat(CloudProxyAPI.host)
                 });
 
@@ -126,6 +129,9 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: CloudProxyAPI.headerToken
                   },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
                   target: "".concat(CloudProxyAPI.host)
                 });
 
@@ -155,9 +161,10 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/sms"), {
                   method: 'POST',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
                   searchParams: {
+                    access_token: this.accessToken,
                     type_name: type
                   },
                   json: sms,
@@ -194,9 +201,11 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/suggest"), {
                   method: 'GET',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
-                  searchParam: _objectSpread(_objectSpread({}, query), {}, {
+                  searchParam: _objectSpread(_objectSpread({
+                    access_token: this.accessToken
+                  }, query), {}, {
                     type_name: type
                   }),
                   resolveBodyOnly: true,
@@ -232,9 +241,11 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/map/coordconvert"), {
                   method: 'GET',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
-                  searchParam: _objectSpread(_objectSpread({}, query), {}, {
+                  searchParam: _objectSpread(_objectSpread({
+                    access_token: this.accessToken
+                  }, query), {}, {
                     type_name: type
                   }),
                   resolveBodyOnly: true,
@@ -270,9 +281,10 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/weather"), {
                   method: 'GET',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
                   searchParams: {
+                    access_token: this.accessToken,
                     type_name: type
                   },
                   resolveBodyOnly: true,
@@ -308,9 +320,10 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/import"), {
                   method: 'POST',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
                   searchParams: {
+                    access_token: this.accessToken,
                     type_name: type
                   },
                   json: face,
@@ -347,9 +360,10 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                 return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/search"), {
                   method: 'POST',
                   headers: {
-                    fix_token: this.token
+                    fix_token: CloudProxyAPI.headerToken
                   },
                   searchParams: {
+                    access_token: this.accessToken,
                     type_name: type
                   },
                   json: face,
