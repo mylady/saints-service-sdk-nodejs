@@ -93,6 +93,21 @@ export default class EventAPI {
         });
     }
 
+    async getAlarmEventBySerial(serial) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${EventAPI.url}/device/alarm/${serial}`, {
+            method: 'GET',
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async processAlarm(serial, data) {
         await this.getAccessToken();
         return await got(`${EventAPI.url}/device/alarm/${serial}`, {
