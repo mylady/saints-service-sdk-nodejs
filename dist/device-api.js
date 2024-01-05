@@ -196,9 +196,9 @@ var DeviceAPI = /*#__PURE__*/function () {
       return updateCommonDevice;
     }()
   }, {
-    key: "getCommonVideoDevice",
+    key: "getTypeDevice",
     value: function () {
-      var _getCommonVideoDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(query) {
+      var _getTypeDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(typeName, query) {
         return _regenerator["default"].wrap(function _callee5$(_context5) {
           while (1) {
             switch (_context5.prev = _context5.next) {
@@ -209,7 +209,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context5.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -231,16 +231,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee5, this);
       }));
 
-      function getCommonVideoDevice(_x5) {
-        return _getCommonVideoDevice.apply(this, arguments);
+      function getTypeDevice(_x5, _x6) {
+        return _getTypeDevice.apply(this, arguments);
       }
 
-      return getCommonVideoDevice;
+      return getTypeDevice;
     }()
   }, {
-    key: "queryCommonVideoDevice",
+    key: "queryTypeDevice",
     value: function () {
-      var _queryCommonVideoDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(query) {
+      var _queryTypeDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(typeName, query) {
         return _regenerator["default"].wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
@@ -251,7 +251,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context6.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice/query"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/query"), {
                   method: 'POST',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -273,16 +273,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee6, this);
       }));
 
-      function queryCommonVideoDevice(_x6) {
-        return _queryCommonVideoDevice.apply(this, arguments);
+      function queryTypeDevice(_x7, _x8) {
+        return _queryTypeDevice.apply(this, arguments);
       }
 
-      return queryCommonVideoDevice;
+      return queryTypeDevice;
     }()
   }, {
-    key: "getCommonVideoDeviceById",
+    key: "getTypeDeviceById",
     value: function () {
-      var _getCommonVideoDeviceById = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(id) {
+      var _getTypeDeviceById = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(typeName, id) {
         return _regenerator["default"].wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
@@ -292,7 +292,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/commonvideodevice/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -316,16 +316,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee7, this);
       }));
 
-      function getCommonVideoDeviceById(_x7) {
-        return _getCommonVideoDeviceById.apply(this, arguments);
+      function getTypeDeviceById(_x9, _x10) {
+        return _getTypeDeviceById.apply(this, arguments);
       }
 
-      return getCommonVideoDeviceById;
+      return getTypeDeviceById;
     }()
   }, {
-    key: "getTypeDevice",
+    key: "getDeviceModel",
     value: function () {
-      var _getTypeDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(typeName, query) {
+      var _getDeviceModel = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(query) {
         return _regenerator["default"].wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
@@ -336,7 +336,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context8.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicemodel"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -358,16 +358,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee8, this);
       }));
 
-      function getTypeDevice(_x8, _x9) {
-        return _getTypeDevice.apply(this, arguments);
+      function getDeviceModel(_x11) {
+        return _getDeviceModel.apply(this, arguments);
       }
 
-      return getTypeDevice;
+      return getDeviceModel;
     }()
   }, {
-    key: "queryTypeDevice",
+    key: "getDeviceTag",
     value: function () {
-      var _queryTypeDevice = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(typeName, query) {
+      var _getDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(query) {
         return _regenerator["default"].wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
@@ -378,12 +378,12 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context9.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/query"), {
-                  method: 'POST',
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicetag"), {
+                  method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  json: query,
+                  searchParams: query,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -400,16 +400,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee9, this);
       }));
 
-      function queryTypeDevice(_x10, _x11) {
-        return _queryTypeDevice.apply(this, arguments);
+      function getDeviceTag(_x12) {
+        return _getDeviceTag.apply(this, arguments);
       }
 
-      return queryTypeDevice;
+      return getDeviceTag;
     }()
   }, {
-    key: "getTypeDeviceById",
+    key: "getStreamAddress",
     value: function () {
-      var _getTypeDeviceById = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(typeName, id) {
+      var _getStreamAddress = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(id) {
         return _regenerator["default"].wrap(function _callee10$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
@@ -419,7 +419,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/").concat(typeName, "/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stream/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -443,16 +443,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee10, this);
       }));
 
-      function getTypeDeviceById(_x12, _x13) {
-        return _getTypeDeviceById.apply(this, arguments);
+      function getStreamAddress(_x13) {
+        return _getStreamAddress.apply(this, arguments);
       }
 
-      return getTypeDeviceById;
+      return getStreamAddress;
     }()
   }, {
-    key: "getDeviceModel",
+    key: "statsDeviceStatus",
     value: function () {
-      var _getDeviceModel = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(query) {
+      var _statsDeviceStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11() {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
@@ -461,23 +461,24 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context11.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicemodel"), {
+                _context11.next = 4;
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: query,
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
                 });
 
-              case 5:
+              case 4:
                 return _context11.abrupt("return", _context11.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context11.stop();
             }
@@ -485,16 +486,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function getDeviceModel(_x14) {
-        return _getDeviceModel.apply(this, arguments);
+      function statsDeviceStatus() {
+        return _statsDeviceStatus.apply(this, arguments);
       }
 
-      return getDeviceModel;
+      return statsDeviceStatus;
     }()
   }, {
-    key: "getDeviceTag",
+    key: "statsDeviceFault",
     value: function () {
-      var _getDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(query) {
+      var _statsDeviceFault = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12() {
         return _regenerator["default"].wrap(function _callee12$(_context12) {
           while (1) {
             switch (_context12.prev = _context12.next) {
@@ -503,23 +504,24 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                query['access_token'] = this.accessToken;
-                _context12.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/devicetag"), {
+                _context12.next = 4;
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/fault"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: query,
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
                 });
 
-              case 5:
+              case 4:
                 return _context12.abrupt("return", _context12.sent);
 
-              case 6:
+              case 5:
               case "end":
                 return _context12.stop();
             }
@@ -527,16 +529,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee12, this);
       }));
 
-      function getDeviceTag(_x15) {
-        return _getDeviceTag.apply(this, arguments);
+      function statsDeviceFault() {
+        return _statsDeviceFault.apply(this, arguments);
       }
 
-      return getDeviceTag;
+      return statsDeviceFault;
     }()
   }, {
-    key: "getStreamAddress",
+    key: "statsDeviceCategory",
     value: function () {
-      var _getStreamAddress = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(id) {
+      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13() {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -546,7 +548,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stream/").concat(id), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -570,16 +572,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
-      function getStreamAddress(_x16) {
-        return _getStreamAddress.apply(this, arguments);
+      function statsDeviceCategory() {
+        return _statsDeviceCategory.apply(this, arguments);
       }
 
-      return getStreamAddress;
+      return statsDeviceCategory;
     }()
   }, {
-    key: "statsDeviceStatus",
+    key: "statsDeviceTag",
     value: function () {
-      var _statsDeviceStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14() {
+      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
         return _regenerator["default"].wrap(function _callee14$(_context14) {
           while (1) {
             switch (_context14.prev = _context14.next) {
@@ -588,24 +590,23 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context14.next = 4;
+                query['access_token'] = this.accessToken;
+                _context14.next = 5;
                 return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
+                  searchParams: query,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
                 });
 
-              case 4:
+              case 5:
                 return _context14.abrupt("return", _context14.sent);
 
-              case 5:
+              case 6:
               case "end":
                 return _context14.stop();
             }
@@ -613,16 +614,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee14, this);
       }));
 
-      function statsDeviceStatus() {
-        return _statsDeviceStatus.apply(this, arguments);
+      function statsDeviceTag(_x14) {
+        return _statsDeviceTag.apply(this, arguments);
       }
 
-      return statsDeviceStatus;
+      return statsDeviceTag;
     }()
   }, {
-    key: "statsDeviceFault",
+    key: "statsTagUsed",
     value: function () {
-      var _statsDeviceFault = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15() {
+      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15() {
         return _regenerator["default"].wrap(function _callee15$(_context15) {
           while (1) {
             switch (_context15.prev = _context15.next) {
@@ -632,7 +633,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context15.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/fault"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -654,134 +655,6 @@ var DeviceAPI = /*#__PURE__*/function () {
             }
           }
         }, _callee15, this);
-      }));
-
-      function statsDeviceFault() {
-        return _statsDeviceFault.apply(this, arguments);
-      }
-
-      return statsDeviceFault;
-    }()
-  }, {
-    key: "statsDeviceCategory",
-    value: function () {
-      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16() {
-        return _regenerator["default"].wrap(function _callee16$(_context16) {
-          while (1) {
-            switch (_context16.prev = _context16.next) {
-              case 0:
-                _context16.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context16.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
-                  method: 'GET',
-                  headers: {
-                    fix_token: DeviceAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 4:
-                return _context16.abrupt("return", _context16.sent);
-
-              case 5:
-              case "end":
-                return _context16.stop();
-            }
-          }
-        }, _callee16, this);
-      }));
-
-      function statsDeviceCategory() {
-        return _statsDeviceCategory.apply(this, arguments);
-      }
-
-      return statsDeviceCategory;
-    }()
-  }, {
-    key: "statsDeviceTag",
-    value: function () {
-      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(query) {
-        return _regenerator["default"].wrap(function _callee17$(_context17) {
-          while (1) {
-            switch (_context17.prev = _context17.next) {
-              case 0:
-                _context17.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                query['access_token'] = this.accessToken;
-                _context17.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
-                  method: 'GET',
-                  headers: {
-                    fix_token: DeviceAPI.headerToken
-                  },
-                  searchParams: query,
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 5:
-                return _context17.abrupt("return", _context17.sent);
-
-              case 6:
-              case "end":
-                return _context17.stop();
-            }
-          }
-        }, _callee17, this);
-      }));
-
-      function statsDeviceTag(_x17) {
-        return _statsDeviceTag.apply(this, arguments);
-      }
-
-      return statsDeviceTag;
-    }()
-  }, {
-    key: "statsTagUsed",
-    value: function () {
-      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18() {
-        return _regenerator["default"].wrap(function _callee18$(_context18) {
-          while (1) {
-            switch (_context18.prev = _context18.next) {
-              case 0:
-                _context18.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context18.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
-                  method: 'GET',
-                  headers: {
-                    fix_token: DeviceAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 4:
-                return _context18.abrupt("return", _context18.sent);
-
-              case 5:
-              case "end":
-                return _context18.stop();
-            }
-          }
-        }, _callee18, this);
       }));
 
       function statsTagUsed() {
