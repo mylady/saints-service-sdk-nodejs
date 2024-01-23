@@ -48,6 +48,21 @@ export default class DeviceAPI {
         });
     }
 
+    async queryCommonDevice(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/commondevice/query`, {
+            method: 'POST',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async getCommonDeviceById(id) {
         await this.getAccessToken();
         return await got(`${DeviceAPI.url}/commondevice/${id}`, {
