@@ -9,6 +9,8 @@ exports["default"] = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
@@ -16,6 +18,10 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var _got = _interopRequireDefault(require("got"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var IdentityAPI = /*#__PURE__*/function () {
   function IdentityAPI() {
@@ -69,7 +75,7 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "getUsers",
     value: function () {
-      var _getUsers = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2() {
+      var _getUsers = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(query) {
         return _regenerator["default"].wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -84,9 +90,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
-                  searchParams: {
+                  searchParams: _objectSpread(_objectSpread({}, query), {}, {
                     access_token: this.accessToken
-                  },
+                  }),
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -103,7 +109,7 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function getUsers() {
+      function getUsers(_x) {
         return _getUsers.apply(this, arguments);
       }
 
@@ -147,7 +153,7 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function getUserWithIds(_x) {
+      function getUserWithIds(_x2) {
         return _getUserWithIds.apply(this, arguments);
       }
 
@@ -193,7 +199,7 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function getUserWithId(_x2) {
+      function getUserWithId(_x3) {
         return _getUserWithId.apply(this, arguments);
       }
 
@@ -239,16 +245,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee5, this);
       }));
 
-      function getUserWithMobile(_x3) {
+      function getUserWithMobile(_x4) {
         return _getUserWithMobile.apply(this, arguments);
       }
 
       return getUserWithMobile;
     }()
   }, {
-    key: "createUser",
+    key: "getUserWithNumber",
     value: function () {
-      var _createUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(user) {
+      var _getUserWithNumber = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(number) {
         return _regenerator["default"].wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
@@ -258,7 +264,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context6.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/number"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -266,7 +272,9 @@ var IdentityAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: user,
+                  json: {
+                    number: number
+                  },
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -283,16 +291,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee6, this);
       }));
 
-      function createUser(_x4) {
-        return _createUser.apply(this, arguments);
+      function getUserWithNumber(_x5) {
+        return _getUserWithNumber.apply(this, arguments);
       }
 
-      return createUser;
+      return getUserWithNumber;
     }()
   }, {
-    key: "updateUser",
+    key: "createUser",
     value: function () {
-      var _updateUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(id, user) {
+      var _createUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(user) {
         return _regenerator["default"].wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
@@ -302,8 +310,8 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context7.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/").concat(id), {
-                  method: 'PUT',
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user"), {
+                  method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
@@ -327,16 +335,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee7, this);
       }));
 
-      function updateUser(_x5, _x6) {
-        return _updateUser.apply(this, arguments);
+      function createUser(_x6) {
+        return _createUser.apply(this, arguments);
       }
 
-      return updateUser;
+      return createUser;
     }()
   }, {
-    key: "passwordReset",
+    key: "updateUser",
     value: function () {
-      var _passwordReset = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(uid, pwd) {
+      var _updateUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee8(id, user) {
         return _regenerator["default"].wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
@@ -346,6 +354,50 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context8.next = 4;
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/").concat(id), {
+                  method: 'PUT',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: user,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 4:
+                return _context8.abrupt("return", _context8.sent);
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function updateUser(_x7, _x8) {
+        return _updateUser.apply(this, arguments);
+      }
+
+      return updateUser;
+    }()
+  }, {
+    key: "passwordReset",
+    value: function () {
+      var _passwordReset = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(uid, pwd) {
+        return _regenerator["default"].wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context9.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/password"), {
                   method: 'POST',
                   headers: {
@@ -364,52 +416,6 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context8.abrupt("return", _context8.sent);
-
-              case 5:
-              case "end":
-                return _context8.stop();
-            }
-          }
-        }, _callee8, this);
-      }));
-
-      function passwordReset(_x7, _x8) {
-        return _passwordReset.apply(this, arguments);
-      }
-
-      return passwordReset;
-    }()
-  }, {
-    key: "encrypt",
-    value: function () {
-      var _encrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee9(txt) {
-        return _regenerator["default"].wrap(function _callee9$(_context9) {
-          while (1) {
-            switch (_context9.prev = _context9.next) {
-              case 0:
-                _context9.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context9.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/encrypt"), {
-                  method: 'POST',
-                  headers: {
-                    fix_token: IdentityAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  json: {
-                    content: txt
-                  },
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 4:
                 return _context9.abrupt("return", _context9.sent);
 
               case 5:
@@ -420,16 +426,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee9, this);
       }));
 
-      function encrypt(_x9) {
-        return _encrypt.apply(this, arguments);
+      function passwordReset(_x9, _x10) {
+        return _passwordReset.apply(this, arguments);
       }
 
-      return encrypt;
+      return passwordReset;
     }()
   }, {
-    key: "descrypt",
+    key: "encrypt",
     value: function () {
-      var _descrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(txt) {
+      var _encrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(txt) {
         return _regenerator["default"].wrap(function _callee10$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
@@ -439,7 +445,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context10.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/decrypt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/encrypt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -466,16 +472,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee10, this);
       }));
 
-      function descrypt(_x10) {
-        return _descrypt.apply(this, arguments);
+      function encrypt(_x11) {
+        return _encrypt.apply(this, arguments);
       }
 
-      return descrypt;
+      return encrypt;
     }()
   }, {
-    key: "signTxt",
+    key: "descrypt",
     value: function () {
-      var _signTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(txt) {
+      var _descrypt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(txt) {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
@@ -485,7 +491,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context11.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/sign/txt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/decrypt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -512,16 +518,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function signTxt(_x11) {
-        return _signTxt.apply(this, arguments);
+      function descrypt(_x12) {
+        return _descrypt.apply(this, arguments);
       }
 
-      return signTxt;
+      return descrypt;
     }()
   }, {
-    key: "verifyTxt",
+    key: "signTxt",
     value: function () {
-      var _verifyTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(sign, txt) {
+      var _signTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(txt) {
         return _regenerator["default"].wrap(function _callee12$(_context12) {
           while (1) {
             switch (_context12.prev = _context12.next) {
@@ -531,7 +537,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context12.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/verify/txt"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/sign/txt"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -540,7 +546,6 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: {
-                    sign: sign,
                     content: txt
                   },
                   resolveBodyOnly: true,
@@ -559,16 +564,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee12, this);
       }));
 
-      function verifyTxt(_x12, _x13) {
-        return _verifyTxt.apply(this, arguments);
+      function signTxt(_x13) {
+        return _signTxt.apply(this, arguments);
       }
 
-      return verifyTxt;
+      return signTxt;
     }()
   }, {
-    key: "login",
+    key: "verifyTxt",
     value: function () {
-      var _login = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(uname, pwd) {
+      var _verifyTxt = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(sign, txt) {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -578,6 +583,53 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/security/verify/txt"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: {
+                    sign: sign,
+                    content: txt
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 4:
+                return _context13.abrupt("return", _context13.sent);
+
+              case 5:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this);
+      }));
+
+      function verifyTxt(_x14, _x15) {
+        return _verifyTxt.apply(this, arguments);
+      }
+
+      return verifyTxt;
+    }()
+  }, {
+    key: "login",
+    value: function () {
+      var _login = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(uname, pwd) {
+        return _regenerator["default"].wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context14.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login"), {
                   method: 'POST',
                   headers: {
@@ -596,17 +648,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context13.abrupt("return", _context13.sent);
+                return _context14.abrupt("return", _context14.sent);
 
               case 5:
               case "end":
-                return _context13.stop();
+                return _context14.stop();
             }
           }
-        }, _callee13, this);
+        }, _callee14, this);
       }));
 
-      function login(_x14, _x15) {
+      function login(_x16, _x17) {
         return _login.apply(this, arguments);
       }
 
@@ -615,16 +667,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "login2",
     value: function () {
-      var _login2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(idNumber) {
-        return _regenerator["default"].wrap(function _callee14$(_context14) {
+      var _login2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(idNumber) {
+        return _regenerator["default"].wrap(function _callee15$(_context15) {
           while (1) {
-            switch (_context14.prev = _context14.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                _context14.next = 2;
+                _context15.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context14.next = 4;
+                _context15.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/idnumber"), {
                   method: 'POST',
                   headers: {
@@ -642,17 +694,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context14.abrupt("return", _context14.sent);
+                return _context15.abrupt("return", _context15.sent);
 
               case 5:
               case "end":
-                return _context14.stop();
+                return _context15.stop();
             }
           }
-        }, _callee14, this);
+        }, _callee15, this);
       }));
 
-      function login2(_x16) {
+      function login2(_x18) {
         return _login2.apply(this, arguments);
       }
 
@@ -661,16 +713,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "login3",
     value: function () {
-      var _login3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(fingerPrint) {
-        return _regenerator["default"].wrap(function _callee15$(_context15) {
+      var _login3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(fingerPrint) {
+        return _regenerator["default"].wrap(function _callee16$(_context16) {
           while (1) {
-            switch (_context15.prev = _context15.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
-                _context15.next = 2;
+                _context16.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context15.next = 4;
+                _context16.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/fingerprint"), {
                   method: 'POST',
                   headers: {
@@ -688,17 +740,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context15.abrupt("return", _context15.sent);
+                return _context16.abrupt("return", _context16.sent);
 
               case 5:
               case "end":
-                return _context15.stop();
+                return _context16.stop();
             }
           }
-        }, _callee15, this);
+        }, _callee16, this);
       }));
 
-      function login3(_x17) {
+      function login3(_x19) {
         return _login3.apply(this, arguments);
       }
 
@@ -707,16 +759,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "login4",
     value: function () {
-      var _login4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(id) {
-        return _regenerator["default"].wrap(function _callee16$(_context16) {
+      var _login4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(id) {
+        return _regenerator["default"].wrap(function _callee17$(_context17) {
           while (1) {
-            switch (_context16.prev = _context16.next) {
+            switch (_context17.prev = _context17.next) {
               case 0:
-                _context16.next = 2;
+                _context17.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context16.next = 4;
+                _context17.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/login/id"), {
                   method: 'POST',
                   headers: {
@@ -734,17 +786,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context16.abrupt("return", _context16.sent);
+                return _context17.abrupt("return", _context17.sent);
 
               case 5:
               case "end":
-                return _context16.stop();
+                return _context17.stop();
             }
           }
-        }, _callee16, this);
+        }, _callee17, this);
       }));
 
-      function login4(_x18) {
+      function login4(_x20) {
         return _login4.apply(this, arguments);
       }
 
@@ -753,16 +805,16 @@ var IdentityAPI = /*#__PURE__*/function () {
   }, {
     key: "logout",
     value: function () {
-      var _logout = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(token) {
-        return _regenerator["default"].wrap(function _callee17$(_context17) {
+      var _logout = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(token) {
+        return _regenerator["default"].wrap(function _callee18$(_context18) {
           while (1) {
-            switch (_context17.prev = _context17.next) {
+            switch (_context18.prev = _context18.next) {
               case 0:
-                _context17.next = 2;
+                _context18.next = 2;
                 return this.getAccessToken();
 
               case 2:
-                _context17.next = 4;
+                _context18.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/auth/logout"), {
                   method: 'POST',
                   headers: {
@@ -780,50 +832,6 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context17.abrupt("return", _context17.sent);
-
-              case 5:
-              case "end":
-                return _context17.stop();
-            }
-          }
-        }, _callee17, this);
-      }));
-
-      function logout(_x19) {
-        return _logout.apply(this, arguments);
-      }
-
-      return logout;
-    }()
-  }, {
-    key: "createFingerPrint",
-    value: function () {
-      var _createFingerPrint = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(fingerPrint) {
-        return _regenerator["default"].wrap(function _callee18$(_context18) {
-          while (1) {
-            switch (_context18.prev = _context18.next) {
-              case 0:
-                _context18.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                _context18.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/fingerprint"), {
-                  method: 'POST',
-                  headers: {
-                    fix_token: IdentityAPI.headerToken
-                  },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  json: fingerPrint,
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 4:
                 return _context18.abrupt("return", _context18.sent);
 
               case 5:
@@ -834,16 +842,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee18, this);
       }));
 
-      function createFingerPrint(_x20) {
-        return _createFingerPrint.apply(this, arguments);
+      function logout(_x21) {
+        return _logout.apply(this, arguments);
       }
 
-      return createFingerPrint;
+      return logout;
     }()
   }, {
-    key: "getFingerPrints",
+    key: "createFingerPrint",
     value: function () {
-      var _getFingerPrints = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee19(userId) {
+      var _createFingerPrint = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee19(fingerPrint) {
         return _regenerator["default"].wrap(function _callee19$(_context19) {
           while (1) {
             switch (_context19.prev = _context19.next) {
@@ -854,14 +862,14 @@ var IdentityAPI = /*#__PURE__*/function () {
               case 2:
                 _context19.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/fingerprint"), {
-                  method: 'GET',
+                  method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
                   searchParams: {
-                    access_token: this.accessToken,
-                    user_id: userId
+                    access_token: this.accessToken
                   },
+                  json: fingerPrint,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -878,17 +886,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee19, this);
       }));
 
-      function getFingerPrints(_x21) {
-        return _getFingerPrints.apply(this, arguments);
+      function createFingerPrint(_x22) {
+        return _createFingerPrint.apply(this, arguments);
       }
 
-      return getFingerPrints;
-    }() //check
-
+      return createFingerPrint;
+    }()
   }, {
-    key: "checkAccount",
+    key: "getFingerPrints",
     value: function () {
-      var _checkAccount = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee20(account) {
+      var _getFingerPrints = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee20(userId) {
         return _regenerator["default"].wrap(function _callee20$(_context20) {
           while (1) {
             switch (_context20.prev = _context20.next) {
@@ -898,16 +905,14 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context20.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/account"), {
-                  method: 'POST',
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/fingerprint"), {
+                  method: 'GET',
                   headers: {
                     fix_token: IdentityAPI.headerToken
                   },
                   searchParams: {
-                    access_token: this.accessToken
-                  },
-                  json: {
-                    account: account
+                    access_token: this.accessToken,
+                    user_id: userId
                   },
                   resolveBodyOnly: true,
                   responseType: 'json',
@@ -925,16 +930,17 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee20, this);
       }));
 
-      function checkAccount(_x22) {
-        return _checkAccount.apply(this, arguments);
+      function getFingerPrints(_x23) {
+        return _getFingerPrints.apply(this, arguments);
       }
 
-      return checkAccount;
-    }()
+      return getFingerPrints;
+    }() //check
+
   }, {
-    key: "checkMobile",
+    key: "checkAccount",
     value: function () {
-      var _checkMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee21(mobile) {
+      var _checkAccount = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee21(account) {
         return _regenerator["default"].wrap(function _callee21$(_context21) {
           while (1) {
             switch (_context21.prev = _context21.next) {
@@ -944,7 +950,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context21.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/mobile"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/account"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -953,7 +959,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: {
-                    mobile: mobile
+                    account: account
                   },
                   resolveBodyOnly: true,
                   responseType: 'json',
@@ -971,16 +977,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee21, this);
       }));
 
-      function checkMobile(_x23) {
-        return _checkMobile.apply(this, arguments);
+      function checkAccount(_x24) {
+        return _checkAccount.apply(this, arguments);
       }
 
-      return checkMobile;
+      return checkAccount;
     }()
   }, {
-    key: "checkEmail",
+    key: "checkMobile",
     value: function () {
-      var _checkEmail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee22(email) {
+      var _checkMobile = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee22(mobile) {
         return _regenerator["default"].wrap(function _callee22$(_context22) {
           while (1) {
             switch (_context22.prev = _context22.next) {
@@ -990,7 +996,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context22.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/email"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/mobile"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -999,7 +1005,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: {
-                    email: email
+                    mobile: mobile
                   },
                   resolveBodyOnly: true,
                   responseType: 'json',
@@ -1017,16 +1023,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee22, this);
       }));
 
-      function checkEmail(_x24) {
-        return _checkEmail.apply(this, arguments);
+      function checkMobile(_x25) {
+        return _checkMobile.apply(this, arguments);
       }
 
-      return checkEmail;
+      return checkMobile;
     }()
   }, {
-    key: "checkIDNumber",
+    key: "checkEmail",
     value: function () {
-      var _checkIDNumber = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee23(idNumber) {
+      var _checkEmail = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee23(email) {
         return _regenerator["default"].wrap(function _callee23$(_context23) {
           while (1) {
             switch (_context23.prev = _context23.next) {
@@ -1036,7 +1042,7 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context23.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/idnumber"), {
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/email"), {
                   method: 'POST',
                   headers: {
                     fix_token: IdentityAPI.headerToken
@@ -1045,7 +1051,7 @@ var IdentityAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken
                   },
                   json: {
-                    id_number: idNumber
+                    email: email
                   },
                   resolveBodyOnly: true,
                   responseType: 'json',
@@ -1063,17 +1069,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee23, this);
       }));
 
-      function checkIDNumber(_x25) {
-        return _checkIDNumber.apply(this, arguments);
+      function checkEmail(_x26) {
+        return _checkEmail.apply(this, arguments);
       }
 
-      return checkIDNumber;
-    }() //self
-
+      return checkEmail;
+    }()
   }, {
-    key: "self",
+    key: "checkIDNumber",
     value: function () {
-      var _self = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee24(token) {
+      var _checkIDNumber = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee24(idNumber) {
         return _regenerator["default"].wrap(function _callee24$(_context24) {
           while (1) {
             switch (_context24.prev = _context24.next) {
@@ -1083,14 +1088,16 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context24.next = 4;
-                return (0, _got["default"])("".concat(IdentityAPI.url, "/self"), {
-                  method: 'GET',
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/service/user/check/idnumber"), {
+                  method: 'POST',
                   headers: {
-                    Authorization: "Bearer ".concat(token),
                     fix_token: IdentityAPI.headerToken
                   },
                   searchParams: {
                     access_token: this.accessToken
+                  },
+                  json: {
+                    id_number: idNumber
                   },
                   resolveBodyOnly: true,
                   responseType: 'json',
@@ -1108,16 +1115,17 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee24, this);
       }));
 
-      function self(_x26) {
-        return _self.apply(this, arguments);
+      function checkIDNumber(_x27) {
+        return _checkIDNumber.apply(this, arguments);
       }
 
-      return self;
-    }()
+      return checkIDNumber;
+    }() //self
+
   }, {
-    key: "updateSelf",
+    key: "self",
     value: function () {
-      var _updateSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee25(token, self) {
+      var _self = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee25(token) {
         return _regenerator["default"].wrap(function _callee25$(_context25) {
           while (1) {
             switch (_context25.prev = _context25.next) {
@@ -1128,7 +1136,7 @@ var IdentityAPI = /*#__PURE__*/function () {
               case 2:
                 _context25.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/self"), {
-                  method: 'PUT',
+                  method: 'GET',
                   headers: {
                     Authorization: "Bearer ".concat(token),
                     fix_token: IdentityAPI.headerToken
@@ -1136,7 +1144,6 @@ var IdentityAPI = /*#__PURE__*/function () {
                   searchParams: {
                     access_token: this.accessToken
                   },
-                  json: self,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -1153,16 +1160,16 @@ var IdentityAPI = /*#__PURE__*/function () {
         }, _callee25, this);
       }));
 
-      function updateSelf(_x27, _x28) {
-        return _updateSelf.apply(this, arguments);
+      function self(_x28) {
+        return _self.apply(this, arguments);
       }
 
-      return updateSelf;
+      return self;
     }()
   }, {
-    key: "passwordSelf",
+    key: "updateSelf",
     value: function () {
-      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee26(token, oldPwd, newPwd) {
+      var _updateSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee26(token, self) {
         return _regenerator["default"].wrap(function _callee26$(_context26) {
           while (1) {
             switch (_context26.prev = _context26.next) {
@@ -1172,6 +1179,51 @@ var IdentityAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context26.next = 4;
+                return (0, _got["default"])("".concat(IdentityAPI.url, "/self"), {
+                  method: 'PUT',
+                  headers: {
+                    Authorization: "Bearer ".concat(token),
+                    fix_token: IdentityAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  json: self,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 4:
+                return _context26.abrupt("return", _context26.sent);
+
+              case 5:
+              case "end":
+                return _context26.stop();
+            }
+          }
+        }, _callee26, this);
+      }));
+
+      function updateSelf(_x29, _x30) {
+        return _updateSelf.apply(this, arguments);
+      }
+
+      return updateSelf;
+    }()
+  }, {
+    key: "passwordSelf",
+    value: function () {
+      var _passwordSelf = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee27(token, oldPwd, newPwd) {
+        return _regenerator["default"].wrap(function _callee27$(_context27) {
+          while (1) {
+            switch (_context27.prev = _context27.next) {
+              case 0:
+                _context27.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context27.next = 4;
                 return (0, _got["default"])("".concat(IdentityAPI.url, "/self/password"), {
                   method: 'POST',
                   headers: {
@@ -1191,17 +1243,17 @@ var IdentityAPI = /*#__PURE__*/function () {
                 });
 
               case 4:
-                return _context26.abrupt("return", _context26.sent);
+                return _context27.abrupt("return", _context27.sent);
 
               case 5:
               case "end":
-                return _context26.stop();
+                return _context27.stop();
             }
           }
-        }, _callee26, this);
+        }, _callee27, this);
       }));
 
-      function passwordSelf(_x29, _x30, _x31) {
+      function passwordSelf(_x31, _x32, _x33) {
         return _passwordSelf.apply(this, arguments);
       }
 

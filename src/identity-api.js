@@ -33,7 +33,7 @@ export default class IdentityAPI {
         }
     }
 
-    async getUsers() {
+    async getUsers(query) {
         await this.getAccessToken();
         return await got(`${IdentityAPI.url}/service/user`, {
             method: 'GET',
@@ -41,6 +41,7 @@ export default class IdentityAPI {
                 fix_token: IdentityAPI.headerToken
             },
             searchParams: {
+                ...query,
                 access_token: this.accessToken
             },
             resolveBodyOnly: true,
@@ -97,6 +98,25 @@ export default class IdentityAPI {
             },
             json: {
                 mobile: mobile
+            },
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
+    async getUserWithNumber(number) {
+        await this.getAccessToken();
+        return await got(`${IdentityAPI.url}/service/user/number`, {
+            method: 'POST',
+            headers: {
+                fix_token: IdentityAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            json: {
+                number: number
             },
             resolveBodyOnly: true,
             responseType: 'json',
