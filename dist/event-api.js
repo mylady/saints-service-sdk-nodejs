@@ -407,9 +407,9 @@ var EventAPI = /*#__PURE__*/function () {
       return statsAlarmCode;
     }()
   }, {
-    key: "statsAlarmProcessStatus",
+    key: "statsAlarmDesp",
     value: function () {
-      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(query) {
+      var _statsAlarmDesp = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(query) {
         return _regenerator["default"].wrap(function _callee10$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
@@ -420,7 +420,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context10.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/alarmdesp"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -442,16 +442,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee10, this);
       }));
 
-      function statsAlarmProcessStatus(_x10) {
-        return _statsAlarmProcessStatus.apply(this, arguments);
+      function statsAlarmDesp(_x10) {
+        return _statsAlarmDesp.apply(this, arguments);
       }
 
-      return statsAlarmProcessStatus;
+      return statsAlarmDesp;
     }()
   }, {
-    key: "statsAlarmTrend",
+    key: "statsAlarmProcessStatus",
     value: function () {
-      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(query) {
+      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(query) {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
@@ -462,7 +462,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context11.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/trend"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -484,7 +484,49 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function statsAlarmTrend(_x11) {
+      function statsAlarmProcessStatus(_x11) {
+        return _statsAlarmProcessStatus.apply(this, arguments);
+      }
+
+      return statsAlarmProcessStatus;
+    }()
+  }, {
+    key: "statsAlarmTrend",
+    value: function () {
+      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(query) {
+        return _regenerator["default"].wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context12.next = 5;
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/trend"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context12.abrupt("return", _context12.sent);
+
+              case 6:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12, this);
+      }));
+
+      function statsAlarmTrend(_x12) {
         return _statsAlarmTrend.apply(this, arguments);
       }
 

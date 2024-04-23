@@ -157,6 +157,21 @@ export default class EventAPI {
         });
     }
 
+    async statsAlarmDesp(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${EventAPI.url}/stats/alarm/alarmdesp`, {
+            method: 'GET',
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async statsAlarmProcessStatus(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
