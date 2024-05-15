@@ -17,10 +17,6 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _got = _interopRequireDefault(require("got"));
 
-var _httpProxy = _interopRequireDefault(require("http-proxy"));
-
-var proxy = _httpProxy["default"].createProxy();
-
 var VideoRecordAPI = /*#__PURE__*/function () {
   function VideoRecordAPI() {
     (0, _classCallCheck2["default"])(this, VideoRecordAPI);
@@ -160,7 +156,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
   }, {
     key: "downloadRecord",
     value: function () {
-      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data, req, res) {
+      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data) {
         return _regenerator["default"].wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -169,15 +165,24 @@ var VideoRecordAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.url = "/rest/record/download/".concat(data.folder, "/").concat(data.id, "?access_token=").concat(this.accessToken);
-                proxy.web(req, res, {
+                _context4.next = 4;
+                return (0, _got["default"])("".concat(VideoRecordAPI.url, "/record/download/").concat(data.folder, "/").concat(data.id), {
+                  method: 'GET',
                   headers: {
                     fix_token: VideoRecordAPI.headerToken
                   },
-                  target: "".concat(VideoRecordAPI.host)
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  encoding: 'buffer',
+                  responseType: 'buffer',
+                  throwHttpErrors: false
                 });
 
               case 4:
+                return _context4.abrupt("return", _context4.sent);
+
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -185,7 +190,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function downloadRecord(_x3, _x4, _x5) {
+      function downloadRecord(_x3) {
         return _downloadRecord.apply(this, arguments);
       }
 
