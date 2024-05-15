@@ -69,7 +69,7 @@ export default class VideoRecordAPI {
         });
     }
 
-    async downloadRecord(data) {
+    async downloadRecord(data, req, res) {
         await this.getAccessToken();
         req.url = `/rest/record/download/${data.folder}/${data.id}?access_token=${this.accessToken}`;
         proxy.web(req, res, {

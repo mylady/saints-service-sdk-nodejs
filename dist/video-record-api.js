@@ -31,8 +31,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
     key: "getAccessToken",
     value: function () {
       var _getAccessToken = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var _res;
-
+        var res;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -54,8 +53,8 @@ var VideoRecordAPI = /*#__PURE__*/function () {
                 });
 
               case 6:
-                _res = _context.sent;
-                this.accessToken = _res.data;
+                res = _context.sent;
+                this.accessToken = res.data;
 
               case 8:
               case "end":
@@ -161,7 +160,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
   }, {
     key: "downloadRecord",
     value: function () {
-      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data) {
+      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data, req, res) {
         return _regenerator["default"].wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -186,7 +185,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function downloadRecord(_x3) {
+      function downloadRecord(_x3, _x4, _x5) {
         return _downloadRecord.apply(this, arguments);
       }
 
