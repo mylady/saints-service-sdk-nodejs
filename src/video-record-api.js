@@ -1,4 +1,6 @@
 import got from 'got';
+import httpProxy from 'http-proxy';
+const proxy = httpProxy.createProxy();
 
 export default class VideoRecordAPI {
     constructor() {
@@ -16,6 +18,7 @@ export default class VideoRecordAPI {
             VideoRecordAPI.url = url;
         }
 
+        VideoRecordAPI.host = VideoRecordAPI.url.replace('/rest', '');
         VideoRecordAPI.headerToken = token;
     }
 
@@ -68,17 +71,12 @@ export default class VideoRecordAPI {
 
     async downloadRecord(data) {
         await this.getAccessToken();
-        return await got(`${VideoRecordAPI.url}/record/download/${data.folder}/${data.id}`, {
-            method: 'GET',
+        req.url = `/rest/record/download/${data.folder}/${data.id}?access_token=${this.accessToken}`;
+        proxy.web(req, res, {
             headers: {
                 fix_token: VideoRecordAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
-            encoding: 'buffer',
-            responseType: 'buffer',
-            throwHttpErrors: false
+            target: `${VideoRecordAPI.host}`
         });
     }
 }

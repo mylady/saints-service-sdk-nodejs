@@ -17,6 +17,10 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 
 var _got = _interopRequireDefault(require("got"));
 
+var _httpProxy = _interopRequireDefault(require("http-proxy"));
+
+var proxy = _httpProxy["default"].createProxy();
+
 var VideoRecordAPI = /*#__PURE__*/function () {
   function VideoRecordAPI() {
     (0, _classCallCheck2["default"])(this, VideoRecordAPI);
@@ -27,7 +31,8 @@ var VideoRecordAPI = /*#__PURE__*/function () {
     key: "getAccessToken",
     value: function () {
       var _getAccessToken = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-        var res;
+        var _res;
+
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -49,8 +54,8 @@ var VideoRecordAPI = /*#__PURE__*/function () {
                 });
 
               case 6:
-                res = _context.sent;
-                this.accessToken = res.data;
+                _res = _context.sent;
+                this.accessToken = _res.data;
 
               case 8:
               case "end":
@@ -165,24 +170,15 @@ var VideoRecordAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context4.next = 4;
-                return (0, _got["default"])("".concat(VideoRecordAPI.url, "/record/download/").concat(data.folder, "/").concat(data.id), {
-                  method: 'GET',
+                req.url = "/rest/record/download/".concat(data.folder, "/").concat(data.id, "?access_token=").concat(this.accessToken);
+                proxy.web(req, res, {
                   headers: {
                     fix_token: VideoRecordAPI.headerToken
                   },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
-                  encoding: 'buffer',
-                  responseType: 'buffer',
-                  throwHttpErrors: false
+                  target: "".concat(VideoRecordAPI.host)
                 });
 
               case 4:
-                return _context4.abrupt("return", _context4.sent);
-
-              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -211,6 +207,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
         VideoRecordAPI.url = url;
       }
 
+      VideoRecordAPI.host = VideoRecordAPI.url.replace('/rest', '');
       VideoRecordAPI.headerToken = token;
     }
   }]);
