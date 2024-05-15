@@ -23,6 +23,8 @@ var _messageHubApi = _interopRequireDefault(require("./message-hub-api"));
 
 var _cloudProxyApi = _interopRequireDefault(require("./cloud-proxy-api"));
 
+var _videoRecordApi = _interopRequireDefault(require("./video-record-api"));
+
 var sdk = {
   FileHubAPI: _fileHubApi["default"],
   IdentityAPI: _identityApi["default"],
@@ -32,7 +34,8 @@ var sdk = {
   getResourceTypeName: _resourceType.getResourceTypeName,
   EventAPI: _eventApi["default"],
   MessageAPI: _messageHubApi["default"],
-  CloudProxyAPI: _cloudProxyApi["default"]
+  CloudProxyAPI: _cloudProxyApi["default"],
+  VideoRecordAPI: _videoRecordApi["default"]
 };
 var _default = sdk;
 exports["default"] = _default;

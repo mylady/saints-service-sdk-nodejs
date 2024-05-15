@@ -7,17 +7,19 @@ import { ResourceTypeName, getResourceTypeName } from './resource-type';
 import EventAPI from './event-api';
 import MessageAPI from './message-hub-api';
 import CloudProxyAPI from './cloud-proxy-api';
+import VideoRecordAPI from './video-record-api';
 
 const sdk = {
-    FileHubAPI: FileHubAPI,
-    IdentityAPI: IdentityAPI,
-    LogAPI: LogAPI,
-    DeviceAPI: DeviceAPI,
-    ResourceTypeName: ResourceTypeName,
-    getResourceTypeName: getResourceTypeName,
-    EventAPI: EventAPI,
-    MessageAPI: MessageAPI,
-    CloudProxyAPI: CloudProxyAPI
+    FileHubAPI,
+    IdentityAPI,
+    LogAPI,
+    DeviceAPI,
+    ResourceTypeName,
+    getResourceTypeName,
+    EventAPI,
+    MessageAPI,
+    CloudProxyAPI,
+    VideoRecordAPI
 };
 
 export default sdk;
