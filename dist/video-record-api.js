@@ -158,9 +158,9 @@ var VideoRecordAPI = /*#__PURE__*/function () {
       return stopRecord;
     }()
   }, {
-    key: "downloadRecord",
+    key: "previewRecord",
     value: function () {
-      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data, req, res) {
+      var _previewRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(data, req, res) {
         return _regenerator["default"].wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -169,7 +169,7 @@ var VideoRecordAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                req.url = "/rest/record/download/".concat(data.folder, "/").concat(data.id, "?access_token=").concat(this.accessToken);
+                req.url = "/rest/record/preview/".concat(data.folder, "/").concat(data.id, "?access_token=").concat(this.accessToken);
                 proxy.web(req, res, {
                   headers: {
                     fix_token: VideoRecordAPI.headerToken
@@ -185,7 +185,50 @@ var VideoRecordAPI = /*#__PURE__*/function () {
         }, _callee4, this);
       }));
 
-      function downloadRecord(_x3, _x4, _x5) {
+      function previewRecord(_x3, _x4, _x5) {
+        return _previewRecord.apply(this, arguments);
+      }
+
+      return previewRecord;
+    }()
+  }, {
+    key: "downloadRecord",
+    value: function () {
+      var _downloadRecord = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(data) {
+        return _regenerator["default"].wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context5.next = 4;
+                return (0, _got["default"])("".concat(VideoRecordAPI.url, "/record/download/").concat(data.folder, "/").concat(data.id), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: VideoRecordAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 4:
+                return _context5.abrupt("return", _context5.sent);
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function downloadRecord(_x6) {
         return _downloadRecord.apply(this, arguments);
       }
 

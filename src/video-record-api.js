@@ -69,14 +69,30 @@ export default class VideoRecordAPI {
         });
     }
 
-    async downloadRecord(data, req, res) {
+    async previewRecord(data, req, res) {
         await this.getAccessToken();
-        req.url = `/rest/record/download/${data.folder}/${data.id}?access_token=${this.accessToken}`;
+        req.url = `/rest/record/preview/${data.folder}/${data.id}?access_token=${this.accessToken}`;
         proxy.web(req, res, {
             headers: {
                 fix_token: VideoRecordAPI.headerToken
             },
             target: `${VideoRecordAPI.host}`
+        });
+    }
+
+    async downloadRecord(data) {
+        await this.getAccessToken();
+        return await got(`${VideoRecordAPI.url}/record/download/${data.folder}/${data.id}`, {
+            method: 'GET',
+            headers: {
+                fix_token: VideoRecordAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken
+            },
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
         });
     }
 }
