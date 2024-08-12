@@ -533,9 +533,9 @@ var EventAPI = /*#__PURE__*/function () {
       return statsAlarmTrend;
     }()
   }, {
-    key: "statsNormalDeviceName",
+    key: "statsNormalName",
     value: function () {
-      var _statsNormalDeviceName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
+      var _statsNormalName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -568,11 +568,11 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
-      function statsNormalDeviceName(_x13) {
-        return _statsNormalDeviceName.apply(this, arguments);
+      function statsNormalName(_x13) {
+        return _statsNormalName.apply(this, arguments);
       }
 
-      return statsNormalDeviceName;
+      return statsNormalName;
     }()
   }], [{
     key: "initialize",

@@ -202,7 +202,7 @@ export default class EventAPI {
         });
     }
 
-    async statsNormalDeviceName(query) {
+    async statsNormalName(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
         return await got(`${EventAPI.url}/stats/normal/name`, {
