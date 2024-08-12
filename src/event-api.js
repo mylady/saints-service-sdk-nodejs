@@ -205,7 +205,7 @@ export default class EventAPI {
     async statsNormalDeviceName(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;
-        return await got(`${EventAPI.url}/stats/normal/devicename`, {
+        return await got(`${EventAPI.url}/stats/normal/name`, {
             method: 'GET',
             headers: {
                 fix_token: EventAPI.headerToken

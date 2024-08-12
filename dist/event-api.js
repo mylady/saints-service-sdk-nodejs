@@ -546,7 +546,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context13.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/devicename"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/name"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
