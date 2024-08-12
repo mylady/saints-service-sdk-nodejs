@@ -532,6 +532,48 @@ var EventAPI = /*#__PURE__*/function () {
 
       return statsAlarmTrend;
     }()
+  }, {
+    key: "statsNormalDeviceName",
+    value: function () {
+      var _statsNormalDeviceName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
+        return _regenerator["default"].wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context13.next = 5;
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/devicename"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context13.abrupt("return", _context13.sent);
+
+              case 6:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this);
+      }));
+
+      function statsNormalDeviceName(_x13) {
+        return _statsNormalDeviceName.apply(this, arguments);
+      }
+
+      return statsNormalDeviceName;
+    }()
   }], [{
     key: "initialize",
     value: function initialize(url) {

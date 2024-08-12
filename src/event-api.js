@@ -201,4 +201,19 @@ export default class EventAPI {
             throwHttpErrors: false
         });
     }
+
+    async statsNormalDeviceName(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${EventAPI.url}/stats/normal/devicename`, {
+            method: 'GET',
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
 }
