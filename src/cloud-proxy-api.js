@@ -164,4 +164,22 @@ export default class CloudProxyAPI {
             throwHttpErrors: false
         });
     }
+
+    async verifyFace(face, type) {
+        return await got(`${CloudProxyAPI.url}/face/verify`, {
+            method: 'POST',
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                type_name: type
+            },
+            
+            json: face,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
 }

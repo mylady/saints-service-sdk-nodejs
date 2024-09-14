@@ -394,6 +394,47 @@ var CloudProxyAPI = /*#__PURE__*/function () {
 
       return searchFace;
     }()
+  }, {
+    key: "verifyFace",
+    value: function () {
+      var _verifyFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee10(face, type) {
+        return _regenerator["default"].wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/verify"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken,
+                    type_name: type
+                  },
+                  json: face,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 2:
+                return _context10.abrupt("return", _context10.sent);
+
+              case 3:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function verifyFace(_x18, _x19) {
+        return _verifyFace.apply(this, arguments);
+      }
+
+      return verifyFace;
+    }()
   }], [{
     key: "initialize",
     value: function initialize(url) {
