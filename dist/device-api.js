@@ -580,7 +580,7 @@ var DeviceAPI = /*#__PURE__*/function () {
   }, {
     key: "statsDeviceCategory",
     value: function () {
-      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14() {
+      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
         return _regenerator["default"].wrap(function _callee14$(_context14) {
           while (1) {
             switch (_context14.prev = _context14.next) {
@@ -589,24 +589,23 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context14.next = 4;
+                query['access_token'] = this.accessToken;
+                _context14.next = 5;
                 return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
+                  searchParams: query,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
                 });
 
-              case 4:
+              case 5:
                 return _context14.abrupt("return", _context14.sent);
 
-              case 5:
+              case 6:
               case "end":
                 return _context14.stop();
             }
@@ -614,7 +613,7 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee14, this);
       }));
 
-      function statsDeviceCategory() {
+      function statsDeviceCategory(_x15) {
         return _statsDeviceCategory.apply(this, arguments);
       }
 
@@ -656,7 +655,7 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee15, this);
       }));
 
-      function statsDeviceTag(_x15) {
+      function statsDeviceTag(_x16) {
         return _statsDeviceTag.apply(this, arguments);
       }
 
