@@ -250,16 +250,15 @@ export default class DeviceAPI {
         });
     }
 
-    async statsTagUsed() {
+    async statsTagUsed(query) {
         await this.getAccessToken();
+        query['access_token'] = this.accessToken;
         return await got(`${DeviceAPI.url}/stats/tag/used`, {
             method: 'GET',
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken
-            },
+            searchParams: query,
             resolveBodyOnly: true,
             responseType: 'json',
             throwHttpErrors: false

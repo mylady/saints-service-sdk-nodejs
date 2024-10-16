@@ -664,7 +664,7 @@ var DeviceAPI = /*#__PURE__*/function () {
   }, {
     key: "statsTagUsed",
     value: function () {
-      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16() {
+      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
         return _regenerator["default"].wrap(function _callee16$(_context16) {
           while (1) {
             switch (_context16.prev = _context16.next) {
@@ -673,24 +673,23 @@ var DeviceAPI = /*#__PURE__*/function () {
                 return this.getAccessToken();
 
               case 2:
-                _context16.next = 4;
+                query['access_token'] = this.accessToken;
+                _context16.next = 5;
                 return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: {
-                    access_token: this.accessToken
-                  },
+                  searchParams: query,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
                 });
 
-              case 4:
+              case 5:
                 return _context16.abrupt("return", _context16.sent);
 
-              case 5:
+              case 6:
               case "end":
                 return _context16.stop();
             }
@@ -698,7 +697,7 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee16, this);
       }));
 
-      function statsTagUsed() {
+      function statsTagUsed(_x17) {
         return _statsTagUsed.apply(this, arguments);
       }
 
