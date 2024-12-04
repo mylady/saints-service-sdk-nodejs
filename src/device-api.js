@@ -188,6 +188,23 @@ export default class DeviceAPI {
         });
     }
 
+    async getRecordAddress(id, query) {
+        await this.getAccessToken();
+        return await got(`${DeviceAPI.url}/record/${id}`, {
+            method: 'GET',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                ...query
+            },
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async statsDeviceStatus() {
         await this.getAccessToken();
         return await got(`${DeviceAPI.url}/stats/device/status`, {

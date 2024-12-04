@@ -9,6 +9,8 @@ exports["default"] = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
@@ -16,6 +18,10 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var _got = _interopRequireDefault(require("got"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var DeviceAPI = /*#__PURE__*/function () {
   function DeviceAPI() {
@@ -492,9 +498,9 @@ var DeviceAPI = /*#__PURE__*/function () {
       return getStreamAddress;
     }()
   }, {
-    key: "statsDeviceStatus",
+    key: "getRecordAddress",
     value: function () {
-      var _statsDeviceStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12() {
+      var _getRecordAddress = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(id, query) {
         return _regenerator["default"].wrap(function _callee12$(_context12) {
           while (1) {
             switch (_context12.prev = _context12.next) {
@@ -504,14 +510,14 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context12.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/record/").concat(id), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
                   },
-                  searchParams: {
+                  searchParams: _objectSpread({
                     access_token: this.accessToken
-                  },
+                  }, query),
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -528,16 +534,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee12, this);
       }));
 
-      function statsDeviceStatus() {
-        return _statsDeviceStatus.apply(this, arguments);
+      function getRecordAddress(_x15, _x16) {
+        return _getRecordAddress.apply(this, arguments);
       }
 
-      return statsDeviceStatus;
+      return getRecordAddress;
     }()
   }, {
-    key: "statsDeviceFault",
+    key: "statsDeviceStatus",
     value: function () {
-      var _statsDeviceFault = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13() {
+      var _statsDeviceStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13() {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -547,7 +553,7 @@ var DeviceAPI = /*#__PURE__*/function () {
 
               case 2:
                 _context13.next = 4;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/fault"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -571,6 +577,49 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
+      function statsDeviceStatus() {
+        return _statsDeviceStatus.apply(this, arguments);
+      }
+
+      return statsDeviceStatus;
+    }()
+  }, {
+    key: "statsDeviceFault",
+    value: function () {
+      var _statsDeviceFault = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14() {
+        return _regenerator["default"].wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                _context14.next = 4;
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/fault"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: DeviceAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 4:
+                return _context14.abrupt("return", _context14.sent);
+
+              case 5:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, this);
+      }));
+
       function statsDeviceFault() {
         return _statsDeviceFault.apply(this, arguments);
       }
@@ -580,49 +629,7 @@ var DeviceAPI = /*#__PURE__*/function () {
   }, {
     key: "statsDeviceCategory",
     value: function () {
-      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
-        return _regenerator["default"].wrap(function _callee14$(_context14) {
-          while (1) {
-            switch (_context14.prev = _context14.next) {
-              case 0:
-                _context14.next = 2;
-                return this.getAccessToken();
-
-              case 2:
-                query['access_token'] = this.accessToken;
-                _context14.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
-                  method: 'GET',
-                  headers: {
-                    fix_token: DeviceAPI.headerToken
-                  },
-                  searchParams: query,
-                  resolveBodyOnly: true,
-                  responseType: 'json',
-                  throwHttpErrors: false
-                });
-
-              case 5:
-                return _context14.abrupt("return", _context14.sent);
-
-              case 6:
-              case "end":
-                return _context14.stop();
-            }
-          }
-        }, _callee14, this);
-      }));
-
-      function statsDeviceCategory(_x15) {
-        return _statsDeviceCategory.apply(this, arguments);
-      }
-
-      return statsDeviceCategory;
-    }()
-  }, {
-    key: "statsDeviceTag",
-    value: function () {
-      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(query) {
+      var _statsDeviceCategory = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(query) {
         return _regenerator["default"].wrap(function _callee15$(_context15) {
           while (1) {
             switch (_context15.prev = _context15.next) {
@@ -633,7 +640,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context15.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/category"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -655,16 +662,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee15, this);
       }));
 
-      function statsDeviceTag(_x16) {
-        return _statsDeviceTag.apply(this, arguments);
+      function statsDeviceCategory(_x17) {
+        return _statsDeviceCategory.apply(this, arguments);
       }
 
-      return statsDeviceTag;
+      return statsDeviceCategory;
     }()
   }, {
-    key: "statsTagUsed",
+    key: "statsDeviceTag",
     value: function () {
-      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
+      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
         return _regenerator["default"].wrap(function _callee16$(_context16) {
           while (1) {
             switch (_context16.prev = _context16.next) {
@@ -675,7 +682,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context16.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -697,7 +704,49 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee16, this);
       }));
 
-      function statsTagUsed(_x17) {
+      function statsDeviceTag(_x18) {
+        return _statsDeviceTag.apply(this, arguments);
+      }
+
+      return statsDeviceTag;
+    }()
+  }, {
+    key: "statsTagUsed",
+    value: function () {
+      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(query) {
+        return _regenerator["default"].wrap(function _callee17$(_context17) {
+          while (1) {
+            switch (_context17.prev = _context17.next) {
+              case 0:
+                _context17.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context17.next = 5;
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: DeviceAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context17.abrupt("return", _context17.sent);
+
+              case 6:
+              case "end":
+                return _context17.stop();
+            }
+          }
+        }, _callee17, this);
+      }));
+
+      function statsTagUsed(_x19) {
         return _statsTagUsed.apply(this, arguments);
       }
 
