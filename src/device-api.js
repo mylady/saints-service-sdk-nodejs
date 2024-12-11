@@ -190,15 +190,13 @@ export default class DeviceAPI {
 
     async getRecordAddress(id, query) {
         await this.getAccessToken();
+        query['access_token'] = this.accessToken;
         return await got(`${DeviceAPI.url}/record/${id}`, {
             method: 'GET',
             headers: {
                 fix_token: DeviceAPI.headerToken
             },
-            searchParams: {
-                access_token: this.accessToken,
-                ...query
-            },
+            searchParams: query,
             resolveBodyOnly: true,
             responseType: 'json',
             throwHttpErrors: false
