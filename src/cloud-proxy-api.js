@@ -182,4 +182,20 @@ export default class CloudProxyAPI {
             throwHttpErrors: false
         });
     }
+
+    async escapeScan(id, type) {
+        return await got(`${CloudProxyAPI.url}/escape/scan/${id}`, {
+            method: 'POST',
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                type_name: type
+            },
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
 }
