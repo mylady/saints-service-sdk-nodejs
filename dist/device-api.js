@@ -662,9 +662,9 @@ var DeviceAPI = /*#__PURE__*/function () {
       return statsDeviceCategory;
     }()
   }, {
-    key: "statsDeviceTag",
+    key: "statsDeviceCategoryStatus",
     value: function () {
-      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
+      var _statsDeviceCategoryStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee16(query) {
         return _regenerator["default"].wrap(function _callee16$(_context16) {
           while (1) {
             switch (_context16.prev = _context16.next) {
@@ -675,7 +675,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context16.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/categorystatus"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -697,16 +697,16 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee16, this);
       }));
 
-      function statsDeviceTag(_x18) {
-        return _statsDeviceTag.apply(this, arguments);
+      function statsDeviceCategoryStatus(_x18) {
+        return _statsDeviceCategoryStatus.apply(this, arguments);
       }
 
-      return statsDeviceTag;
+      return statsDeviceCategoryStatus;
     }()
   }, {
-    key: "statsTagUsed",
+    key: "statsDeviceTag",
     value: function () {
-      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(query) {
+      var _statsDeviceTag = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee17(query) {
         return _regenerator["default"].wrap(function _callee17$(_context17) {
           while (1) {
             switch (_context17.prev = _context17.next) {
@@ -717,7 +717,7 @@ var DeviceAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context17.next = 5;
-                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/device/status"), {
                   method: 'GET',
                   headers: {
                     fix_token: DeviceAPI.headerToken
@@ -739,7 +739,49 @@ var DeviceAPI = /*#__PURE__*/function () {
         }, _callee17, this);
       }));
 
-      function statsTagUsed(_x19) {
+      function statsDeviceTag(_x19) {
+        return _statsDeviceTag.apply(this, arguments);
+      }
+
+      return statsDeviceTag;
+    }()
+  }, {
+    key: "statsTagUsed",
+    value: function () {
+      var _statsTagUsed = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee18(query) {
+        return _regenerator["default"].wrap(function _callee18$(_context18) {
+          while (1) {
+            switch (_context18.prev = _context18.next) {
+              case 0:
+                _context18.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context18.next = 5;
+                return (0, _got["default"])("".concat(DeviceAPI.url, "/stats/tag/used"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: DeviceAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context18.abrupt("return", _context18.sent);
+
+              case 6:
+              case "end":
+                return _context18.stop();
+            }
+          }
+        }, _callee18, this);
+      }));
+
+      function statsTagUsed(_x20) {
         return _statsTagUsed.apply(this, arguments);
       }
 
