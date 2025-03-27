@@ -436,15 +436,15 @@ var CloudProxyAPI = /*#__PURE__*/function () {
       return verifyFace;
     }()
   }, {
-    key: "escapeScan",
+    key: "checkFace",
     value: function () {
-      var _escapeScan = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(id, type) {
+      var _checkFace = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(face, type) {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
               case 0:
                 _context11.next = 2;
-                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/escape/scan/").concat(id), {
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/face/check"), {
                   method: 'POST',
                   headers: {
                     fix_token: CloudProxyAPI.headerToken
@@ -453,6 +453,7 @@ var CloudProxyAPI = /*#__PURE__*/function () {
                     access_token: this.accessToken,
                     type_name: type
                   },
+                  json: face,
                   resolveBodyOnly: true,
                   responseType: 'json',
                   throwHttpErrors: false
@@ -469,7 +470,47 @@ var CloudProxyAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function escapeScan(_x20, _x21) {
+      function checkFace(_x20, _x21) {
+        return _checkFace.apply(this, arguments);
+      }
+
+      return checkFace;
+    }()
+  }, {
+    key: "escapeScan",
+    value: function () {
+      var _escapeScan = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(id, type) {
+        return _regenerator["default"].wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/escape/scan/").concat(id), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken,
+                    type_name: type
+                  },
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 2:
+                return _context12.abrupt("return", _context12.sent);
+
+              case 3:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12, this);
+      }));
+
+      function escapeScan(_x22, _x23) {
         return _escapeScan.apply(this, arguments);
       }
 
