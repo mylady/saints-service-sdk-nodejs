@@ -202,6 +202,21 @@ export default class EventAPI {
         });
     }
 
+    async statsAlarmDistrictCode(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${EventAPI.url}/stats/alarm/districtcode`, {
+            method: 'GET',
+            headers: {
+                fix_token: EventAPI.headerToken
+            },
+            searchParams: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async statsNormalName(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;

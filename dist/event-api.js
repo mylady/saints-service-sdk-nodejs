@@ -533,9 +533,9 @@ var EventAPI = /*#__PURE__*/function () {
       return statsAlarmTrend;
     }()
   }, {
-    key: "statsNormalName",
+    key: "statsAlarmDistrictCode",
     value: function () {
-      var _statsNormalName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
+      var _statsAlarmDistrictCode = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -546,7 +546,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context13.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/name"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/districtcode"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -568,7 +568,49 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
-      function statsNormalName(_x13) {
+      function statsAlarmDistrictCode(_x13) {
+        return _statsAlarmDistrictCode.apply(this, arguments);
+      }
+
+      return statsAlarmDistrictCode;
+    }()
+  }, {
+    key: "statsNormalName",
+    value: function () {
+      var _statsNormalName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
+        return _regenerator["default"].wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context14.next = 5;
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/name"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context14.abrupt("return", _context14.sent);
+
+              case 6:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, this);
+      }));
+
+      function statsNormalName(_x14) {
         return _statsNormalName.apply(this, arguments);
       }
 
