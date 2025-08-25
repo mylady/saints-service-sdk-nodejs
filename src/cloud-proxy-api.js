@@ -157,7 +157,7 @@ export default class CloudProxyAPI {
                 access_token: this.accessToken,
                 type_name: type
             },
-            
+
             json: face,
             resolveBodyOnly: true,
             responseType: 'json',
@@ -175,7 +175,7 @@ export default class CloudProxyAPI {
                 access_token: this.accessToken,
                 type_name: type
             },
-            
+
             json: face,
             resolveBodyOnly: true,
             responseType: 'json',
@@ -210,6 +210,40 @@ export default class CloudProxyAPI {
                 access_token: this.accessToken,
                 type_name: type
             },
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
+    async getRealPlayAddress(data, type) {
+        return await got(`${CloudProxyAPI.url}/video/realplay`, {
+            method: 'POST',
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                type_name: type
+            },
+            json: data,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
+     async getPlaybackAddress(data, type) {
+        return await got(`${CloudProxyAPI.url}/video/playback`, {
+            method: 'POST',
+            headers: {
+                fix_token: CloudProxyAPI.headerToken
+            },
+            searchParams: {
+                access_token: this.accessToken,
+                type_name: type
+            },
+            json: data,
             resolveBodyOnly: true,
             responseType: 'json',
             throwHttpErrors: false

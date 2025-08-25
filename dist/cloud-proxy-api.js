@@ -516,6 +516,88 @@ var CloudProxyAPI = /*#__PURE__*/function () {
 
       return escapeScan;
     }()
+  }, {
+    key: "getRealPlayAddress",
+    value: function () {
+      var _getRealPlayAddress = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(data, type) {
+        return _regenerator["default"].wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/video/realplay"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken,
+                    type_name: type
+                  },
+                  json: data,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 2:
+                return _context13.abrupt("return", _context13.sent);
+
+              case 3:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this);
+      }));
+
+      function getRealPlayAddress(_x24, _x25) {
+        return _getRealPlayAddress.apply(this, arguments);
+      }
+
+      return getRealPlayAddress;
+    }()
+  }, {
+    key: "getPlaybackAddress",
+    value: function () {
+      var _getPlaybackAddress = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(data, type) {
+        return _regenerator["default"].wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return (0, _got["default"])("".concat(CloudProxyAPI.url, "/video/playback"), {
+                  method: 'POST',
+                  headers: {
+                    fix_token: CloudProxyAPI.headerToken
+                  },
+                  searchParams: {
+                    access_token: this.accessToken,
+                    type_name: type
+                  },
+                  json: data,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 2:
+                return _context14.abrupt("return", _context14.sent);
+
+              case 3:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, this);
+      }));
+
+      function getPlaybackAddress(_x26, _x27) {
+        return _getPlaybackAddress.apply(this, arguments);
+      }
+
+      return getPlaybackAddress;
+    }()
   }], [{
     key: "initialize",
     value: function initialize(url) {
