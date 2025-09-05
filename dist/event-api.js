@@ -449,9 +449,9 @@ var EventAPI = /*#__PURE__*/function () {
       return statsAlarmDesp;
     }()
   }, {
-    key: "statsAlarmProcessStatus",
+    key: "statsAlarmProcessStatusAndDesp",
     value: function () {
-      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(query) {
+      var _statsAlarmProcessStatusAndDesp = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee11(query) {
         return _regenerator["default"].wrap(function _callee11$(_context11) {
           while (1) {
             switch (_context11.prev = _context11.next) {
@@ -462,7 +462,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context11.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus/desp"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -484,16 +484,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee11, this);
       }));
 
-      function statsAlarmProcessStatus(_x11) {
-        return _statsAlarmProcessStatus.apply(this, arguments);
+      function statsAlarmProcessStatusAndDesp(_x11) {
+        return _statsAlarmProcessStatusAndDesp.apply(this, arguments);
       }
 
-      return statsAlarmProcessStatus;
+      return statsAlarmProcessStatusAndDesp;
     }()
   }, {
-    key: "statsAlarmTrend",
+    key: "statsAlarmProcessStatus",
     value: function () {
-      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(query) {
+      var _statsAlarmProcessStatus = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee12(query) {
         return _regenerator["default"].wrap(function _callee12$(_context12) {
           while (1) {
             switch (_context12.prev = _context12.next) {
@@ -504,7 +504,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context12.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/trend"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/processstatus"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -526,16 +526,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee12, this);
       }));
 
-      function statsAlarmTrend(_x12) {
-        return _statsAlarmTrend.apply(this, arguments);
+      function statsAlarmProcessStatus(_x12) {
+        return _statsAlarmProcessStatus.apply(this, arguments);
       }
 
-      return statsAlarmTrend;
+      return statsAlarmProcessStatus;
     }()
   }, {
-    key: "statsAlarmDistrictCode",
+    key: "statsAlarmTrend",
     value: function () {
-      var _statsAlarmDistrictCode = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
+      var _statsAlarmTrend = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee13(query) {
         return _regenerator["default"].wrap(function _callee13$(_context13) {
           while (1) {
             switch (_context13.prev = _context13.next) {
@@ -546,7 +546,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context13.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/districtcode"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/trend"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -568,16 +568,16 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee13, this);
       }));
 
-      function statsAlarmDistrictCode(_x13) {
-        return _statsAlarmDistrictCode.apply(this, arguments);
+      function statsAlarmTrend(_x13) {
+        return _statsAlarmTrend.apply(this, arguments);
       }
 
-      return statsAlarmDistrictCode;
+      return statsAlarmTrend;
     }()
   }, {
-    key: "statsNormalName",
+    key: "statsAlarmDistrictCode",
     value: function () {
-      var _statsNormalName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
+      var _statsAlarmDistrictCode = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee14(query) {
         return _regenerator["default"].wrap(function _callee14$(_context14) {
           while (1) {
             switch (_context14.prev = _context14.next) {
@@ -588,7 +588,7 @@ var EventAPI = /*#__PURE__*/function () {
               case 2:
                 query['access_token'] = this.accessToken;
                 _context14.next = 5;
-                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/name"), {
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/alarm/districtcode"), {
                   method: 'GET',
                   headers: {
                     fix_token: EventAPI.headerToken
@@ -610,7 +610,49 @@ var EventAPI = /*#__PURE__*/function () {
         }, _callee14, this);
       }));
 
-      function statsNormalName(_x14) {
+      function statsAlarmDistrictCode(_x14) {
+        return _statsAlarmDistrictCode.apply(this, arguments);
+      }
+
+      return statsAlarmDistrictCode;
+    }()
+  }, {
+    key: "statsNormalName",
+    value: function () {
+      var _statsNormalName = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee15(query) {
+        return _regenerator["default"].wrap(function _callee15$(_context15) {
+          while (1) {
+            switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return this.getAccessToken();
+
+              case 2:
+                query['access_token'] = this.accessToken;
+                _context15.next = 5;
+                return (0, _got["default"])("".concat(EventAPI.url, "/stats/normal/name"), {
+                  method: 'GET',
+                  headers: {
+                    fix_token: EventAPI.headerToken
+                  },
+                  searchParams: query,
+                  resolveBodyOnly: true,
+                  responseType: 'json',
+                  throwHttpErrors: false
+                });
+
+              case 5:
+                return _context15.abrupt("return", _context15.sent);
+
+              case 6:
+              case "end":
+                return _context15.stop();
+            }
+          }
+        }, _callee15, this);
+      }));
+
+      function statsNormalName(_x15) {
         return _statsNormalName.apply(this, arguments);
       }
 
