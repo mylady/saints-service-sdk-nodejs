@@ -265,6 +265,36 @@ export default class DeviceAPI {
         });
     }
 
+    async statsDeviceCategoryStatusV2(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/stats/device/categorystatus`, {
+            method: 'POST',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
+    async statsDeviceDistrictStatusV2(query) {
+        await this.getAccessToken();
+        query['access_token'] = this.accessToken;
+        return await got(`${DeviceAPI.url}/stats/device/districtstatus`, {
+            method: 'POST',
+            headers: {
+                fix_token: DeviceAPI.headerToken
+            },
+            json: query,
+            resolveBodyOnly: true,
+            responseType: 'json',
+            throwHttpErrors: false
+        });
+    }
+
     async statsDeviceTag(query) {
         await this.getAccessToken();
         query['access_token'] = this.accessToken;

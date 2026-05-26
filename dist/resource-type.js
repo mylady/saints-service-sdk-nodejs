@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getResourceTypeName = exports.ResourceTypeName = void 0;
-var ResourceTypeName = {
+var ResourceTypeName = exports.ResourceTypeName = {
   alarm: 'alarm',
   alarmHost: 'alarmhost',
   call: 'call',
@@ -34,121 +34,90 @@ var ResourceTypeName = {
   vm: 'vm',
   vmGBServer: 'vmgbserver'
 };
-exports.ResourceTypeName = ResourceTypeName;
-
-var getResourceTypeName = function getResourceTypeName(code) {
+var getResourceTypeName = exports.getResourceTypeName = function getResourceTypeName(code) {
   var n = '';
-
   switch (code) {
     case 0:
       n = ResourceTypeName.camera;
       break;
-
     case 1:
       n = ResourceTypeName.doorPoint;
       break;
-
     case 2:
       n = ResourceTypeName.door;
       break;
-
     case 3:
       n = ResourceTypeName.alarm;
       break;
-
     case 4:
       n = ResourceTypeName.call;
       break;
-
     case 5:
       n = ResourceTypeName.callHost;
       break;
-
     case 6:
       n = ResourceTypeName.powergrid;
       break;
-
     case 7:
       n = ResourceTypeName.envMonitor;
       break;
-
     case 8:
       n = ResourceTypeName.rfidTag;
       break;
-
     case 9:
       n = ResourceTypeName.relay;
       break;
-
     case 10:
       n = ResourceTypeName.led;
       break;
-
     case 128:
       n = ResourceTypeName.decoderChannel;
       break;
-
     case 129:
       n = ResourceTypeName.matrixChannel;
       break;
-
     case 130:
       n = ResourceTypeName.tvwallChannel;
       break;
-
     case 131:
       n = ResourceTypeName.videoAnalyseChannel;
       break;
-
     case 256:
       n = ResourceTypeName.vm;
       break;
-
     case 257:
       n = ResourceTypeName.dm;
       break;
-
     case 258:
       n = ResourceTypeName.matrix;
       break;
-
     case 259:
       n = ResourceTypeName.tvwall;
       break;
-
     case 260:
       n = ResourceTypeName.alarmHost;
       break;
     // case 261: door controller has no table
     //     n = ResourceTypeName.door;
     //     break;
-
     case 262:
       n = ResourceTypeName.powergridHost;
       break;
-
     case 263:
       n = ResourceTypeName.envMonitorHost;
       break;
-
     case 264:
       n = ResourceTypeName.ups;
       break;
-
     case 265:
       n = ResourceTypeName.videoAnalyse;
       break;
-
     case 266:
       n = ResourceTypeName.relayHost;
       break;
-
     case 267:
       n = ResourceTypeName.vmGBServer;
       break;
   }
-
   return n;
 };
-
-exports.getResourceTypeName = getResourceTypeName;
